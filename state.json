@@ -1,6 +1,6 @@
 {
- "bal": 1132.8740445083906,
- "peak": 2084.080610062681,
+ "bal": 1869.5104373031108,
+ "peak": 2104.3329815958477,
  "positions": [
   {
    "sym": "FILUSDT",
@@ -14,53 +14,45 @@
    "entryType": "BOUNCE",
    "score": 94,
    "ts": 1783165310986,
-   "lastCheck": 1783180800000
-  },
-  {
-   "sym": "LTCUSDT",
-   "side": "LONG",
-   "price": 44.318862,
-   "sl": 43.78414411375624,
-   "tp": 45.388297772487526,
-   "size": 32.48121363367124,
-   "margin": 239.92173743719906,
-   "eFee": 0.7197652123115972,
-   "entryType": "BOUNCE",
-   "score": 91,
-   "ts": 1783165310986,
-   "lastCheck": 1783180800000
-  },
-  {
-   "sym": "AVAXUSDT",
-   "side": "LONG",
-   "price": 6.8823762,
-   "sl": 6.808876693236513,
-   "tp": 7.029375213526975,
-   "size": 209.0865352100819,
-   "margin": 239.83536561172164,
-   "eFee": 0.7195060968351649,
-   "entryType": "BOUNCE",
-   "score": 94,
-   "ts": 1783173207664,
-   "lastCheck": 1783180800000
-  },
-  {
-   "sym": "APTUSDT",
-   "side": "LONG",
-   "price": 0.62592516,
-   "sl": 0.6178180662565042,
-   "tp": 0.6421393474869916,
-   "size": 1604.465756772283,
-   "margin": 167.37924758703537,
-   "eFee": 0.5021377427611061,
-   "entryType": "CANDLE",
-   "score": 92,
-   "ts": 1783173207664,
-   "lastCheck": 1783180800000
+   "lastCheck": 1783188000000
   }
  ],
- "trades": [],
+ "trades": [
+  {
+   "ts": 1783184400000,
+   "sym": "AVAXUSDT",
+   "side": "LONG",
+   "entry": 6.8823762,
+   "exit": 7.0293752,
+   "pnl": 29.28,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 94
+  },
+  {
+   "ts": 1783184400000,
+   "sym": "LTCUSDT",
+   "side": "LONG",
+   "entry": 44.318862,
+   "exit": 45.388298,
+   "pnl": 33.28,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 91
+  },
+  {
+   "ts": 1783184400000,
+   "sym": "APTUSDT",
+   "side": "LONG",
+   "entry": 0.62592516,
+   "exit": 0.64213935,
+   "pnl": 25,
+   "reason": "TP",
+   "entryType": "CANDLE",
+   "score": 92
+  }
+ ],
  "cd": {},
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 5
+ "runs": 6
 }
