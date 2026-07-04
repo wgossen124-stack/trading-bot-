@@ -1,6 +1,6 @@
 {
  "bal": 1132.8740445083906,
- "peak": 2041.6442398477843,
+ "peak": 2084.080610062681,
  "positions": [
   {
    "sym": "FILUSDT",
@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 94,
    "ts": 1783165310986,
-   "lastCheck": 1783173600000
+   "lastCheck": 1783180800000
   },
   {
    "sym": "LTCUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 91,
    "ts": 1783165310986,
-   "lastCheck": 1783173600000
+   "lastCheck": 1783180800000
   },
   {
    "sym": "AVAXUSDT",
@@ -42,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 94,
    "ts": 1783173207664,
-   "lastCheck": 1783173600000
+   "lastCheck": 1783180800000
   },
   {
    "sym": "APTUSDT",
@@ -56,11 +56,11 @@
    "entryType": "CANDLE",
    "score": 92,
    "ts": 1783173207664,
-   "lastCheck": 1783173600000
+   "lastCheck": 1783180800000
   }
  ],
  "trades": [],
  "cd": {},
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 4
+ "runs": 5
 }
