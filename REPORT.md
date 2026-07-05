@@ -1,6 +1,6 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-05 11:09 UTC · Lauf #11 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-05 14:00 UTC · Lauf #12 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
@@ -21,5 +21,4 @@
 
 ## Dieser Lauf
 
-- Regime: neutral (BTC 24h 0.4% · 1h 0.21%)
-- ❌ LONG BTCUSDT SL -13.32$
+- Regime: neutral (BTC 24h 0.3% · 1h 0.08%)
