@@ -1,22 +1,7 @@
 {
- "bal": 1769.7607745860016,
+ "bal": 1998.5961771792786,
  "peak": 2104.3329815958477,
- "positions": [
-  {
-   "sym": "BTCUSDT",
-   "side": "LONG",
-   "price": 63002.598,
-   "sl": 62498.577216,
-   "tp": 64010.639568,
-   "size": 0.02299236435726469,
-   "margin": 241.42978144504596,
-   "eFee": 0.7242893443351378,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1783238955193,
-   "lastCheck": 1783238955193
-  }
- ],
+ "positions": [],
  "trades": [
   {
    "ts": 1783184400000,
@@ -94,14 +79,26 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 99
+  },
+  {
+   "ts": 1783242000000,
+   "sym": "BTCUSDT",
+   "side": "LONG",
+   "entry": 63002.598,
+   "exit": 62486.078,
+   "pnl": -13.32,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
   "UNIUSDT": 1783216800000,
   "APTUSDT": 1783209600000,
   "FILUSDT": 1783216800000,
-  "ONDOUSDT": 1783209600000
+  "ONDOUSDT": 1783209600000,
+  "BTCUSDT": 1783242000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 10
+ "runs": 11
 }
