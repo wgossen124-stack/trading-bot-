@@ -1,49 +1,7 @@
 {
- "bal": 953.9560324529604,
+ "bal": 1594.0585854375754,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "BTCUSDT",
-   "side": "LONG",
-   "price": 63293.45616,
-   "sl": 62787.108510720005,
-   "tp": 64306.15145856,
-   "size": 0.022552374566843076,
-   "margin": 237.9029551583969,
-   "eFee": 0.7137088654751906,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1783311758477,
-   "lastCheck": 1783324800000
-  },
-  {
-   "sym": "ETHUSDT",
-   "side": "LONG",
-   "price": 1779.395808,
-   "sl": 1759.449514750424,
-   "tp": 1819.288394499152,
-   "size": 0.8019035754451093,
-   "margin": 237.8173100945399,
-   "eFee": 0.7134519302836196,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1783311758477,
-   "lastCheck": 1783324800000
-  },
-  {
-   "sym": "LINKUSDT",
-   "side": "LONG",
-   "price": 7.9955988,
-   "sl": 7.899934774342306,
-   "tp": 8.186926851315388,
-   "size": 157.3608459315563,
-   "margin": 209.6990318162227,
-   "eFee": 0.6290970954486682,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1783311758477,
-   "lastCheck": 1783324800000
-  },
   {
    "sym": "NEARUSDT",
    "side": "LONG",
@@ -56,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783311758477,
-   "lastCheck": 1783324800000
+   "lastCheck": 1783339200000
   },
   {
    "sym": "TRXUSDT",
@@ -70,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783324800000
+   "lastCheck": 1783339200000
   }
  ],
  "trades": [
@@ -172,6 +130,39 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 92
+  },
+  {
+   "ts": 1783328400000,
+   "sym": "BTCUSDT",
+   "side": "LONG",
+   "entry": 63293.45616,
+   "exit": 62774.551,
+   "pnl": -13.12,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
+  },
+  {
+   "ts": 1783328400000,
+   "sym": "ETHUSDT",
+   "side": "LONG",
+   "entry": 1779.395808,
+   "exit": 1759.0976,
+   "pnl": -17.7,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
+  },
+  {
+   "ts": 1783328400000,
+   "sym": "LINKUSDT",
+   "side": "LONG",
+   "entry": 7.9955988,
+   "exit": 7.8983548,
+   "pnl": -16.55,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
@@ -179,9 +170,11 @@
   "APTUSDT": 1783209600000,
   "FILUSDT": 1783216800000,
   "ONDOUSDT": 1783209600000,
-  "BTCUSDT": 1783242000000,
-  "ATOMUSDT": 1783285200000
+  "BTCUSDT": 1783328400000,
+  "ATOMUSDT": 1783285200000,
+  "ETHUSDT": 1783328400000,
+  "LINKUSDT": 1783328400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 19
+ "runs": 20
 }

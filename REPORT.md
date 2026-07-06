@@ -1,18 +1,15 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-06 09:07 UTC · Lauf #19 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-06 13:56 UTC · Lauf #20 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1935.97 | -64.03$ (-3.2%) | 33% | 9 | 5 | 8.0% | neutral |
+| $1918.62 | -81.38$ (-4.1%) | 25% | 12 | 2 | 8.8% | bearish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
-| BTC | LONG | 63293.5 | 62787.1 | 64306.2 | BOUNCE | 100 |
-| ETH | LONG | 1779.40 | 1759.45 | 1819.29 | BOUNCE | 100 |
-| LINK | LONG | 7.99560 | 7.89993 | 8.18693 | BOUNCE | 100 |
 | NEAR | LONG | 1.99640 | 1.95434 | 2.08052 | BOUNCE | 100 |
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
 
@@ -20,6 +17,9 @@
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-06 09:00 | LINK | LONG | -16.55$ | SL | BOUNCE |
+| 07-06 09:00 | ETH | LONG | -17.70$ | SL | BOUNCE |
+| 07-06 09:00 | BTC | LONG | -13.12$ | SL | BOUNCE |
 | 07-05 21:00 | ATOM | SHORT | -16.07$ | SL | BOUNCE |
 | 07-05 09:00 | BTC | LONG | -13.32$ | SL | BOUNCE |
 | 07-05 00:00 | ONDO | LONG | -17.73$ | SL | BOUNCE |
@@ -32,4 +32,7 @@
 
 ## Dieser Lauf
 
-- Regime: neutral (BTC 24h -0.0% · 1h -0.31%)
+- Regime: bearish (BTC 24h -1.6% · 1h -1.16%)
+- ❌ LONG BTCUSDT SL -13.12$
+- ❌ LONG ETHUSDT SL -17.70$
+- ❌ LONG LINKUSDT SL -16.55$
