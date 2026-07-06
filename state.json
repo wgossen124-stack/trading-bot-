@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783311758477,
-   "lastCheck": 1783311758477
+   "lastCheck": 1783324800000
   },
   {
    "sym": "ETHUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783311758477,
-   "lastCheck": 1783311758477
+   "lastCheck": 1783324800000
   },
   {
    "sym": "LINKUSDT",
@@ -42,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783311758477,
-   "lastCheck": 1783311758477
+   "lastCheck": 1783324800000
   },
   {
    "sym": "NEARUSDT",
@@ -56,7 +56,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783311758477,
-   "lastCheck": 1783311758477
+   "lastCheck": 1783324800000
   },
   {
    "sym": "TRXUSDT",
@@ -70,7 +70,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783311758477
+   "lastCheck": 1783324800000
   }
  ],
  "trades": [
@@ -183,5 +183,5 @@
   "ATOMUSDT": 1783285200000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 18
+ "runs": 19
 }
