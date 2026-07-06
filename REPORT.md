@@ -1,10 +1,20 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-05 23:12 UTC · Lauf #17 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-06 04:22 UTC · Lauf #18 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1982.52 | -17.48$ (-0.9%) | 33% | 9 | 0 | 5.8% | strong |
+| $1978.22 | -21.78$ (-1.1%) | 33% | 9 | 5 | 6.0% | strong |
+
+## Offene Positionen
+
+| Pair | Seite | Entry | SL | TP | Typ | Score |
+|---|---|---|---|---|---|---|
+| BTC | LONG | 63293.5 | 62787.1 | 64306.2 | BOUNCE | 100 |
+| ETH | LONG | 1779.40 | 1759.45 | 1819.29 | BOUNCE | 100 |
+| LINK | LONG | 7.99560 | 7.89993 | 8.18693 | BOUNCE | 100 |
+| NEAR | LONG | 1.99640 | 1.95434 | 2.08052 | BOUNCE | 100 |
+| TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
 
 ## Letzte Trades
 
@@ -22,5 +32,9 @@
 
 ## Dieser Lauf
 
-- Regime: strong (BTC 24h 0.9% · 1h 1.02%)
-- ❌ SHORT ATOMUSDT SL -16.07$
+- Regime: strong (BTC 24h 0.9% · 1h -0.24%)
+- ⚡ OPEN LONG BTCUSDT @63293.5 [BOUNCE 100]
+- ⚡ OPEN LONG ETHUSDT @1779.40 [BOUNCE 100]
+- ⚡ OPEN LONG LINKUSDT @7.99560 [BOUNCE 100]
+- ⚡ OPEN LONG NEARUSDT @1.99640 [BOUNCE 100]
+- ⚡ OPEN LONG TRXUSDT @0.328706 [BOUNCE 97]
