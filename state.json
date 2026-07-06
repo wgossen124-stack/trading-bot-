@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783353600000
+   "lastCheck": 1783364400000
   }
  ],
  "trades": [
@@ -174,5 +174,5 @@
   "NEARUSDT": 1783342800000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 21
+ "runs": 22
 }
