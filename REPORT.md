@@ -1,22 +1,22 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-06 13:56 UTC · Lauf #20 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-06 17:09 UTC · Lauf #21 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1918.62 | -81.38$ (-4.1%) | 25% | 12 | 2 | 8.8% | bearish |
+| $1913.40 | -86.60$ (-4.3%) | 23% | 13 | 1 | 9.1% | bullish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
-| NEAR | LONG | 1.99640 | 1.95434 | 2.08052 | BOUNCE | 100 |
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-06 13:00 | NEAR | LONG | -13.68$ | SL | BOUNCE |
 | 07-06 09:00 | LINK | LONG | -16.55$ | SL | BOUNCE |
 | 07-06 09:00 | ETH | LONG | -17.70$ | SL | BOUNCE |
 | 07-06 09:00 | BTC | LONG | -13.12$ | SL | BOUNCE |
@@ -32,7 +32,5 @@
 
 ## Dieser Lauf
 
-- Regime: bearish (BTC 24h -1.6% · 1h -1.16%)
-- ❌ LONG BTCUSDT SL -13.12$
-- ❌ LONG ETHUSDT SL -17.70$
-- ❌ LONG LINKUSDT SL -16.55$
+- Regime: bullish (BTC 24h 1.8% · 1h 0.30%)
+- ❌ LONG NEARUSDT SL -13.68$
