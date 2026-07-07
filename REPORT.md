@@ -1,16 +1,18 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-06 22:21 UTC · Lauf #23 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-07 00:16 UTC · Lauf #24 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1924.33 | -75.67$ (-3.8%) | 23% | 13 | 1 | 8.6% | bullish |
+| $1923.19 | -76.81$ (-3.8%) | 23% | 13 | 3 | 8.6% | strong |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
+| UNI | LONG | 3.17864 | 3.12206 | 3.29179 | BOUNCE | 100 |
+| XRP | LONG | 1.14473 | 1.12829 | 1.17760 | BOUNCE | 94 |
 
 ## Letzte Trades
 
@@ -32,4 +34,6 @@
 
 ## Dieser Lauf
 
-- Regime: bullish (BTC 24h 2.2% · 1h 1.05%)
+- Regime: strong (BTC 24h 0.6% · 1h -0.32%)
+- ⚡ OPEN LONG UNIUSDT @3.17864 [BOUNCE 100]
+- ⚡ OPEN LONG XRPUSDT @1.14473 [BOUNCE 94]
