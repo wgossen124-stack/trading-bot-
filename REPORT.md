@@ -1,23 +1,23 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-07 00:16 UTC · Lauf #24 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-07 05:01 UTC · Lauf #25 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1923.19 | -76.81$ (-3.8%) | 23% | 13 | 3 | 8.6% | strong |
+| $1893.55 | -106.45$ (-5.3%) | 20% | 15 | 1 | 10.0% | neutral |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
-| UNI | LONG | 3.17864 | 3.12206 | 3.29179 | BOUNCE | 100 |
-| XRP | LONG | 1.14473 | 1.12829 | 1.17760 | BOUNCE | 94 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-07 04:00 | UNI | LONG | -17.95$ | SL | BOUNCE |
+| 07-07 03:00 | XRP | LONG | -16.51$ | SL | BOUNCE |
 | 07-06 13:00 | NEAR | LONG | -13.68$ | SL | BOUNCE |
 | 07-06 09:00 | LINK | LONG | -16.55$ | SL | BOUNCE |
 | 07-06 09:00 | ETH | LONG | -17.70$ | SL | BOUNCE |
@@ -34,6 +34,6 @@
 
 ## Dieser Lauf
 
-- Regime: strong (BTC 24h 0.6% · 1h -0.32%)
-- ⚡ OPEN LONG UNIUSDT @3.17864 [BOUNCE 100]
-- ⚡ OPEN LONG XRPUSDT @1.14473 [BOUNCE 94]
+- Regime: neutral (BTC 24h -0.3% · 1h -0.15%)
+- ❌ LONG XRPUSDT SL -16.51$
+- ❌ LONG UNIUSDT SL -17.95$
