@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783540800000
+   "lastCheck": 1783548000000
   },
   {
    "sym": "DOGEUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783540090349,
-   "lastCheck": 1783540800000
+   "lastCheck": 1783548000000
   },
   {
    "sym": "AVAXUSDT",
@@ -42,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783540090349,
-   "lastCheck": 1783540800000
+   "lastCheck": 1783548000000
   },
   {
    "sym": "OPUSDT",
@@ -56,7 +56,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783540090349,
-   "lastCheck": 1783540800000
+   "lastCheck": 1783548000000
   }
  ],
  "trades": [
@@ -239,5 +239,5 @@
   "XRPUSDT": 1783393200000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 40
+ "runs": 41
 }
