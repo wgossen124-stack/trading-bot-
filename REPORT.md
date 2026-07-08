@@ -1,16 +1,19 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-08 17:48 UTC · Lauf #38 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-08 19:48 UTC · Lauf #39 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1889.04 | -110.96$ (-5.5%) | 20% | 15 | 1 | 10.2% | bearish |
+| $1891.46 | -108.54$ (-5.4%) | 20% | 15 | 4 | 10.1% | bearish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
+| DOGE | SHORT | 0.0724055 | 0.0734667 | 0.0702831 | BOUNCE | 100 |
+| AVAX | SHORT | 6.45671 | 6.56314 | 6.24385 | BOUNCE | 100 |
+| OP | SHORT | 0.0991502 | 0.100944 | 0.0955623 | BOUNCE | 100 |
 
 ## Letzte Trades
 
@@ -34,4 +37,7 @@
 
 ## Dieser Lauf
 
-- Regime: bearish (BTC 24h -2.9% · 1h 0.67%)
+- Regime: bearish (BTC 24h -2.4% · 1h 0.12%)
+- ⚡ OPEN SHORT DOGEUSDT @0.0724055 [BOUNCE 100]
+- ⚡ OPEN SHORT AVAXUSDT @6.45671 [BOUNCE 100]
+- ⚡ OPEN SHORT OPUSDT @0.0991502 [BOUNCE 100]
