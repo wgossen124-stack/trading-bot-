@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783609200000
+   "lastCheck": 1783616400000
   },
   {
    "sym": "DOGEUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783540090349,
-   "lastCheck": 1783609200000
+   "lastCheck": 1783616400000
   }
  ],
  "trades": [
@@ -235,5 +235,5 @@
   "AVAXUSDT": 1783573200000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 45
+ "runs": 46
 }
