@@ -1,5 +1,5 @@
 {
- "bal": 1430.9463254888835,
+ "bal": 1601.138643977512,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,21 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783623600000
-  },
-  {
-   "sym": "DOGEUSDT",
-   "side": "SHORT",
-   "price": 0.072405516,
-   "sl": 0.07346673256992413,
-   "tp": 0.07028308286015175,
-   "size": 15535.675266996108,
-   "margin": 187.4780973525485,
-   "eFee": 0.5624342920576455,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1783540090349,
-   "lastCheck": 1783623600000
+   "lastCheck": 1783630800000
   }
  ],
  "trades": [
@@ -218,6 +204,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 100
+  },
+  {
+   "ts": 1783630800000,
+   "sym": "DOGEUSDT",
+   "side": "SHORT",
+   "entry": 0.072405516,
+   "exit": 0.073481426,
+   "pnl": -17.85,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
@@ -232,8 +229,9 @@
   "NEARUSDT": 1783342800000,
   "XRPUSDT": 1783393200000,
   "OPUSDT": 1783558800000,
-  "AVAXUSDT": 1783573200000
+  "AVAXUSDT": 1783573200000,
+  "DOGEUSDT": 1783630800000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 47
+ "runs": 48
 }

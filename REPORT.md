@@ -1,22 +1,22 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-09 20:54 UTC · Lauf #47 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-09 22:40 UTC · Lauf #48 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1859.22 | -140.78$ (-7.0%) | 18% | 17 | 2 | 11.6% | bullish |
+| $1854.35 | -145.65$ (-7.3%) | 17% | 18 | 1 | 11.9% | bullish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
-| DOGE | SHORT | 0.0724055 | 0.0734667 | 0.0702831 | BOUNCE | 100 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-09 21:00 | DOGE | SHORT | -17.85$ | SL | BOUNCE |
 | 07-09 05:00 | AVAX | SHORT | -15.68$ | SL | BOUNCE |
 | 07-09 01:00 | OP | SHORT | -14.00$ | SL | BOUNCE |
 | 07-07 04:00 | UNI | LONG | -17.95$ | SL | BOUNCE |
@@ -31,8 +31,8 @@
 | 07-05 02:00 | FIL | LONG | -21.55$ | SL | BOUNCE |
 | 07-05 00:00 | APT | LONG | -20.21$ | SL | BOUNCE |
 | 07-05 02:00 | UNI | LONG | -16.16$ | SL | BOUNCE |
-| 07-04 17:00 | APT | LONG | +25.00$ | TP | CANDLE |
 
 ## Dieser Lauf
 
-- Regime: bullish (BTC 24h 1.6% · 1h 0.05%)
+- Regime: bullish (BTC 24h 1.7% · 1h -0.06%)
+- ❌ SHORT DOGEUSDT SL -17.85$
