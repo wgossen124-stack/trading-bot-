@@ -1,5 +1,5 @@
 {
- "bal": 1379.82573531864,
+ "bal": 1588.9662564213847,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,21 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783681200000
-  },
-  {
-   "sym": "BNBUSDT",
-   "side": "LONG",
-   "price": 574.01478,
-   "sl": 569.42266176,
-   "tp": 583.19901648,
-   "size": 2.306396596179954,
-   "margin": 220.65095579149755,
-   "eFee": 0.6619528673744927,
-   "entryType": "BOUNCE",
-   "score": 91,
-   "ts": 1783672237500,
-   "lastCheck": 1783681200000
+   "lastCheck": 1783692000000
   }
  ],
  "trades": [
@@ -229,6 +215,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 100
+  },
+  {
+   "ts": 1783692000000,
+   "sym": "BNBUSDT",
+   "side": "LONG",
+   "entry": 574.01478,
+   "exit": 569.30878,
+   "pnl": -12.17,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 91
   }
  ],
  "cd": {
@@ -244,8 +241,9 @@
   "XRPUSDT": 1783393200000,
   "OPUSDT": 1783558800000,
   "AVAXUSDT": 1783573200000,
-  "DOGEUSDT": 1783630800000
+  "DOGEUSDT": 1783630800000,
+  "BNBUSDT": 1783692000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 52
+ "runs": 53
 }
