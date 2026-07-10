@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783630800000
+   "lastCheck": 1783638000000
   }
  ],
  "trades": [
@@ -233,5 +233,5 @@
   "DOGEUSDT": 1783630800000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 48
+ "runs": 49
 }
