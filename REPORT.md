@@ -1,10 +1,10 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-11 12:00 UTC · Lauf #62 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-11 13:46 UTC · Lauf #63 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1857.87 | -142.13$ (-7.1%) | 16% | 19 | 4 | 11.7% | neutral |
+| $1881.05 | -118.95$ (-5.9%) | 20% | 20 | 3 | 10.6% | neutral |
 
 ## Offene Positionen
 
@@ -13,12 +13,12 @@
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
 | LINK | LONG | 7.89858 | 7.80621 | 8.08333 | BOUNCE | 93 |
 | SOL | SHORT | 78.0944 | 78.9604 | 76.3623 | BOUNCE | 97 |
-| UNI | LONG | 3.51770 | 3.45184 | 3.64943 | BOUNCE | 94 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-11 12:00 | UNI | LONG | +22.62$ | TP | BOUNCE |
 | 07-10 14:00 | BNB | LONG | -12.17$ | SL | BOUNCE |
 | 07-09 21:00 | DOGE | SHORT | -17.85$ | SL | BOUNCE |
 | 07-09 05:00 | AVAX | SHORT | -15.68$ | SL | BOUNCE |
@@ -33,8 +33,8 @@
 | 07-05 09:00 | BTC | LONG | -13.32$ | SL | BOUNCE |
 | 07-05 00:00 | ONDO | LONG | -17.73$ | SL | BOUNCE |
 | 07-05 02:00 | FIL | LONG | -21.55$ | SL | BOUNCE |
-| 07-05 00:00 | APT | LONG | -20.21$ | SL | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: neutral (BTC 24h -0.3% · 1h 0.06%)
+- Regime: neutral (BTC 24h -0.1% · 1h -0.01%)
+- ✅ LONG UNIUSDT TP +22.62$

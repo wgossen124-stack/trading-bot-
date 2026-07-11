@@ -1,5 +1,5 @@
 {
- "bal": 1058.9275425553064,
+ "bal": 1185.3620391117202,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783767600000
+   "lastCheck": 1783771200000
   },
   {
    "sym": "LINKUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 93,
    "ts": 1783712814330,
-   "lastCheck": 1783764000000
+   "lastCheck": 1783771200000
   },
   {
    "sym": "SOLUSDT",
@@ -42,21 +42,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783724949022,
-   "lastCheck": 1783764000000
-  },
-  {
-   "sym": "UNIUSDT",
-   "side": "LONG",
-   "price": 3.5177034,
-   "sl": 3.4518402496312643,
-   "tp": 3.6494297007374707,
-   "size": 176.53875853097733,
-   "margin": 103.50183185269965,
-   "eFee": 0.310505495558099,
-   "entryType": "BOUNCE",
-   "score": 94,
-   "ts": 1783760124376,
-   "lastCheck": 1783764000000
+   "lastCheck": 1783771200000
   }
  ],
  "trades": [
@@ -268,6 +254,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 91
+  },
+  {
+   "ts": 1783771200000,
+   "sym": "UNIUSDT",
+   "side": "LONG",
+   "entry": 3.5177034,
+   "exit": 3.6494297,
+   "pnl": 22.62,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 94
   }
  ],
  "cd": {
@@ -287,5 +284,5 @@
   "BNBUSDT": 1783692000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 62
+ "runs": 63
 }
