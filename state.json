@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783720800000
+   "lastCheck": 1783735200000
   },
   {
    "sym": "LINKUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 93,
    "ts": 1783712814330,
-   "lastCheck": 1783720800000
+   "lastCheck": 1783735200000
   },
   {
    "sym": "SOLUSDT",
@@ -42,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783724949022,
-   "lastCheck": 1783724949022
+   "lastCheck": 1783735200000
   }
  ],
  "trades": [
@@ -273,5 +273,5 @@
   "BNBUSDT": 1783692000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 57
+ "runs": 58
 }
