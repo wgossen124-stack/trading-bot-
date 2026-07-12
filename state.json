@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783821600000
+   "lastCheck": 1783832400000
   }
  ],
  "trades": [
@@ -301,5 +301,5 @@
   "DOTUSDT": 1783814400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 72
+ "runs": 73
 }
