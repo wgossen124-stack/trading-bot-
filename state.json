@@ -1,5 +1,5 @@
 {
- "bal": 970.5664357350606,
+ "bal": 1175.7016859567345,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783857600000
+   "lastCheck": 1783864800000
   },
   {
    "sym": "DOGEUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783864088135,
-   "lastCheck": 1783864088135
+   "lastCheck": 1783864800000
   },
   {
    "sym": "XRPUSDT",
@@ -42,21 +42,7 @@
    "entryType": "BOUNCE",
    "score": 91,
    "ts": 1783864088135,
-   "lastCheck": 1783864088135
-  },
-  {
-   "sym": "ATOMUSDT",
-   "side": "SHORT",
-   "price": 1.5686862,
-   "sl": 1.582951164081618,
-   "tp": 1.5401562718367638,
-   "size": 833.6306296581855,
-   "margin": 217.95081077368437,
-   "eFee": 0.6538524323210532,
-   "entryType": "BOUNCE",
-   "score": 91,
-   "ts": 1783864088135,
-   "lastCheck": 1783864088135
+   "lastCheck": 1783864800000
   }
  ],
  "trades": [
@@ -323,6 +309,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 98
+  },
+  {
+   "ts": 1783864800000,
+   "sym": "ATOMUSDT",
+   "side": "SHORT",
+   "entry": 1.5686862,
+   "exit": 1.5832678,
+   "pnl": -13.47,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 91
   }
  ],
  "cd": {
@@ -331,7 +328,7 @@
   "FILUSDT": 1783216800000,
   "ONDOUSDT": 1783209600000,
   "BTCUSDT": 1783810800000,
-  "ATOMUSDT": 1783285200000,
+  "ATOMUSDT": 1783864800000,
   "ETHUSDT": 1783328400000,
   "LINKUSDT": 1783328400000,
   "NEARUSDT": 1783342800000,
@@ -343,5 +340,5 @@
   "DOTUSDT": 1783814400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 76
+ "runs": 77
 }
