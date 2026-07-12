@@ -1,5 +1,5 @@
 {
- "bal": 1246.5062858543856,
+ "bal": 1641.4094988849852,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,35 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783810800000
-  },
-  {
-   "sym": "SOLUSDT",
-   "side": "SHORT",
-   "price": 78.094378,
-   "sl": 78.96043392440731,
-   "tp": 76.36226615118538,
-   "size": 15.808660592740948,
-   "margin": 205.76125266720263,
-   "eFee": 0.617283758001608,
-   "entryType": "BOUNCE",
-   "score": 97,
-   "ts": 1783724949022,
-   "lastCheck": 1783810800000
-  },
-  {
-   "sym": "DOTUSDT",
-   "side": "LONG",
-   "price": 0.87627522,
-   "sl": 0.8661990148925409,
-   "tp": 0.8964276302149181,
-   "size": 1199.4613756363306,
-   "margin": 175.1763801362047,
-   "eFee": 0.5255291404086141,
-   "entryType": "BOUNCE",
-   "score": 98,
-   "ts": 1783810800288,
-   "lastCheck": 1783810800288
+   "lastCheck": 1783821600000
   }
  ],
  "trades": [
@@ -287,6 +259,28 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 99
+  },
+  {
+   "ts": 1783814400000,
+   "sym": "SOLUSDT",
+   "side": "SHORT",
+   "entry": 78.094378,
+   "exit": 76.362266,
+   "pnl": 26.16,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 97
+  },
+  {
+   "ts": 1783814400000,
+   "sym": "DOTUSDT",
+   "side": "LONG",
+   "entry": 0.87627522,
+   "exit": 0.86602578,
+   "pnl": -13.34,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 98
   }
  ],
  "cd": {
@@ -303,8 +297,9 @@
   "OPUSDT": 1783558800000,
   "AVAXUSDT": 1783573200000,
   "DOGEUSDT": 1783630800000,
-  "BNBUSDT": 1783692000000
+  "BNBUSDT": 1783692000000,
+  "DOTUSDT": 1783814400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 71
+ "runs": 72
 }
