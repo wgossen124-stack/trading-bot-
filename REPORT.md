@@ -1,6 +1,6 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-12 22:01 UTC · Lauf #81 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-12 23:00 UTC · Lauf #82 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
