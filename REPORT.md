@@ -1,10 +1,10 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-11 23:00 UTC · Lauf #70 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-12 00:03 UTC · Lauf #71 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1884.11 | -115.89$ (-5.8%) | 24% | 21 | 4 | 10.5% | strong |
+| $1862.75 | -137.25$ (-6.9%) | 23% | 22 | 3 | 11.5% | weak |
 
 ## Offene Positionen
 
@@ -12,13 +12,13 @@
 |---|---|---|---|---|---|---|
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
 | SOL | SHORT | 78.0944 | 78.9604 | 76.3623 | BOUNCE | 97 |
-| BTC | LONG | 64315.8 | 63801.2 | 65344.8 | BOUNCE | 99 |
 | DOT | LONG | 0.876275 | 0.866199 | 0.896428 | BOUNCE | 98 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-11 23:00 | BTC | LONG | -12.43$ | SL | BOUNCE |
 | 07-11 14:00 | LINK | LONG | +29.43$ | TP | BOUNCE |
 | 07-11 12:00 | UNI | LONG | +22.62$ | TP | BOUNCE |
 | 07-10 14:00 | BNB | LONG | -12.17$ | SL | BOUNCE |
@@ -33,9 +33,8 @@
 | 07-06 09:00 | BTC | LONG | -13.12$ | SL | BOUNCE |
 | 07-05 21:00 | ATOM | SHORT | -16.07$ | SL | BOUNCE |
 | 07-05 09:00 | BTC | LONG | -13.32$ | SL | BOUNCE |
-| 07-05 00:00 | ONDO | LONG | -17.73$ | SL | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: strong (BTC 24h 0.5% · 1h -0.04%)
-- ⚡ OPEN LONG DOTUSDT @0.876275 [BOUNCE 98]
+- Regime: weak (BTC 24h -0.6% · 1h -0.61%)
+- ❌ LONG BTCUSDT SL -12.43$

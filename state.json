@@ -1,5 +1,5 @@
 {
- "bal": 1032.8999746620523,
+ "bal": 1246.5062858543856,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783803600000
+   "lastCheck": 1783810800000
   },
   {
    "sym": "SOLUSDT",
@@ -28,21 +28,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783724949022,
-   "lastCheck": 1783803600000
-  },
-  {
-   "sym": "BTCUSDT",
-   "side": "LONG",
-   "price": 64315.76058,
-   "sl": 63801.234495360004,
-   "tp": 65344.812749280005,
-   "size": 0.02102400968449779,
-   "margin": 225.36252888329352,
-   "eFee": 0.6760875866498807,
-   "entryType": "BOUNCE",
-   "score": 99,
-   "ts": 1783797549063,
-   "lastCheck": 1783803600000
+   "lastCheck": 1783810800000
   },
   {
    "sym": "DOTUSDT",
@@ -290,6 +276,17 @@
    "reason": "TP",
    "entryType": "BOUNCE",
    "score": 93
+  },
+  {
+   "ts": 1783810800000,
+   "sym": "BTCUSDT",
+   "side": "LONG",
+   "entry": 64315.76058,
+   "exit": 63788.474,
+   "pnl": -12.43,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 99
   }
  ],
  "cd": {
@@ -297,7 +294,7 @@
   "APTUSDT": 1783209600000,
   "FILUSDT": 1783216800000,
   "ONDOUSDT": 1783209600000,
-  "BTCUSDT": 1783328400000,
+  "BTCUSDT": 1783810800000,
   "ATOMUSDT": 1783285200000,
   "ETHUSDT": 1783328400000,
   "LINKUSDT": 1783328400000,
@@ -309,5 +306,5 @@
   "BNBUSDT": 1783692000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 70
+ "runs": 71
 }
