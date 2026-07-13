@@ -1,10 +1,10 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-12 23:00 UTC · Lauf #82 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-13 00:03 UTC · Lauf #83 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1893.68 | -106.32$ (-5.3%) | 24% | 25 | 4 | 10.0% | weak |
+| $1921.30 | -78.70$ (-3.9%) | 27% | 26 | 3 | 8.7% | neutral |
 
 ## Offene Positionen
 
@@ -12,13 +12,13 @@
 |---|---|---|---|---|---|---|
 | TRX | LONG | 0.328706 | 0.326076 | 0.333965 | BOUNCE | 97 |
 | DOGE | SHORT | 0.0733453 | 0.0740140 | 0.0720080 | BOUNCE | 100 |
-| XRP | SHORT | 1.09838 | 1.10717 | 1.08081 | BOUNCE | 91 |
 | ETC | SHORT | 6.91562 | 6.97747 | 6.79192 | BOUNCE | 100 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-12 22:00 | XRP | SHORT | +20.30$ | TP | BOUNCE |
 | 07-12 14:00 | ATOM | SHORT | -13.47$ | SL | BOUNCE |
 | 07-12 00:00 | DOT | LONG | -13.34$ | SL | BOUNCE |
 | 07-12 00:00 | SOL | SHORT | +26.16$ | TP | BOUNCE |
@@ -33,8 +33,8 @@
 | 07-07 03:00 | XRP | LONG | -16.51$ | SL | BOUNCE |
 | 07-06 13:00 | NEAR | LONG | -13.68$ | SL | BOUNCE |
 | 07-06 09:00 | LINK | LONG | -16.55$ | SL | BOUNCE |
-| 07-06 09:00 | ETH | LONG | -17.70$ | SL | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: weak (BTC 24h -0.7% · 1h -0.43%)
+- Regime: neutral (BTC 24h -0.0% · 1h -0.16%)
+- ✅ SHORT XRPUSDT TP +20.30$

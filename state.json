@@ -1,5 +1,5 @@
 {
- "bal": 955.9466375416276,
+ "bal": 1202.3221536298433,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1783311758477,
-   "lastCheck": 1783890000000
+   "lastCheck": 1783897200000
   },
   {
    "sym": "DOGEUSDT",
@@ -28,21 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783864088135,
-   "lastCheck": 1783890000000
-  },
-  {
-   "sym": "XRPUSDT",
-   "side": "SHORT",
-   "price": 1.09838028,
-   "sl": 1.10716732224,
-   "tp": 1.08080619552,
-   "size": 1231.280031732056,
-   "margin": 225.4022843353774,
-   "eFee": 0.6762068530061321,
-   "entryType": "BOUNCE",
-   "score": 91,
-   "ts": 1783864088135,
-   "lastCheck": 1783890000000
+   "lastCheck": 1783897200000
   },
   {
    "sym": "ETCUSDT",
@@ -56,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783876293397,
-   "lastCheck": 1783890000000
+   "lastCheck": 1783897200000
   }
  ],
  "trades": [
@@ -334,6 +320,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 91
+  },
+  {
+   "ts": 1783893600000,
+   "sym": "XRPUSDT",
+   "side": "SHORT",
+   "entry": 1.09838028,
+   "exit": 1.0808062,
+   "pnl": 20.3,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 91
   }
  ],
  "cd": {
@@ -354,5 +351,5 @@
   "DOTUSDT": 1783814400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 82
+ "runs": 83
 }
