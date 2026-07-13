@@ -531,6 +531,11 @@ async function main(){
           else if(bar.h>=pos.tp){exit=pos.tp;reason='TP';} }
         else { if(bar.h>=pos.sl){exit=pos.sl*(1+P.slipPct/100);reason='SL';}
           else if(bar.l<=pos.tp){exit=pos.tp;reason='TP';} }
+        // Zeit-Exit (v7, backtest-validiert über 365d: +46,6% statt +41,0%, DD 26,8% statt 29,1%):
+        // nach 48h ohne SL/TP-Berührung zum Bar-Close glattstellen — keine Dauerblockierer mehr
+        if(exit==null && bar.ts-(pos.ts||0)>=48*3600000){
+          exit=pos.side==='LONG'?bar.c*(1-P.slipPct/100):bar.c*(1+P.slipPct/100); reason='TIME';
+        }
         if(exit!=null){
           const diff=pos.side==='LONG'?exit-pos.price:pos.price-exit;
           const pnl=diff*pos.size-exit*pos.size*P.feeRate-pos.eFee;
