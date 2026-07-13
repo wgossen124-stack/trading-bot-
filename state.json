@@ -1,22 +1,7 @@
 {
- "bal": 1657.7872514243018,
+ "bal": 1864.1994165966073,
  "peak": 2104.3329815958477,
- "positions": [
-  {
-   "sym": "ETCUSDT",
-   "side": "SHORT",
-   "price": 6.9156166,
-   "sl": 6.9774664813501195,
-   "tp": 6.79191683729976,
-   "size": 190.0895620642052,
-   "margin": 219.09775514965796,
-   "eFee": 0.6572932654489739,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1783876293397,
-   "lastCheck": 1783922400000
-  }
- ],
+ "positions": [],
  "trades": [
   {
    "ts": 1783184400000,
@@ -325,6 +310,17 @@
    "reason": "TIME",
    "entryType": "BOUNCE",
    "score": 97
+  },
+  {
+   "ts": 1783926000000,
+   "sym": "ETCUSDT",
+   "side": "SHORT",
+   "entry": 6.9156166,
+   "exit": 6.978862,
+   "pnl": -13.34,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
@@ -342,8 +338,9 @@
   "AVAXUSDT": 1783573200000,
   "DOGEUSDT": 1783900800000,
   "BNBUSDT": 1783692000000,
-  "DOTUSDT": 1783814400000
+  "DOTUSDT": 1783814400000,
+  "ETCUSDT": 1783926000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 85
+ "runs": 86
 }
