@@ -1,21 +1,7 @@
 {
- "bal": 1414.515752703198,
+ "bal": 1657.7872514243018,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "TRXUSDT",
-   "side": "LONG",
-   "price": 0.328705728,
-   "sl": 0.326076082176,
-   "tp": 0.33396501964799996,
-   "size": 4337.362583805676,
-   "margin": 237.61932095163428,
-   "eFee": 0.7128579628549028,
-   "entryType": "BOUNCE",
-   "score": 97,
-   "ts": 1783311758477,
-   "lastCheck": 1783908000000
-  },
   {
    "sym": "ETCUSDT",
    "side": "SHORT",
@@ -28,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1783876293397,
-   "lastCheck": 1783908000000
+   "lastCheck": 1783922400000
   }
  ],
  "trades": [
@@ -328,6 +314,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 100
+  },
+  {
+   "ts": 1783911600000,
+   "sym": "TRXUSDT",
+   "side": "LONG",
+   "entry": 0.328705728,
+   "exit": 0.33017395,
+   "pnl": 4.94,
+   "reason": "TIME",
+   "entryType": "BOUNCE",
+   "score": 97
   }
  ],
  "cd": {
@@ -348,5 +345,5 @@
   "DOTUSDT": 1783814400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 84
+ "runs": 85
 }
