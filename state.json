@@ -1,78 +1,7 @@
 {
- "bal": 921.0756268077128,
+ "bal": 1787.7548916192989,
  "peak": 2104.3329815958477,
- "positions": [
-  {
-   "sym": "DOGEUSDT",
-   "side": "SHORT",
-   "price": 0.071765644,
-   "sl": 0.07258607685604666,
-   "tp": 0.07012477828790668,
-   "size": 18702.870971931323,
-   "margin": 223.70392999159287,
-   "eFee": 0.6711117899747787,
-   "entryType": "BOUNCE",
-   "score": 96,
-   "ts": 1783999376097,
-   "lastCheck": 1784023200000
-  },
-  {
-   "sym": "FILUSDT",
-   "side": "SHORT",
-   "price": 0.75414914,
-   "sl": 0.7653318243345741,
-   "tp": 0.7317837713308517,
-   "size": 1466.3960152618306,
-   "margin": 184.3135489681894,
-   "eFee": 0.5529406469045682,
-   "entryType": "BOUNCE",
-   "score": 93,
-   "ts": 1783999376098,
-   "lastCheck": 1784023200000
-  },
-  {
-   "sym": "SOLUSDT",
-   "side": "SHORT",
-   "price": 75.344928,
-   "sl": 76.18057331294402,
-   "tp": 73.67363737411196,
-   "size": 17.41118944440743,
-   "margin": 218.64080251387296,
-   "eFee": 0.6559224075416189,
-   "entryType": "BOUNCE",
-   "score": 95,
-   "ts": 1784010038511,
-   "lastCheck": 1784023200000
-  },
-  {
-   "sym": "AVAXUSDT",
-   "side": "SHORT",
-   "price": 6.4847028,
-   "sl": 6.581734870839368,
-   "tp": 6.290638658321265,
-   "size": 127.34564454716353,
-   "margin": 137.63310962713268,
-   "eFee": 0.4128993288813981,
-   "entryType": "BOUNCE",
-   "score": 94,
-   "ts": 1784010038511,
-   "lastCheck": 1784023200000
-  },
-  {
-   "sym": "SHIBUSDT",
-   "side": "SHORT",
-   "price": 0.0000041621674,
-   "sl": 0.000004205426488743025,
-   "tp": 0.00000407564922251395,
-   "size": 253730529.98013046,
-   "margin": 176.01149004467027,
-   "eFee": 0.5280344701340108,
-   "entryType": "BOUNCE",
-   "score": 93,
-   "ts": 1784010038511,
-   "lastCheck": 1784023200000
-  }
- ],
+ "positions": [],
  "trades": [
   {
    "ts": 1783184400000,
@@ -392,12 +321,67 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 100
+  },
+  {
+   "ts": 1784030400000,
+   "sym": "SOLUSDT",
+   "side": "SHORT",
+   "entry": 75.344928,
+   "exit": 76.195809,
+   "pnl": -16.13,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 95
+  },
+  {
+   "ts": 1784030400000,
+   "sym": "DOGEUSDT",
+   "side": "SHORT",
+   "entry": 0.071765644,
+   "exit": 0.072600594,
+   "pnl": -16.97,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 96
+  },
+  {
+   "ts": 1784030400000,
+   "sym": "AVAXUSDT",
+   "side": "SHORT",
+   "entry": 6.4847028,
+   "exit": 6.5830512,
+   "pnl": -13.36,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 94
+  },
+  {
+   "ts": 1784034000000,
+   "sym": "SHIBUSDT",
+   "side": "SHORT",
+   "entry": 0.0000041621674,
+   "exit": 0.0000042062676,
+   "pnl": -12.25,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 93
+  },
+  {
+   "ts": 1784030400000,
+   "sym": "FILUSDT",
+   "side": "SHORT",
+   "entry": 0.75414914,
+   "exit": 0.76548489,
+   "pnl": -17.74,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 93
   }
  ],
  "cd": {
   "UNIUSDT": 1783396800000,
   "APTUSDT": 1783209600000,
-  "FILUSDT": 1783216800000,
+  "FILUSDT": 1784030400000,
   "ONDOUSDT": 1783209600000,
   "BTCUSDT": 1783810800000,
   "ATOMUSDT": 1783864800000,
@@ -406,12 +390,14 @@
   "NEARUSDT": 1783342800000,
   "XRPUSDT": 1783393200000,
   "OPUSDT": 1783558800000,
-  "AVAXUSDT": 1783573200000,
-  "DOGEUSDT": 1783900800000,
+  "AVAXUSDT": 1784030400000,
+  "DOGEUSDT": 1784030400000,
   "BNBUSDT": 1783692000000,
   "DOTUSDT": 1783814400000,
-  "ETCUSDT": 1783926000000
+  "ETCUSDT": 1783926000000,
+  "SOLUSDT": 1784030400000,
+  "SHIBUSDT": 1784034000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 96
+ "runs": 97
 }
