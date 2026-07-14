@@ -1,6 +1,6 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-14 14:05 UTC · Lauf #97 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-14 15:41 UTC · Lauf #98 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
@@ -28,9 +28,4 @@
 
 ## Dieser Lauf
 
-- Regime: bullish (BTC 24h 2.4% · 1h -0.19%)
-- ❌ SHORT SOLUSDT SL -16.13$
-- ❌ SHORT DOGEUSDT SL -16.97$
-- ❌ SHORT AVAXUSDT SL -13.36$
-- ❌ SHORT SHIBUSDT SL -12.25$
-- ❌ SHORT FILUSDT SL -17.74$
+- Regime: bullish (BTC 24h 2.4% · 1h 0.72%)
