@@ -586,6 +586,10 @@ async function main(){
   candidates.sort((a,b)=>b.score-a.score);
   for(const c of candidates){
     if(st.positions.length>=P.maxPositions) break;
+    // Korrelationslimit (v8): max. 3 gleichgerichtete Positionen — Antwort auf die
+    // 30-Trade-Auswertung (Kriterium WR<30% ausgelöst; 3 Live-Cluster-Ereignisse waren
+    // die Hauptverlustquelle). Im 365d-Backtest mit ZeitExit: +35,3% bei maxDD 23,2%.
+    if(st.positions.filter(p=>p.side===c.sig).length>=3) continue;
     const locked=st.positions.reduce((a,p)=>a+p.margin,0);
     const eq=st.bal+locked;
     if(eq<=0||locked/eq*100>=P.maxHeatPct) break;
