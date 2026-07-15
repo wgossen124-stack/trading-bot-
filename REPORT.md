@@ -1,16 +1,17 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-15 09:18 UTC · Lauf #106 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-15 11:43 UTC · Lauf #107 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1763.94 | -236.06$ (-11.8%) | 23% | 35 | 1 | 16.2% | bullish |
+| $1777.65 | -222.35$ (-11.1%) | 23% | 35 | 2 | 15.5% | bullish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
 | TIA | LONG | 0.406781 | 0.398058 | 0.424228 | BOUNCE | 93 |
+| BNB | LONG | 578.616 | 573.987 | 587.874 | CANDLE | 94 |
 
 ## Letzte Trades
 
@@ -34,5 +35,5 @@
 
 ## Dieser Lauf
 
-- Regime: bullish (BTC 24h 3.3% · 1h 0.34%)
-- ❌ LONG UNIUSDT SL -18.98$
+- Regime: bullish (BTC 24h 3.0% · 1h -0.02%)
+- ⚡ OPEN LONG BNBUSDT @578.616 [CANDLE 94]
