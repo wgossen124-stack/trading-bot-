@@ -1,22 +1,22 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-15 06:24 UTC · Lauf #105 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-15 09:18 UTC · Lauf #106 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1794.42 | -205.58$ (-10.3%) | 24% | 34 | 2 | 14.7% | bullish |
+| $1763.94 | -236.06$ (-11.8%) | 23% | 35 | 1 | 16.2% | bullish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
-| UNI | LONG | 3.65773 | 3.58713 | 3.79894 | BOUNCE | 94 |
 | TIA | LONG | 0.406781 | 0.398058 | 0.424228 | BOUNCE | 93 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-15 07:00 | UNI | LONG | -18.98$ | SL | BOUNCE |
 | 07-14 12:00 | FIL | SHORT | -17.74$ | SL | BOUNCE |
 | 07-14 13:00 | SHIB | SHORT | -12.25$ | SL | BOUNCE |
 | 07-14 12:00 | AVAX | SHORT | -13.36$ | SL | BOUNCE |
@@ -31,9 +31,8 @@
 | 07-12 00:00 | SOL | SHORT | +26.16$ | TP | BOUNCE |
 | 07-11 23:00 | BTC | LONG | -12.43$ | SL | BOUNCE |
 | 07-11 14:00 | LINK | LONG | +29.43$ | TP | BOUNCE |
-| 07-11 12:00 | UNI | LONG | +22.62$ | TP | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: bullish (BTC 24h 3.6% · 1h 0.31%)
-- ⚡ OPEN LONG TIAUSDT @0.406781 [BOUNCE 93]
+- Regime: bullish (BTC 24h 3.3% · 1h 0.34%)
+- ❌ LONG UNIUSDT SL -18.98$

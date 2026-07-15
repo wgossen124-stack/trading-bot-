@@ -1,21 +1,7 @@
 {
- "bal": 1505.6393013203633,
+ "bal": 1641.4914963283602,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "UNIUSDT",
-   "side": "LONG",
-   "price": 3.6577314,
-   "sl": 3.587129178729537,
-   "tp": 3.7989358425409256,
-   "size": 253.21510562263632,
-   "margin": 154.36547379837222,
-   "eFee": 0.4630964213951167,
-   "entryType": "BOUNCE",
-   "score": 94,
-   "ts": 1784070308263,
-   "lastCheck": 1784091600000
-  },
   {
    "sym": "TIAUSDT",
    "side": "LONG",
@@ -28,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 93,
    "ts": 1784096653742,
-   "lastCheck": 1784096653742
+   "lastCheck": 1784102400000
   }
  ],
  "trades": [
@@ -405,10 +391,21 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 93
+  },
+  {
+   "ts": 1784098800000,
+   "sym": "UNIUSDT",
+   "side": "LONG",
+   "entry": 3.6577314,
+   "exit": 3.5864118,
+   "pnl": -18.98,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 94
   }
  ],
  "cd": {
-  "UNIUSDT": 1783396800000,
+  "UNIUSDT": 1784098800000,
   "APTUSDT": 1783209600000,
   "FILUSDT": 1784030400000,
   "ONDOUSDT": 1783209600000,
@@ -428,5 +425,5 @@
   "SHIBUSDT": 1784034000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 105
+ "runs": 106
 }
