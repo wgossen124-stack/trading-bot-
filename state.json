@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 93,
    "ts": 1784096653742,
-   "lastCheck": 1784109600000
+   "lastCheck": 1784120400000
   },
   {
    "sym": "BNBUSDT",
@@ -28,7 +28,7 @@
    "entryType": "CANDLE",
    "score": 94,
    "ts": 1784115783659,
-   "lastCheck": 1784115783659
+   "lastCheck": 1784120400000
   }
  ],
  "trades": [
@@ -439,5 +439,5 @@
   "SHIBUSDT": 1784034000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 107
+ "runs": 108
 }
