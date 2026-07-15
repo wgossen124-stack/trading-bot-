@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 93,
    "ts": 1784096653742,
-   "lastCheck": 1784145600000
+   "lastCheck": 1784152800000
   },
   {
    "sym": "BNBUSDT",
@@ -28,7 +28,7 @@
    "entryType": "CANDLE",
    "score": 94,
    "ts": 1784115783659,
-   "lastCheck": 1784145600000
+   "lastCheck": 1784152800000
   },
   {
    "sym": "UNIUSDT",
@@ -42,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784130146915,
-   "lastCheck": 1784145600000
+   "lastCheck": 1784152800000
   },
   {
    "sym": "SOLUSDT",
@@ -56,7 +56,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784149852161,
-   "lastCheck": 1784149852161
+   "lastCheck": 1784152800000
   },
   {
    "sym": "DOGEUSDT",
@@ -70,7 +70,7 @@
    "entryType": "BOUNCE",
    "score": 96,
    "ts": 1784149852161,
-   "lastCheck": 1784149852161
+   "lastCheck": 1784152800000
   }
  ],
  "trades": [
@@ -481,5 +481,5 @@
   "SHIBUSDT": 1784034000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 112
+ "runs": 113
 }
