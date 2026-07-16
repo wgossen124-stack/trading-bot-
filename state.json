@@ -1,5 +1,5 @@
 {
- "bal": 982.4909653852369,
+ "bal": 1166.608898958635,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,21 +14,7 @@
    "entryType": "BOUNCE",
    "score": 93,
    "ts": 1784096653742,
-   "lastCheck": 1784214000000
-  },
-  {
-   "sym": "BNBUSDT",
-   "side": "LONG",
-   "price": 578.6157,
-   "sl": 573.9867744,
-   "tp": 587.8735512,
-   "size": 2.2005044353322614,
-   "margin": 212.20773570048019,
-   "eFee": 0.6366232071014405,
-   "entryType": "CANDLE",
-   "score": 94,
-   "ts": 1784115783659,
-   "lastCheck": 1784214000000
+   "lastCheck": 1784221200000
   },
   {
    "sym": "UNIUSDT",
@@ -42,21 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784130146915,
-   "lastCheck": 1784214000000
-  },
-  {
-   "sym": "SOLUSDT",
-   "side": "SHORT",
-   "price": 77.314534,
-   "sl": 78.28828753367773,
-   "tp": 75.36702693264452,
-   "size": 13.336451303990117,
-   "margin": 171.8502529636147,
-   "eFee": 0.5155507588908441,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1784149852161,
-   "lastCheck": 1784214000000
+   "lastCheck": 1784221200000
   },
   {
    "sym": "DOGEUSDT",
@@ -70,7 +42,21 @@
    "entryType": "BOUNCE",
    "score": 96,
    "ts": 1784149852161,
-   "lastCheck": 1784214000000
+   "lastCheck": 1784221200000
+  },
+  {
+   "sym": "TRXUSDT",
+   "side": "SHORT",
+   "price": 0.322615464,
+   "sl": 0.32519638771200005,
+   "tp": 0.317453616576,
+   "size": 3974.3768553283962,
+   "margin": 213.69923888210525,
+   "eFee": 0.6410977166463158,
+   "entryType": "BOUNCE",
+   "score": 100,
+   "ts": 1784225647957,
+   "lastCheck": 1784225647957
   }
  ],
  "trades": [
@@ -458,6 +444,28 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 94
+  },
+  {
+   "ts": 1784221200000,
+   "sym": "SOLUSDT",
+   "side": "SHORT",
+   "entry": 77.314534,
+   "exit": 75.367027,
+   "pnl": 24.95,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 100
+  },
+  {
+   "ts": 1784221200000,
+   "sym": "BNBUSDT",
+   "side": "LONG",
+   "entry": 578.6157,
+   "exit": 573.87198,
+   "pnl": -11.71,
+   "reason": "SL",
+   "entryType": "CANDLE",
+   "score": 94
   }
  ],
  "cd": {
@@ -474,12 +482,12 @@
   "OPUSDT": 1783558800000,
   "AVAXUSDT": 1784030400000,
   "DOGEUSDT": 1784030400000,
-  "BNBUSDT": 1783692000000,
+  "BNBUSDT": 1784221200000,
   "DOTUSDT": 1783814400000,
   "ETCUSDT": 1783926000000,
   "SOLUSDT": 1784030400000,
   "SHIBUSDT": 1784034000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 119
+ "runs": 120
 }
