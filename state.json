@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 93,
    "ts": 1784096653742,
-   "lastCheck": 1784221200000
+   "lastCheck": 1784228400000
   },
   {
    "sym": "UNIUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784130146915,
-   "lastCheck": 1784221200000
+   "lastCheck": 1784228400000
   },
   {
    "sym": "DOGEUSDT",
@@ -42,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 96,
    "ts": 1784149852161,
-   "lastCheck": 1784221200000
+   "lastCheck": 1784228400000
   },
   {
    "sym": "TRXUSDT",
@@ -56,7 +56,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784225647957,
-   "lastCheck": 1784225647957
+   "lastCheck": 1784228400000
   }
  ],
  "trades": [
@@ -489,5 +489,5 @@
   "SHIBUSDT": 1784034000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 120
+ "runs": 121
 }
