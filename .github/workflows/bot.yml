@@ -1,8 +1,8 @@
 name: cloud-bot
 on:
   schedule:
-    - cron: '6 * * * *'
-  workflow_dispatch: {}
+    - cron: '6 * * * *'   # stündlich, 6 Min nach Kerzenschluss
+  workflow_dispatch: {}     # manueller Start über Actions-Tab möglich
 permissions:
   contents: write
 concurrency:
@@ -19,10 +19,13 @@ jobs:
           node-version: 20
       - name: Bot-Lauf
         run: node bot.js
+      - name: Bot-2-Lauf (Donchian 6h)
+        run: node bot2.js
+        continue-on-error: true   # Bot-2-Fehler blockiert Bot 1 nicht
       - name: Ergebnisse committen
         run: |
           git config user.name "cloud-bot"
           git config user.email "bot@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "bot run"
+          git diff --cached --quiet || git commit -m "run $(date -u '+%Y-%m-%d %H:%M') UTC"
           git push
