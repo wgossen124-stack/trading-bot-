@@ -6,135 +6,223 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Bot-Dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0b0e14;--card:#131822;--card2:#1a2130;--txt:#e6ebf4;--mut:#8a94a8;--grn:#2ee6a8;--red:#ff5d73;--acc:#5b8cff;--bor:#232b3d}
+:root{--bg:#0a0d13;--card:#11151f;--card2:#161c29;--txt:#e8edf6;--mut:#7d8799;--mut2:#565f70;--grn:#22d992;--red:#f6465d;--acc:#4f7cff;--amb:#f0b90b;--bor:#1e2634;--bor2:#283245}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--txt);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;padding:14px;max-width:900px;margin:0 auto}
-h1{font-size:18px;letter-spacing:.5px;display:flex;align-items:center;gap:8px}
-h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);display:inline-block;animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.3}}
-.sub{color:var(--mut);font-size:12px;margin:4px 0 14px}
-.grid{display:grid;grid-template-columns:1fr;gap:14px}
-@media(min-width:720px){.grid{grid-template-columns:1fr 1fr}}
-.card{background:var(--card);border:1px solid var(--bor);border-radius:14px;padding:14px}
-.card h2{font-size:14px;margin-bottom:2px;display:flex;justify-content:space-between;align-items:baseline}
-.card h2 .tag{font-size:10px;color:var(--mut);font-weight:400}
-.eq{font-size:28px;font-weight:700;margin:6px 0 0}
-.pnl{font-size:14px;font-weight:600;margin-bottom:8px}
-.up{color:var(--grn)}.dn{color:var(--red)}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}
-.stat{background:var(--card2);border-radius:8px;padding:7px 4px;text-align:center}
-.stat b{display:block;font-size:14px}
-.stat span{font-size:9px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px}
-svg.curve{width:100%;height:70px;margin:6px 0}
-table{width:100%;border-collapse:collapse;font-size:12px;margin-top:6px}
-th{color:var(--mut);font-weight:500;text-align:left;font-size:10px;text-transform:uppercase;letter-spacing:.5px;padding:4px 6px}
-td{padding:5px 6px;border-top:1px solid var(--bor)}
-.sec{font-size:11px;color:var(--mut);text-transform:uppercase;letter-spacing:1px;margin:12px 0 2px}
-.side-L{color:var(--grn);font-weight:600}.side-S{color:var(--red);font-weight:600}
-.empty{color:var(--mut);font-size:12px;padding:8px 0}
-.total{display:flex;justify-content:space-between;align-items:center;background:linear-gradient(135deg,#16203a,#131822);border:1px solid var(--bor);border-radius:14px;padding:14px;margin-bottom:14px}
-.total .eq{font-size:24px;margin:0}
-.foot{color:var(--mut);font-size:11px;text-align:center;margin:18px 0 8px}
-button{background:var(--card2);color:var(--txt);border:1px solid var(--bor);border-radius:8px;padding:8px 14px;font-size:13px;cursor:pointer}
+html{-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--txt);font-family:'Inter',-apple-system,sans-serif;padding:16px;max-width:1080px;margin:0 auto;font-size:14px}
+.mono{font-family:'JetBrains Mono',monospace}
+header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+h1{font-size:17px;font-weight:800;letter-spacing:1.5px;display:flex;align-items:center;gap:9px}
+h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:0 0 8px var(--grn);animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.btcbox{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bor);border-radius:10px;padding:6px 12px;font-size:12px}
+.btcbox b{font-size:13px}
+.sub{color:var(--mut);font-size:11.5px;margin-bottom:14px;display:flex;gap:14px;flex-wrap:wrap}
+.sub span b{color:var(--txt);font-weight:600}
+.summary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
+@media(min-width:680px){.summary{grid-template-columns:repeat(5,1fr)}}
+.sumcard{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--bor);border-radius:13px;padding:12px 14px}
+.sumcard .lbl{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:5px}
+.sumcard .val{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace}
+.sumcard .det{font-size:11px;color:var(--mut);margin-top:3px}
+.up{color:var(--grn)}.dn{color:var(--red)}.amb{color:var(--amb)}
+.grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+.card{background:var(--card);border:1px solid var(--bor);border-radius:15px;padding:16px;overflow:hidden}
+.bothead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
+.bothead h2{font-size:15px;font-weight:700}
+.bothead .tag{font-size:10.5px;color:var(--mut);margin-top:2px}
+.badge{font-size:9.5px;font-weight:700;letter-spacing:.8px;padding:3px 8px;border-radius:20px;text-transform:uppercase}
+.badge.live{background:rgba(34,217,146,.12);color:var(--grn);border:1px solid rgba(34,217,146,.3)}
+.badge.wait{background:rgba(240,185,11,.1);color:var(--amb);border:1px solid rgba(240,185,11,.3)}
+.eqrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:4px 0 12px}
+.eq{font-size:30px;font-weight:800;font-family:'JetBrains Mono',monospace;letter-spacing:-.5px}
+.pnl{font-size:14px;font-weight:700;font-family:'JetBrains Mono',monospace}
+.pnl small{color:var(--mut);font-weight:500;font-family:'Inter';font-size:11px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}
+@media(min-width:420px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpi{background:var(--card2);border:1px solid var(--bor);border-radius:9px;padding:8px 6px;text-align:center}
+.kpi b{display:block;font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:700}
+.kpi span{font-size:8.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.7px;font-weight:600}
+.chartbox{position:relative;height:170px;margin:8px 0 4px}
+.chartbox.sm{height:110px}
+.sec{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin:16px 0 6px;display:flex;justify-content:space-between;align-items:center}
+.sec .r{font-weight:500;letter-spacing:0;text-transform:none;font-size:11px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{color:var(--mut2);font-weight:600;text-align:right;font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;padding:5px 7px;border-bottom:1px solid var(--bor)}
+th:first-child,td:first-child{text-align:left}
+td{padding:6px 7px;border-bottom:1px solid var(--bor);text-align:right;font-family:'JetBrains Mono',monospace;font-size:11.5px}
+td b{font-family:'Inter';font-size:12px}
+tr:last-child td{border-bottom:none}
+.side-L{color:var(--grn);font-weight:700}.side-S{color:var(--red);font-weight:700}
+.chip{display:inline-flex;align-items:center;gap:5px;background:var(--card2);border:1px solid var(--bor);border-radius:8px;padding:5px 9px;font-size:11px;margin:2px 3px 2px 0}
+.chip b{font-family:'JetBrains Mono',monospace}
+.chips{margin:4px 0}
+.empty{color:var(--mut2);font-size:12px;padding:8px 0;font-style:italic}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:4px 0}
+.splitbox{background:var(--card2);border:1px solid var(--bor);border-radius:9px;padding:8px 10px;font-size:11px}
+.splitbox .t{color:var(--mut);font-size:9.5px;text-transform:uppercase;letter-spacing:.7px;font-weight:600;margin-bottom:3px}
+.splitbox b{font-family:'JetBrains Mono',monospace;font-size:12.5px}
+.heat{height:5px;background:var(--card2);border-radius:3px;margin-top:5px;overflow:hidden}
+.heat i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--amb));border-radius:3px}
+button.rf{background:var(--card2);color:var(--txt);border:1px solid var(--bor2);border-radius:9px;padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter'}
+button.rf:hover{border-color:var(--acc)}
+.foot{color:var(--mut2);font-size:10.5px;text-align:center;margin:20px 0 8px;line-height:1.6}
 </style>
 </head>
 <body>
-<h1><span class="dot"></span>BOT-DASHBOARD</h1>
-<div class="sub" id="sub">lade…</div>
-<div class="total"><div><div style="font-size:11px;color:var(--mut)">GESAMT (beide Bots)</div><div class="eq" id="totEq">–</div></div><div style="text-align:right"><div class="pnl" id="totPnl">–</div><button onclick="load()">↻ Aktualisieren</button></div></div>
+<header>
+ <h1><span class="dot"></span>BOT-DASHBOARD</h1>
+ <div style="display:flex;gap:8px;align-items:center">
+  <div class="btcbox" id="btcbox">BTC <b class="mono" id="btcP">–</b><span id="btcC" class="mono"></span></div>
+  <button class="rf" onclick="load()">↻</button>
+ </div>
+</header>
+<div class="sub" id="sub"><span>lade…</span></div>
+<div class="summary" id="summary"></div>
 <div class="grid" id="grid"></div>
-<div class="foot">Paper-Trading · Daten aus GitHub (Verzögerung bis ~5 Min) · Unrealisierte PnL live von OKX</div>
+<div class="foot">Paper-Trading · Bot-Daten aus GitHub (Verzögerung bis ~5 Min nach Lauf) · Kurse &amp; unrealisierte PnL live von OKX<br>Bot 1: Scalp/Trend 1h · Bot 2: Donchian-Breakout 6h — Auto-Refresh alle 5 Min</div>
 <script>
 const REPO='wgossen124-stack/trading-bot-';
 const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 const BOTS=[
- {name:'BOT 1 · Scalp/Trend',tag:'1h · 31 Paare · Score≥90',file:'state.json',init:2000},
- {name:'BOT 2 · Donchian-Breakout',tag:'6h · 20 Paare · N30/N10 · Turtle-Exit',file:'state2.json',init:2000}
+ {name:'BOT 1 · Scalp/Trend',tag:'1h-Entries · 31 Paare · Score≥90 · SL 1,5×ATR · TP 3×ATR',file:'state.json',init:2000},
+ {name:'BOT 2 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000}
 ];
 const $=s=>document.querySelector(s);
 const fmt=(v,d=2)=>(v>=0?'+':'')+v.toFixed(d);
 const money=v=>'$'+v.toFixed(2);
-async function getJson(u){try{const r=await fetch(u+'?t='+Date.now());if(!r.ok)return null;return await r.json();}catch(e){return null;}}
-async function okxLast(syms){
- const out={};
- await Promise.all(syms.map(async s=>{try{
-  const inst=s.replace('USDT','-USDT-SWAP');
-  const r=await fetch('https://www.okx.com/api/v5/market/ticker?instId='+inst);
-  const d=await r.json();if(d.data&&d.data[0])out[s]=+d.data[0].last;
- }catch(e){}}));
- return out;
-}
-function curve(trades,init){
- const t=[...trades].sort((a,b)=>a.ts-b.ts);
- let v=init;const pts=[v];t.forEach(x=>{v+=x.pnl;pts.push(v);});
- if(pts.length<2)return '';
- const min=Math.min(...pts),max=Math.max(...pts),rng=(max-min)||1;
- const W=300,H=70,P=4;
- const xy=pts.map((p,i)=>[P+i*(W-2*P)/(pts.length-1),H-P-(p-min)/rng*(H-2*P)]);
- const line=xy.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
- const base=H-P-(init-min)/rng*(H-2*P);
- const col=pts[pts.length-1]>=init?'var(--grn)':'var(--red)';
- return `<svg class="curve" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none"><line x1="0" y1="${base.toFixed(1)}" x2="${W}" y2="${base.toFixed(1)}" stroke="var(--bor)" stroke-dasharray="3 3"/><path d="${line}" fill="none" stroke="${col}" stroke-width="1.8"/></svg>`;
-}
-function botCard(b,st,px){
- if(!st)return `<div class="card"><h2>${b.name} <span class="tag">${b.tag}</span></h2><div class="empty">Wartet auf den ersten Lauf…</div></div>`;
+const charts={};
+Chart.defaults.color='#7d8799';Chart.defaults.borderColor='#1e2634';
+Chart.defaults.font.family="'Inter',sans-serif";Chart.defaults.font.size=10;
+async function getJson(u){try{const r=await fetch(u+(u.includes('?')?'&':'?')+'t='+Date.now());if(!r.ok)return null;return await r.json();}catch(e){return null;}}
+async function okx(path){try{const r=await fetch('https://www.okx.com/api/v5/'+path);const d=await r.json();return d.data||null;}catch(e){return null;}}
+function stats(st,init,px){
  const locked=st.positions.reduce((a,p)=>a+p.margin,0);
- let unreal=0,unrealKnown=true;
- st.positions.forEach(p=>{const l=px[p.sym];if(l==null){unrealKnown=false;return;}unreal+=(p.side==='LONG'?l-p.price:p.price-l)*p.size;});
- const eq=st.bal+locked+(unrealKnown?unreal:0);
- const pnl=eq-b.init,pct=pnl/b.init*100;
- const w=st.trades.filter(t=>t.pnl>0),l=st.trades.filter(t=>t.pnl<=0);
- const wr=st.trades.length?w.length/st.trades.length*100:0;
- const gw=w.reduce((a,t)=>a+t.pnl,0),gl=Math.abs(l.reduce((a,t)=>a+t.pnl,0));
- const pf=gl>0?(gw/gl):(gw>0?99:0);
- const dd=st.peak>0?Math.max(0,(st.peak-eq)/st.peak*100):0;
- const cls=pnl>=0?'up':'dn';
+ let unreal=0;st.positions.forEach(p=>{const l=px[p.sym];if(l!=null)unreal+=(p.side==='LONG'?l-p.price:p.price-l)*p.size;});
+ const eq=st.bal+locked+unreal;
+ const t=[...st.trades].sort((a,b)=>a.ts-b.ts);
+ const w=t.filter(x=>x.pnl>0),l=t.filter(x=>x.pnl<=0);
+ const gw=w.reduce((a,x)=>a+x.pnl,0),gl=Math.abs(l.reduce((a,x)=>a+x.pnl,0));
+ let v=init,pk=init,maxdd=0;const curve=[{ts:new Date(st.started).getTime()||t[0]?.ts||Date.now(),v}];
+ t.forEach(x=>{v+=x.pnl;pk=Math.max(pk,v);maxdd=Math.max(maxdd,(pk-v)/pk*100);curve.push({ts:x.ts,v});});
+ const byDay={};t.forEach(x=>{const d=new Date(x.ts).toISOString().slice(0,10);byDay[d]=(byDay[d]||0)+x.pnl;});
+ const days=Object.entries(byDay).sort((a,b)=>a[0]<b[0]?-1:1).slice(-14);
+ const L=t.filter(x=>x.side==='LONG'),S=t.filter(x=>x.side==='SHORT');
+ const wrOf=a=>a.length?a.filter(x=>x.pnl>0).length/a.length*100:0;
+ const pnlOf=a=>a.reduce((s,x)=>s+x.pnl,0);
+ const reasons={};t.forEach(x=>{const r=reasons[x.reason]||(reasons[x.reason]={n:0,pnl:0});r.n++;r.pnl+=x.pnl;});
+ const bySym={};t.forEach(x=>{const s=bySym[x.sym]||(bySym[x.sym]={n:0,pnl:0});s.n++;s.pnl+=x.pnl;});
+ const symRank=Object.entries(bySym).sort((a,b)=>b[1].pnl-a[1].pnl);
+ let streak=0;for(let i=t.length-1;i>=0;i--){const win=t[i].pnl>0;if(i===t.length-1)streak=win?1:-1;else if((streak>0)===win&&Math.sign(streak)!==0)streak+=Math.sign(streak);else break;}
+ const today=new Date().toISOString().slice(0,10);
+ const todayPnl=byDay[today]||0,todayN=t.filter(x=>new Date(x.ts).toISOString().slice(0,10)===today).length;
+ const ddNow=st.peak>0?Math.max(0,(st.peak-eq)/st.peak*100):0;
+ return {eq,locked,unreal,free:st.bal,heat:eq>0?locked/eq*100:0,
+  pnl:eq-init,pct:(eq-init)/init*100,n:t.length,
+  wr:t.length?w.length/t.length*100:0,pf:gl>0?gw/gl:(gw>0?99:0),
+  avgW:w.length?gw/w.length:0,avgL:l.length?gl/l.length:0,
+  exp:t.length?(gw-gl)/t.length:0,
+  best:t.length?Math.max(...t.map(x=>x.pnl)):0,worst:t.length?Math.min(...t.map(x=>x.pnl)):0,
+  maxdd,ddNow,curve,days,streak,todayPnl,todayN,
+  long:{n:L.length,wr:wrOf(L),pnl:pnlOf(L)},short:{n:S.length,wr:wrOf(S),pnl:pnlOf(S)},
+  reasons,symRank,trades:t};
+}
+function kpi(v,lbl,cls=''){return `<div class="kpi"><b class="${cls}">${v}</b><span>${lbl}</span></div>`;}
+function botCard(i,b,st,px){
+ if(!st)return `<div class="card"><div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div></div><span class="badge wait">wartet</span></div><div class="empty">Wartet auf den ersten Lauf…</div></div>`;
+ const s=stats(st,b.init,px);
+ const cls=s.pnl>=0?'up':'dn';
  const posRows=st.positions.map(p=>{
   const lp=px[p.sym],u=lp!=null?(p.side==='LONG'?lp-p.price:p.price-lp)*p.size:null;
+  const upct=u!=null?u/p.margin*100:null;
   const age=Math.round((Date.now()-p.ts)/36e5);
-  return `<tr><td><b>${p.sym.replace('USDT','')}</b></td><td class="side-${p.side[0]}">${p.side}</td><td>${p.price.toPrecision(5)}</td><td>${p.sl.toPrecision(5)}</td><td class="${u==null?'':u>=0?'up':'dn'}">${u==null?'–':fmt(u)+'$'}</td><td>${age<48?age+'h':Math.round(age/24)+'d'}</td></tr>`;
+  return `<tr><td><b>${p.sym.replace('USDT','')}</b></td><td class="side-${p.side[0]}">${p.side}</td><td>${p.price.toPrecision(5)}</td><td>${p.sl.toPrecision(5)}</td><td>${money(p.margin)}</td><td class="${u==null?'':u>=0?'up':'dn'}">${u==null?'–':fmt(u)+'$'}</td><td class="${upct==null?'':upct>=0?'up':'dn'}">${upct==null?'–':fmt(upct,1)+'%'}</td><td>${age<48?age+'h':Math.round(age/24)+'d'}</td></tr>`;
  }).join('');
- const trRows=[...st.trades].sort((a,b2)=>b2.ts-a.ts).slice(0,8).map(t=>{
+ const trRows=[...s.trades].reverse().slice(0,10).map(t=>{
   const d=new Date(t.ts),ds=('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
-  return `<tr><td>${ds}</td><td><b>${t.sym.replace('USDT','')}</b></td><td class="side-${t.side[0]}">${t.side}</td><td class="${t.pnl>=0?'up':'dn'}">${fmt(t.pnl)}$</td><td>${t.reason}</td></tr>`;
+  const extra=t.entryType?`<td>${t.entryType}${t.score?' '+t.score:''}</td>`:'';
+  return `<tr><td>${ds}</td><td><b>${t.sym.replace('USDT','')}</b></td><td class="side-${t.side[0]}">${t.side}</td>${extra}<td class="${t.pnl>=0?'up':'dn'}">${fmt(t.pnl)}$</td><td>${t.reason}</td></tr>`;
  }).join('');
+ const hasType=s.trades.some(t=>t.entryType);
+ const top=s.symRank.slice(0,3),flop=s.symRank.slice(-3).reverse();
+ const rChips=Object.entries(s.reasons).map(([r,x])=>`<span class="chip">${r==='TP'?'✅':r==='SL'?'🛑':'⏱'} ${r} <b>${x.n}×</b> <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b></span>`).join('');
  return `<div class="card">
-  <h2>${b.name} <span class="tag">${b.tag}</span></h2>
-  <div class="eq">${money(eq)}</div>
-  <div class="pnl ${cls}">${fmt(pnl)}$ (${fmt(pct,1)}%)${unrealKnown&&st.positions.length?` · davon ${fmt(unreal)}$ unrealisiert`:''}</div>
-  ${curve(st.trades,b.init)}
-  <div class="stats">
-   <div class="stat"><b>${wr.toFixed(0)}%</b><span>Winrate</span></div>
-   <div class="stat"><b>${pf.toFixed(2)}</b><span>P-Faktor</span></div>
-   <div class="stat"><b>${st.trades.length}</b><span>Trades</span></div>
-   <div class="stat"><b>${dd.toFixed(1)}%</b><span>Drawdown</span></div>
+  <div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div></div><span class="badge live">live</span></div>
+  <div class="eqrow"><span class="eq">${money(s.eq)}</span><span class="pnl ${cls}">${fmt(s.pnl)}$ (${fmt(s.pct,1)}%)</span>${st.positions.length?`<span class="pnl ${s.unreal>=0?'up':'dn'}" style="font-size:12px">${fmt(s.unreal)}$ <small>unreal.</small></span>`:''}</div>
+  <div class="chartbox"><canvas id="eq${i}"></canvas></div>
+  <div class="kpis">
+   ${kpi(s.wr.toFixed(0)+'%','Winrate')}
+   ${kpi(s.pf.toFixed(2),'P-Faktor',s.pf>=1.3?'up':s.pf<1?'dn':'')}
+   ${kpi(fmt(s.exp,1)+'$','Erwartung/Trade',s.exp>=0?'up':'dn')}
+   ${kpi(s.n,'Trades')}
+   ${kpi('+'+s.avgW.toFixed(0)+'$','Ø Gewinn','up')}
+   ${kpi('-'+s.avgL.toFixed(0)+'$','Ø Verlust','dn')}
+   ${kpi(s.maxdd.toFixed(1)+'%','Max. DD')}
+   ${kpi(s.streak===0?'–':(s.streak>0?s.streak+'W':(-s.streak)+'L'),'Serie',s.streak>0?'up':s.streak<0?'dn':'')}
   </div>
+  <div class="split">
+   <div class="splitbox"><div class="t">Long · ${s.long.n} Trades</div><b>${s.long.wr.toFixed(0)}% WR</b> · <b class="${s.long.pnl>=0?'up':'dn'}">${fmt(s.long.pnl,0)}$</b></div>
+   <div class="splitbox"><div class="t">Short · ${s.short.n} Trades</div><b>${s.short.wr.toFixed(0)}% WR</b> · <b class="${s.short.pnl>=0?'up':'dn'}">${fmt(s.short.pnl,0)}$</b></div>
+  </div>
+  <div class="chips">${rChips}</div>
+  <div class="sec">Tages-PnL <span class="r">Heute: <b class="${s.todayPnl>=0?'up':'dn'} mono">${fmt(s.todayPnl)}$</b> · ${s.todayN} Trades</span></div>
+  <div class="chartbox sm"><canvas id="day${i}"></canvas></div>
+  <div class="sec">Kapital <span class="r mono">frei ${money(s.free)} · gebunden ${money(s.locked)} (${s.heat.toFixed(0)}%)</span></div>
+  <div class="heat"><i style="width:${Math.min(100,s.heat/40*100)}%"></i></div>
   <div class="sec">Offene Positionen (${st.positions.length})</div>
-  ${st.positions.length?`<table><tr><th>Pair</th><th>Seite</th><th>Entry</th><th>Stop</th><th>PnL</th><th>Alter</th></tr>${posRows}</table>`:'<div class="empty">keine</div>'}
+  ${st.positions.length?`<div style="overflow-x:auto"><table><tr><th>Pair</th><th>Seite</th><th>Entry</th><th>Stop</th><th>Margin</th><th>PnL</th><th>PnL%</th><th>Alter</th></tr>${posRows}</table></div>`:'<div class="empty">keine offenen Positionen</div>'}
   <div class="sec">Letzte Trades</div>
-  ${st.trades.length?`<table><tr><th>Zeit</th><th>Pair</th><th>Seite</th><th>PnL</th><th>Grund</th></tr>${trRows}</table>`:'<div class="empty">noch keine</div>'}
+  ${s.n?`<div style="overflow-x:auto"><table><tr><th>Zeit</th><th>Pair</th><th>Seite</th>${hasType?'<th>Setup</th>':''}<th>PnL</th><th>Exit</th></tr>${trRows}</table></div>`:'<div class="empty">noch keine Trades</div>'}
+  ${s.symRank.length>1?`<div class="sec">Beste / schlechteste Paare</div><div class="chips">${top.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}<br>${flop.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}</div>`:''}
  </div>`;
 }
+function drawCharts(i,st,init,px){
+ if(!st)return;const s=stats(st,init,px);
+ const dl=s.curve.map(p=>{const d=new Date(p.ts);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2);});
+ if(charts['eq'+i])charts['eq'+i].destroy();
+ const up=s.curve[s.curve.length-1].v>=init;
+ charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{labels:dl,datasets:[{data:s.curve.map(p=>p.v),borderColor:up?'#22d992':'#f6465d',borderWidth:2,pointRadius:0,pointHitRadius:8,fill:{target:{value:init},above:'rgba(34,217,146,.07)',below:'rgba(246,70,93,.07)'},tension:.15}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:c=>'$'+c.parsed.y.toFixed(2)}}},
+  scales:{x:{ticks:{maxTicksLimit:6,maxRotation:0},grid:{display:false}},y:{ticks:{maxTicksLimit:5,callback:v=>'$'+v.toFixed(0)},grid:{color:'#161c29'}}}}});
+ if(charts['day'+i])charts['day'+i].destroy();
+ charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(34,217,146,.75)':'rgba(246,70,93,.75)'),borderRadius:3}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+'$'}}},
+  scales:{x:{grid:{display:false},ticks:{maxRotation:0,maxTicksLimit:7}},y:{ticks:{maxTicksLimit:4,callback:v=>fmt(v,0)},grid:{color:'#161c29'}}}}});
+}
 async function load(){
- $('#sub').textContent='lade…';
- const [s1,s2,commit]=await Promise.all([
+ const [s1,s2,commit,btc]=await Promise.all([
   getJson(RAW+BOTS[0].file),getJson(RAW+BOTS[1].file),
-  getJson('https://api.github.com/repos/'+REPO+'/commits?per_page=1')
+  getJson('https://api.github.com/repos/'+REPO+'/commits?per_page=1'),
+  okx('market/ticker?instId=BTC-USDT')
  ]);
  const syms=[...new Set([...(s1?s1.positions:[]),...(s2?s2.positions:[])].map(p=>p.sym))];
- const px=await okxLast(syms);
- $('#grid').innerHTML=botCard(BOTS[0],s1,px)+botCard(BOTS[1],s2,px);
- let tot=0,init=0;
- [[s1,BOTS[0]],[s2,BOTS[1]]].forEach(([st,b])=>{if(!st)return;init+=b.init;
-  const locked=st.positions.reduce((a,p)=>a+p.margin,0);
-  let u=0;st.positions.forEach(p=>{const l=px[p.sym];if(l!=null)u+=(p.side==='LONG'?l-p.price:p.price-l)*p.size;});
-  tot+=st.bal+locked+u;});
- $('#totEq').textContent=init?money(tot):'–';
- $('#totPnl').innerHTML=init?`<span class="${tot-init>=0?'up':'dn'}">${fmt(tot-init)}$ (${fmt((tot-init)/init*100,1)}%)</span>`:'–';
- let sub='Stand: '+new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'});
- if(commit&&commit[0])sub+=' · letzter Bot-Lauf: '+new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'});
- $('#sub').textContent=sub;
+ const px={};
+ await Promise.all(syms.map(async s=>{const d=await okx('market/ticker?instId='+s.replace('USDT','-USDT-SWAP'));if(d&&d[0])px[s]=+d[0].last;}));
+ if(btc&&btc[0]){const p=+btc[0].last,o=+btc[0].open24h,c=(p-o)/o*100;
+  $('#btcP').textContent='$'+p.toLocaleString('de-DE',{maximumFractionDigits:0});
+  $('#btcC').textContent=fmt(c,1)+'%';$('#btcC').className='mono '+(c>=0?'up':'dn');}
+ $('#grid').innerHTML=botCard(0,BOTS[0],s1,px)+botCard(1,BOTS[1],s2,px);
+ drawCharts(0,s1,BOTS[0].init,px);drawCharts(1,s2,BOTS[1].init,px);
+ let tot=0,init=0,totToday=0,nOpen=0,totLocked=0,allT=0;
+ [[s1,BOTS[0]],[s2,BOTS[1]]].forEach(([st,b])=>{if(!st)return;const s=stats(st,b.init,px);
+  init+=b.init;tot+=s.eq;totToday+=s.todayPnl;nOpen+=st.positions.length;totLocked+=s.locked;allT+=s.n;});
+ const tp=tot-init,tc=tp>=0?'up':'dn';
+ $('#summary').innerHTML=
+  `<div class="sumcard"><div class="lbl">Gesamt-Equity</div><div class="val">${money(tot)}</div><div class="det">Start $${init.toFixed(0)}</div></div>`+
+  `<div class="sumcard"><div class="lbl">Gesamt-PnL</div><div class="val ${tc}">${fmt(tp)}$</div><div class="det ${tc}">${fmt(init?tp/init*100:0,1)}%</div></div>`+
+  `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${totToday>=0?'up':'dn'}">${fmt(totToday)}$</div><div class="det">realisiert (UTC)</div></div>`+
+  `<div class="sumcard"><div class="lbl">Positionen</div><div class="val">${nOpen}</div><div class="det">${money(totLocked)} gebunden</div></div>`+
+  `<div class="sumcard"><div class="lbl">Trades gesamt</div><div class="val">${allT}</div><div class="det">beide Bots</div></div>`;
+ let sub=`<span>Stand: <b>${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ if(commit&&commit[0])sub+=`<span>Letzter Bot-Lauf: <b>${new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ if(s1)sub+=`<span>Bot 1 Läufe: <b>${s1.runs}</b></span>`;
+ if(s2)sub+=`<span>Bot 2 Läufe: <b>${s2.runs}</b></span>`;
+ $('#sub').innerHTML=sub;
 }
 load();
 setInterval(load,5*60*1000);
