@@ -1,22 +1,22 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-17 14:50 UTC · Lauf #128 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-17 16:22 UTC · Lauf #129 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1815.68 | -184.32$ (-9.2%) | 29% | 42 | 2 | 13.7% | bearish |
+| $1807.58 | -192.42$ (-9.6%) | 28% | 43 | 1 | 14.1% | bearish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
 | TRX | SHORT | 0.322615 | 0.325196 | 0.317454 | BOUNCE | 100 |
-| ETC | SHORT | 6.92761 | 7.00504 | 6.77276 | BOUNCE | 91 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-17 15:00 | ETC | SHORT | -15.75$ | SL | BOUNCE |
 | 07-17 13:00 | APT | SHORT | +30.65$ | TP | BOUNCE |
 | 07-17 00:00 | AVAX | SHORT | +22.35$ | TP | BOUNCE |
 | 07-17 01:00 | DOGE | SHORT | +21.68$ | TP | BOUNCE |
@@ -31,9 +31,8 @@
 | 07-14 12:00 | DOGE | SHORT | -16.97$ | SL | BOUNCE |
 | 07-14 12:00 | SOL | SHORT | -16.13$ | SL | BOUNCE |
 | 07-13 07:00 | ETC | SHORT | -13.34$ | SL | BOUNCE |
-| 07-13 03:00 | TRX | LONG | +4.94$ | TIME | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: bearish (BTC 24h -1.9% · 1h 0.11%)
-- ✅ SHORT APTUSDT TP +30.65$
+- Regime: bearish (BTC 24h -1.9% · 1h 0.45%)
+- ❌ SHORT ETCUSDT SL -15.75$
