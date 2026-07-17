@@ -10,7 +10,11 @@
 'use strict';
 const FS=require('fs');
 
-const P={minScore:90,entryTypes:['CANDLE','BOUNCE'],slMult:1.5,tpMult:3.0,minSlPct:0.8,
+// v9 (2026-07-17): CANDLE-Entries deaktiviert — Backtest 180d/8 Paare: CANDLE -317$
+// (Baseline -0,8% → nur-BOUNCE +4,1%, MaxDD 23,9%→18,0%). Deckt sich mit Live-Daten
+// (Cloud + Browser-Version). Strengeres Regime-Gate wurde getestet und VERWORFEN
+// (-10,8%): es blockiert profitable Shorts. Backtest-Tool: bt1.html/bt1.js.
+const P={minScore:90,entryTypes:['BOUNCE'],slMult:1.5,tpMult:3.0,minSlPct:0.8,
   riskPct:1.0,leverage:6,maxPositions:5,maxHeatPct:55,maxMarginPct:12,
   cooldownMin:60,feeRate:0.0005,slipPct:0.02,initBal:2000};
 
