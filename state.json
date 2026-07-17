@@ -1,5 +1,5 @@
 {
- "bal": 1208.411166788188,
+ "bal": 1397.4002878365088,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,21 +14,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784225647957,
-   "lastCheck": 1784286000000
-  },
-  {
-   "sym": "APTUSDT",
-   "side": "SHORT",
-   "price": 0.61217754,
-   "sl": 0.622384753844142,
-   "tp": 0.5917631123117161,
-   "size": 1547.212483405319,
-   "margin": 157.8614553247265,
-   "eFee": 0.4735843659741796,
-   "entryType": "BOUNCE",
-   "score": 91,
-   "ts": 1784261770412,
-   "lastCheck": 1784286000000
+   "lastCheck": 1784293200000
   },
   {
    "sym": "ETCUSDT",
@@ -42,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 91,
    "ts": 1784282874993,
-   "lastCheck": 1784286000000
+   "lastCheck": 1784293200000
   }
  ],
  "trades": [
@@ -496,6 +482,17 @@
    "reason": "TP",
    "entryType": "BOUNCE",
    "score": 91
+  },
+  {
+   "ts": 1784293200000,
+   "sym": "APTUSDT",
+   "side": "SHORT",
+   "entry": 0.61217754,
+   "exit": 0.59176311,
+   "pnl": 30.65,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 91
   }
  ],
  "cd": {
@@ -520,5 +517,5 @@
   "TIAUSDT": 1784242800000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 127
+ "runs": 128
 }
