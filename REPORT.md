@@ -1,17 +1,15 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-16 22:11 UTC · Lauf #122 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-17 00:07 UTC · Lauf #123 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1801.21 | -198.79$ (-9.9%) | 24% | 37 | 5 | 14.4% | weak |
+| $1779.44 | -220.56$ (-11.0%) | 23% | 39 | 3 | 15.4% | weak |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
-| TIA | LONG | 0.406781 | 0.398058 | 0.424228 | BOUNCE | 93 |
-| UNI | LONG | 3.63273 | 3.56599 | 3.76619 | BOUNCE | 100 |
 | DOGE | SHORT | 0.0739652 | 0.0749337 | 0.0720282 | BOUNCE | 96 |
 | TRX | SHORT | 0.322615 | 0.325196 | 0.317454 | BOUNCE | 100 |
 | AVAX | SHORT | 6.59668 | 6.67420 | 6.44165 | BOUNCE | 91 |
@@ -20,6 +18,8 @@
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-16 23:00 | TIA | LONG | -17.23$ | SL | BOUNCE |
+| 07-16 23:00 | UNI | LONG | -15.21$ | SL | BOUNCE |
 | 07-16 17:00 | BNB | LONG | -11.71$ | SL | CANDLE |
 | 07-16 17:00 | SOL | SHORT | +24.95$ | TP | BOUNCE |
 | 07-15 07:00 | UNI | LONG | -18.98$ | SL | BOUNCE |
@@ -33,10 +33,9 @@
 | 07-13 00:00 | DOGE | SHORT | -13.97$ | SL | BOUNCE |
 | 07-12 22:00 | XRP | SHORT | +20.30$ | TP | BOUNCE |
 | 07-12 14:00 | ATOM | SHORT | -13.47$ | SL | BOUNCE |
-| 07-12 00:00 | DOT | LONG | -13.34$ | SL | BOUNCE |
-| 07-12 00:00 | SOL | SHORT | +26.16$ | TP | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: weak (BTC 24h -1.0% · 1h 0.08%)
-- ⚡ OPEN SHORT AVAXUSDT @6.59668 [BOUNCE 91]
+- Regime: weak (BTC 24h -1.4% · 1h -0.22%)
+- ❌ LONG UNIUSDT SL -15.21$
+- ❌ LONG TIAUSDT SL -17.23$

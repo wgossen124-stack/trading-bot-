@@ -1,35 +1,7 @@
 {
- "bal": 1000.646424444556,
+ "bal": 1225.4978057263183,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "TIAUSDT",
-   "side": "LONG",
-   "price": 0.40678134,
-   "sl": 0.3980577915895229,
-   "tp": 0.42422843682095407,
-   "size": 1871.8602162376671,
-   "margin": 126.90630117564133,
-   "eFee": 0.380718903526924,
-   "entryType": "BOUNCE",
-   "score": 93,
-   "ts": 1784096653742,
-   "lastCheck": 1784235600000
-  },
-  {
-   "sym": "UNIUSDT",
-   "side": "LONG",
-   "price": 3.6327264,
-   "sl": 3.5659926250847187,
-   "tp": 3.7661939498305625,
-   "size": 214.08157102373568,
-   "margin": 129.61662913523327,
-   "eFee": 0.3888498874056998,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1784130146915,
-   "lastCheck": 1784235600000
-  },
   {
    "sym": "DOGEUSDT",
    "side": "SHORT",
@@ -42,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 96,
    "ts": 1784149852161,
-   "lastCheck": 1784235600000
+   "lastCheck": 1784242800000
   },
   {
    "sym": "TRXUSDT",
@@ -56,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784225647957,
-   "lastCheck": 1784235600000
+   "lastCheck": 1784242800000
   },
   {
    "sym": "AVAXUSDT",
@@ -70,7 +42,7 @@
    "entryType": "BOUNCE",
    "score": 91,
    "ts": 1784239891802,
-   "lastCheck": 1784239891802
+   "lastCheck": 1784242800000
   }
  ],
  "trades": [
@@ -480,10 +452,32 @@
    "reason": "SL",
    "entryType": "CANDLE",
    "score": 94
+  },
+  {
+   "ts": 1784242800000,
+   "sym": "UNIUSDT",
+   "side": "LONG",
+   "entry": 3.6327264,
+   "exit": 3.5652794,
+   "pnl": -15.21,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
+  },
+  {
+   "ts": 1784242800000,
+   "sym": "TIAUSDT",
+   "side": "LONG",
+   "entry": 0.40678134,
+   "exit": 0.39797818,
+   "pnl": -17.23,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 93
   }
  ],
  "cd": {
-  "UNIUSDT": 1784098800000,
+  "UNIUSDT": 1784242800000,
   "APTUSDT": 1783209600000,
   "FILUSDT": 1784030400000,
   "ONDOUSDT": 1783209600000,
@@ -500,8 +494,9 @@
   "DOTUSDT": 1783814400000,
   "ETCUSDT": 1783926000000,
   "SOLUSDT": 1784030400000,
-  "SHIBUSDT": 1784034000000
+  "SHIBUSDT": 1784034000000,
+  "TIAUSDT": 1784242800000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 122
+ "runs": 123
 }
