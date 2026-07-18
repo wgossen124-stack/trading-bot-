@@ -1,10 +1,10 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-18 00:00 UTC · Lauf #134 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-18 03:20 UTC · Lauf #135 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1807.87 | -192.13$ (-9.6%) | 28% | 43 | 2 | 14.1% | neutral |
+| $1813.28 | -186.72$ (-9.3%) | 28% | 43 | 2 | 13.8% | strong |
 
 ## Offene Positionen
 
@@ -35,5 +35,4 @@
 
 ## Dieser Lauf
 
-- Regime: neutral (BTC 24h 0.0% · 1h -0.19%)
-- ⚡ OPEN SHORT ATOMUSDT @1.50770 [BOUNCE 92]
+- Regime: strong (BTC 24h 0.7% · 1h -0.01%)
