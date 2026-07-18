@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784225647957,
-   "lastCheck": 1784372400000
+   "lastCheck": 1784376000000
   },
   {
    "sym": "ATOMUSDT",
@@ -28,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 92,
    "ts": 1784332810886,
-   "lastCheck": 1784372400000
+   "lastCheck": 1784376000000
   }
  ],
  "trades": [
@@ -528,5 +528,5 @@
   "TIAUSDT": 1784242800000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 139
+ "runs": 140
 }
