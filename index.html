@@ -183,12 +183,119 @@ function botCard(i,b,st,px){
 }
 function drawCharts(i,st,init,px){
  if(!st)return;const s=stats(st,init,px);
- const dl=s.curve.map(p=>{const d=new Date(p.ts);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2);});
  if(charts['eq'+i])charts['eq'+i].destroy();
- const up=s.curve[s.curve.length-1].v>=init;
- charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{labels:dl,datasets:[{data:s.curve.map(p=>p.v),borderColor:up?'#22d992':'#f6465d',borderWidth:2,pointRadius:0,pointHitRadius:8,fill:{target:{value:init},above:'rgba(34,217,146,.07)',below:'rgba(246,70,93,.07)'},tension:.15}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false,callbacks:{label:c=>'$'+c.parsed.y.toFixed(2)}}},
-  scales:{x:{ticks:{maxTicksLimit:6,maxRotation:0},grid:{display:false}},y:{ticks:{maxTicksLimit:5,callback:v=>'$'+v.toFixed(0)},grid:{color:'#161c29'}}}}});
+ // Präzise Equity-Kurve: echte Zeitachse + segmentierte Farben (grün über Start, rot darunter)
+ const pts=s.curve.map(p=>({x:p.ts,y:p.v}));
+ // aktueller Stand (inkl. unrealisierter PnL) als letzter Punkt
+ pts.push({x:Date.now(),y:s.eq});
+ const segCol=c=>{const y0=c.p0.parsed.y,y1=c.p1.parsed.y;return (y0+y1)/2>=init?'#22d992':'#f6465d';};
+ charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{datasets:[{data:pts,borderWidth:2,pointRadius:0,pointHitRadius:10,tension:0,
+   segment:{borderColor:segCol},
+   borderColor:pts[pts.length-1].y>=init?'#22d992':'#f6465d',
+   fill:{target:{value:init},above:'rgba(34,217,146,.08)',below:'rgba(246,70,93,.08)'}}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+   tooltip:{mode:'nearest',intersect:false,callbacks:{
+    title:c=>new Date(c[0].parsed.x).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})+' Uhr',
+    label:c=>' 
+ if(charts['day'+i])charts['day'+i].destroy();
+ charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(34,217,146,.75)':'rgba(246,70,93,.75)'),borderRadius:3}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+'$'}}},
+  scales:{x:{grid:{display:false},ticks:{maxRotation:0,maxTicksLimit:7}},y:{ticks:{maxTicksLimit:4,callback:v=>fmt(v,0)},grid:{color:'#161c29'}}}}});
+}
+async function load(){
+ const [s1,s2,commit,btc]=await Promise.all([
+  getJson(RAW+BOTS[0].file),getJson(RAW+BOTS[1].file),
+  getJson('https://api.github.com/repos/'+REPO+'/commits?per_page=1'),
+  okx('market/ticker?instId=BTC-USDT')
+ ]);
+ const syms=[...new Set([...(s1?s1.positions:[]),...(s2?s2.positions:[])].map(p=>p.sym))];
+ const px={};
+ await Promise.all(syms.map(async s=>{const d=await okx('market/ticker?instId='+s.replace('USDT','-USDT-SWAP'));if(d&&d[0])px[s]=+d[0].last;}));
+ // Funding-Monitor (Bot-3-Signal): Ø aktueller Funding-Raten annualisiert
+ const frs=[];
+ await Promise.all(['BTC','ETH','SOL','DOGE','BNB'].map(async s=>{
+  const d=await okx('public/funding-rate?instId='+s+'-USDT-SWAP');
+  if(d&&d[0]&&d[0].fundingRate)frs.push(+d[0].fundingRate);}));
+ const fApr=frs.length?frs.reduce((a,b)=>a+b,0)/frs.length*3*365*100:null;
+ if(btc&&btc[0]){const p=+btc[0].last,o=+btc[0].open24h,c=(p-o)/o*100;
+  $('#btcP').textContent='$'+p.toLocaleString('de-DE',{maximumFractionDigits:0});
+  $('#btcC').textContent=fmt(c,1)+'%';$('#btcC').className='mono '+(c>=0?'up':'dn');}
+ $('#grid').innerHTML=botCard(0,BOTS[0],s1,px)+botCard(1,BOTS[1],s2,px);
+ drawCharts(0,s1,BOTS[0].init,px);drawCharts(1,s2,BOTS[1].init,px);
+ let tot=0,init=0,totToday=0,nOpen=0,totLocked=0,allT=0;
+ [[s1,BOTS[0]],[s2,BOTS[1]]].forEach(([st,b])=>{if(!st)return;const s=stats(st,b.init,px);
+  init+=b.init;tot+=s.eq;totToday+=s.todayPnl;nOpen+=st.positions.length;totLocked+=s.locked;allT+=s.n;});
+ const tp=tot-init,tc=tp>=0?'up':'dn';
+ $('#summary').innerHTML=
+  `<div class="sumcard"><div class="lbl">Gesamt-Equity</div><div class="val">${money(tot)}</div><div class="det">Start $${init.toFixed(0)}</div></div>`+
+  `<div class="sumcard"><div class="lbl">Gesamt-PnL</div><div class="val ${tc}">${fmt(tp)}$</div><div class="det ${tc}">${fmt(init?tp/init*100:0,1)}%</div></div>`+
+  `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${totToday>=0?'up':'dn'}">${fmt(totToday)}$</div><div class="det">realisiert (UTC)</div></div>`+
+  `<div class="sumcard"><div class="lbl">Positionen</div><div class="val">${nOpen}</div><div class="det">${money(totLocked)} gebunden</div></div>`+
+  `<div class="sumcard"><div class="lbl">Trades gesamt</div><div class="val">${allT}</div><div class="det">beide Bots</div></div>`+
+  `<div class="sumcard"><div class="lbl">Funding-APR Ø</div><div class="val ${fApr==null?'':fApr>=15?'up':fApr>=5?'amb':''}">${fApr==null?'–':fApr.toFixed(1)+'%'}</div><div class="det">Bot-3-Signal ab ~15%</div></div>`;
+ let sub=`<span>Stand: <b>${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ if(commit&&commit[0])sub+=`<span>Letzter Bot-Lauf: <b>${new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ if(s1)sub+=`<span>Bot 1 Läufe: <b>${s1.runs}</b></span>`;
+ if(s2)sub+=`<span>Bot 2 Läufe: <b>${s2.runs}</b></span>`;
+ $('#sub').innerHTML=sub;
+}
+load();
+setInterval(load,5*60*1000);
+</script>
+</body>
+</html>
++c.parsed.y.toFixed(2)+' ('+(c.parsed.y-init>=0?'+':'')+(c.parsed.y-init).toFixed(2)+'$)'}}},
+  scales:{x:{type:'linear',bounds:'data',ticks:{maxTicksLimit:7,maxRotation:0,
+    callback:v=>{const d=new Date(v);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.';}},grid:{display:false}},
+   y:{ticks:{maxTicksLimit:5,callback:v=>'
+ if(charts['day'+i])charts['day'+i].destroy();
+ charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(34,217,146,.75)':'rgba(246,70,93,.75)'),borderRadius:3}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+'$'}}},
+  scales:{x:{grid:{display:false},ticks:{maxRotation:0,maxTicksLimit:7}},y:{ticks:{maxTicksLimit:4,callback:v=>fmt(v,0)},grid:{color:'#161c29'}}}}});
+}
+async function load(){
+ const [s1,s2,commit,btc]=await Promise.all([
+  getJson(RAW+BOTS[0].file),getJson(RAW+BOTS[1].file),
+  getJson('https://api.github.com/repos/'+REPO+'/commits?per_page=1'),
+  okx('market/ticker?instId=BTC-USDT')
+ ]);
+ const syms=[...new Set([...(s1?s1.positions:[]),...(s2?s2.positions:[])].map(p=>p.sym))];
+ const px={};
+ await Promise.all(syms.map(async s=>{const d=await okx('market/ticker?instId='+s.replace('USDT','-USDT-SWAP'));if(d&&d[0])px[s]=+d[0].last;}));
+ // Funding-Monitor (Bot-3-Signal): Ø aktueller Funding-Raten annualisiert
+ const frs=[];
+ await Promise.all(['BTC','ETH','SOL','DOGE','BNB'].map(async s=>{
+  const d=await okx('public/funding-rate?instId='+s+'-USDT-SWAP');
+  if(d&&d[0]&&d[0].fundingRate)frs.push(+d[0].fundingRate);}));
+ const fApr=frs.length?frs.reduce((a,b)=>a+b,0)/frs.length*3*365*100:null;
+ if(btc&&btc[0]){const p=+btc[0].last,o=+btc[0].open24h,c=(p-o)/o*100;
+  $('#btcP').textContent='$'+p.toLocaleString('de-DE',{maximumFractionDigits:0});
+  $('#btcC').textContent=fmt(c,1)+'%';$('#btcC').className='mono '+(c>=0?'up':'dn');}
+ $('#grid').innerHTML=botCard(0,BOTS[0],s1,px)+botCard(1,BOTS[1],s2,px);
+ drawCharts(0,s1,BOTS[0].init,px);drawCharts(1,s2,BOTS[1].init,px);
+ let tot=0,init=0,totToday=0,nOpen=0,totLocked=0,allT=0;
+ [[s1,BOTS[0]],[s2,BOTS[1]]].forEach(([st,b])=>{if(!st)return;const s=stats(st,b.init,px);
+  init+=b.init;tot+=s.eq;totToday+=s.todayPnl;nOpen+=st.positions.length;totLocked+=s.locked;allT+=s.n;});
+ const tp=tot-init,tc=tp>=0?'up':'dn';
+ $('#summary').innerHTML=
+  `<div class="sumcard"><div class="lbl">Gesamt-Equity</div><div class="val">${money(tot)}</div><div class="det">Start $${init.toFixed(0)}</div></div>`+
+  `<div class="sumcard"><div class="lbl">Gesamt-PnL</div><div class="val ${tc}">${fmt(tp)}$</div><div class="det ${tc}">${fmt(init?tp/init*100:0,1)}%</div></div>`+
+  `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${totToday>=0?'up':'dn'}">${fmt(totToday)}$</div><div class="det">realisiert (UTC)</div></div>`+
+  `<div class="sumcard"><div class="lbl">Positionen</div><div class="val">${nOpen}</div><div class="det">${money(totLocked)} gebunden</div></div>`+
+  `<div class="sumcard"><div class="lbl">Trades gesamt</div><div class="val">${allT}</div><div class="det">beide Bots</div></div>`+
+  `<div class="sumcard"><div class="lbl">Funding-APR Ø</div><div class="val ${fApr==null?'':fApr>=15?'up':fApr>=5?'amb':''}">${fApr==null?'–':fApr.toFixed(1)+'%'}</div><div class="det">Bot-3-Signal ab ~15%</div></div>`;
+ let sub=`<span>Stand: <b>${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ if(commit&&commit[0])sub+=`<span>Letzter Bot-Lauf: <b>${new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ if(s1)sub+=`<span>Bot 1 Läufe: <b>${s1.runs}</b></span>`;
+ if(s2)sub+=`<span>Bot 2 Läufe: <b>${s2.runs}</b></span>`;
+ $('#sub').innerHTML=sub;
+}
+load();
+setInterval(load,5*60*1000);
+</script>
+</body>
+</html>
++v.toFixed(0)},grid:{color:'#161c29'}}}}});
  if(charts['day'+i])charts['day'+i].destroy();
  charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(34,217,146,.75)':'rgba(246,70,93,.75)'),borderRadius:3}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+'$'}}},
