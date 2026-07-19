@@ -1,22 +1,23 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-19 16:06 UTC · Lauf #155 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-19 18:03 UTC · Lauf #156 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1813.77 | -186.23$ (-9.3%) | 27% | 44 | 2 | 13.8% | strong |
+| $1818.71 | -181.29$ (-9.1%) | 29% | 45 | 2 | 13.6% | neutral |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
-| ATOM | SHORT | 1.50770 | 1.52412 | 1.47485 | BOUNCE | 92 |
 | BTC | LONG | 64698.1 | 64180.6 | 65733.3 | BOUNCE | 92 |
+| DOGE | SHORT | 0.0722056 | 0.0727832 | 0.0710503 | BOUNCE | 93 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-19 17:00 | ATOM | SHORT | +27.07$ | TP | BOUNCE |
 | 07-18 17:00 | TRX | SHORT | -11.80$ | SL | BOUNCE |
 | 07-17 15:00 | ETC | SHORT | -15.75$ | SL | BOUNCE |
 | 07-17 13:00 | APT | SHORT | +30.65$ | TP | BOUNCE |
@@ -31,8 +32,9 @@
 | 07-14 13:00 | SHIB | SHORT | -12.25$ | SL | BOUNCE |
 | 07-14 12:00 | AVAX | SHORT | -13.36$ | SL | BOUNCE |
 | 07-14 12:00 | DOGE | SHORT | -16.97$ | SL | BOUNCE |
-| 07-14 12:00 | SOL | SHORT | -16.13$ | SL | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: strong (BTC 24h 0.7% · 1h -0.02%)
+- Regime: neutral (BTC 24h 0.1% · 1h 0.03%)
+- ✅ SHORT ATOMUSDT TP +27.07$
+- ⚡ OPEN SHORT DOGEUSDT @0.0722056 [BOUNCE 93]

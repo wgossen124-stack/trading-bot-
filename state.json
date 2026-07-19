@@ -1,21 +1,7 @@
 {
- "bal": 1362.9474092142082,
+ "bal": 1388.183082423954,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "ATOMUSDT",
-   "side": "SHORT",
-   "price": 1.5076984,
-   "sl": 1.5241229423740836,
-   "tp": 1.4748493152518325,
-   "size": 863.3519848723671,
-   "margin": 216.94573437148202,
-   "eFee": 0.6508372031144462,
-   "entryType": "BOUNCE",
-   "score": 92,
-   "ts": 1784332810886,
-   "lastCheck": 1784473200000
-  },
   {
    "sym": "BTCUSDT",
    "side": "LONG",
@@ -28,7 +14,21 @@
    "entryType": "BOUNCE",
    "score": 92,
    "ts": 1784452263922,
-   "lastCheck": 1784473200000
+   "lastCheck": 1784480400000
+  },
+  {
+   "sym": "DOGEUSDT",
+   "side": "SHORT",
+   "price": 0.072205556,
+   "sl": 0.072783200448,
+   "tp": 0.071050267104,
+   "size": 18179.547938534266,
+   "margin": 218.77739445508675,
+   "eFee": 0.6563321833652603,
+   "entryType": "BOUNCE",
+   "score": 93,
+   "ts": 1784484182635,
+   "lastCheck": 1784484182635
   }
  ],
  "trades": [
@@ -515,6 +515,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 100
+  },
+  {
+   "ts": 1784480400000,
+   "sym": "ATOMUSDT",
+   "side": "SHORT",
+   "entry": 1.5076984,
+   "exit": 1.4748493,
+   "pnl": 27.07,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 92
   }
  ],
  "cd": {
@@ -540,5 +551,5 @@
   "TRXUSDT": 1784394000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 155
+ "runs": 156
 }
