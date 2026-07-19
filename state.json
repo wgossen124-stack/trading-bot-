@@ -14,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 92,
    "ts": 1784332810886,
-   "lastCheck": 1784415600000
+   "lastCheck": 1784426400000
   }
  ],
  "trades": [
@@ -526,5 +526,5 @@
   "TRXUSDT": 1784394000000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 148
+ "runs": 149
 }
