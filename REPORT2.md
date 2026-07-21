@@ -1,6 +1,6 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-07-20 22:09 UTC · Lauf #44 · 6H · N30/10
+> Aktualisiert: 2026-07-21 00:05 UTC · Lauf #45 · 6H · N30/10
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
