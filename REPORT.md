@@ -1,22 +1,22 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-21 11:54 UTC · Lauf #174 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-21 14:14 UTC · Lauf #175 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1732.11 | -267.89$ (-13.4%) | 25% | 51 | 2 | 17.7% | bullish |
+| $1724.15 | -275.85$ (-13.8%) | 25% | 52 | 1 | 18.1% | bullish |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
-| TRX | SHORT | 0.325275 | 0.327877 | 0.320071 | BOUNCE | 91 |
 | NEAR | LONG | 1.99240 | 1.95923 | 2.05873 | BOUNCE | 98 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-21 13:00 | TRX | SHORT | -11.63$ | SL | BOUNCE |
 | 07-20 22:00 | OP | SHORT | -16.66$ | SL | BOUNCE |
 | 07-20 12:00 | ATOM | SHORT | -16.06$ | SL | BOUNCE |
 | 07-20 05:00 | BTC | LONG | -11.89$ | SL | BOUNCE |
@@ -31,9 +31,8 @@
 | 07-17 01:00 | DOGE | SHORT | +21.68$ | TP | BOUNCE |
 | 07-16 23:00 | TIA | LONG | -17.23$ | SL | BOUNCE |
 | 07-16 23:00 | UNI | LONG | -15.21$ | SL | BOUNCE |
-| 07-16 17:00 | BNB | LONG | -11.71$ | SL | CANDLE |
 
 ## Dieser Lauf
 
-- Regime: bullish (BTC 24h 2.9% · 1h -0.14%)
-- ⚡ OPEN LONG NEARUSDT @1.99240 [BOUNCE 98]
+- Regime: bullish (BTC 24h 3.8% · 1h 0.33%)
+- ❌ SHORT TRXUSDT SL -11.63$

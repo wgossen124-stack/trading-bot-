@@ -1,21 +1,7 @@
 {
- "bal": 1374.0655056275034,
+ "bal": 1573.7083952646894,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "TRXUSDT",
-   "side": "SHORT",
-   "price": 0.325274932,
-   "sl": 0.327877131456,
-   "tp": 0.32007053308800004,
-   "size": 3885.5586780503395,
-   "margin": 210.64580579747235,
-   "eFee": 0.631937417392417,
-   "entryType": "BOUNCE",
-   "score": 91,
-   "ts": 1784557639554,
-   "lastCheck": 1784628000000
-  },
   {
    "sym": "NEARUSDT",
    "side": "LONG",
@@ -28,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 98,
    "ts": 1784634886946,
-   "lastCheck": 1784634886946
+   "lastCheck": 1784638800000
   }
  ],
  "trades": [
@@ -592,6 +578,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 95
+  },
+  {
+   "ts": 1784638800000,
+   "sym": "TRXUSDT",
+   "side": "SHORT",
+   "entry": 0.325274932,
+   "exit": 0.32794271,
+   "pnl": -11.63,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 91
   }
  ],
  "cd": {
@@ -614,10 +611,10 @@
   "SOLUSDT": 1784030400000,
   "SHIBUSDT": 1784034000000,
   "TIAUSDT": 1784242800000,
-  "TRXUSDT": 1784394000000,
+  "TRXUSDT": 1784638800000,
   "JUPUSDT": 1784502000000,
   "XLMUSDT": 1784505600000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 174
+ "runs": 175
 }
