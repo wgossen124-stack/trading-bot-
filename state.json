@@ -1,21 +1,7 @@
 {
- "bal": 1282.7357897414568,
+ "bal": 1473.9327469976743,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "XRPUSDT",
-   "side": "LONG",
-   "price": 1.14342864,
-   "sl": 1.1311401202570497,
-   "tp": 1.1680056794859008,
-   "size": 1077.2191480169884,
-   "margin": 205.28720423317063,
-   "eFee": 0.6158616126995119,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1784678469883,
-   "lastCheck": 1784696400000
-  },
   {
    "sym": "TRXUSDT",
    "side": "LONG",
@@ -28,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1784691259381,
-   "lastCheck": 1784696400000
+   "lastCheck": 1784707200000
   }
  ],
  "trades": [
@@ -625,6 +611,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 99
+  },
+  {
+   "ts": 1784700000000,
+   "sym": "XRPUSDT",
+   "side": "LONG",
+   "entry": 1.14342864,
+   "exit": 1.1309139,
+   "pnl": -14.71,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
@@ -637,7 +634,7 @@
   "ETHUSDT": 1783328400000,
   "LINKUSDT": 1783328400000,
   "NEARUSDT": 1784646000000,
-  "XRPUSDT": 1783393200000,
+  "XRPUSDT": 1784700000000,
   "OPUSDT": 1784584800000,
   "AVAXUSDT": 1784030400000,
   "DOGEUSDT": 1784505600000,
@@ -652,5 +649,5 @@
   "XLMUSDT": 1784696400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 182
+ "runs": 183
 }
