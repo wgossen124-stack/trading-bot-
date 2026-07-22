@@ -1,5 +1,5 @@
 {
- "bal": 1119.9413362916566,
+ "bal": 1282.7357897414568,
  "peak": 2104.3329815958477,
  "positions": [
   {
@@ -14,21 +14,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784678469883,
-   "lastCheck": 1784685600000
-  },
-  {
-   "sym": "XLMUSDT",
-   "side": "LONG",
-   "price": 0.19215842400000002,
-   "sl": 0.1894597161780189,
-   "tp": 0.19755583964396226,
-   "size": 5576.0895041706635,
-   "margin": 178.58209520072936,
-   "eFee": 0.5357462856021881,
-   "entryType": "BOUNCE",
-   "score": 99,
-   "ts": 1784678469883,
-   "lastCheck": 1784685600000
+   "lastCheck": 1784696400000
   },
   {
    "sym": "TRXUSDT",
@@ -42,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 97,
    "ts": 1784691259381,
-   "lastCheck": 1784691259381
+   "lastCheck": 1784696400000
   }
  ],
  "trades": [
@@ -628,6 +614,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 98
+  },
+  {
+   "ts": 1784696400000,
+   "sym": "XLMUSDT",
+   "side": "LONG",
+   "entry": 0.19215842400000002,
+   "exit": 0.18942182,
+   "pnl": -16.32,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 99
   }
  ],
  "cd": {
@@ -652,8 +649,8 @@
   "TIAUSDT": 1784242800000,
   "TRXUSDT": 1784638800000,
   "JUPUSDT": 1784502000000,
-  "XLMUSDT": 1784505600000
+  "XLMUSDT": 1784696400000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 181
+ "runs": 182
 }
