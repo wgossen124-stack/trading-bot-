@@ -1,16 +1,15 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-23 10:32 UTC · Lauf #193 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-23 12:45 UTC · Lauf #194 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1671.52 | -328.48$ (-16.4%) | 24% | 55 | 3 | 20.6% | neutral |
+| $1671.44 | -328.56$ (-16.4%) | 23% | 56 | 2 | 20.6% | weak |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | SL | TP | Typ | Score |
 |---|---|---|---|---|---|---|
-| TRX | LONG | 0.329356 | 0.326721 | 0.334626 | BOUNCE | 97 |
 | ATOM | SHORT | 1.46771 | 1.48011 | 1.44290 | BOUNCE | 100 |
 | LTC | LONG | 47.1194 | 46.7041 | 47.9500 | BOUNCE | 99 |
 
@@ -18,6 +17,7 @@
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-23 11:00 | TRX | LONG | -11.32$ | SL | BOUNCE |
 | 07-22 06:00 | XRP | LONG | -14.71$ | SL | BOUNCE |
 | 07-22 05:00 | XLM | LONG | -16.32$ | SL | BOUNCE |
 | 07-21 15:00 | NEAR | LONG | -16.36$ | SL | BOUNCE |
@@ -32,8 +32,8 @@
 | 07-18 17:00 | TRX | SHORT | -11.80$ | SL | BOUNCE |
 | 07-17 15:00 | ETC | SHORT | -15.75$ | SL | BOUNCE |
 | 07-17 13:00 | APT | SHORT | +30.65$ | TP | BOUNCE |
-| 07-17 00:00 | AVAX | SHORT | +22.35$ | TP | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: neutral (BTC 24h -0.4% · 1h 0.01%)
+- Regime: weak (BTC 24h -0.7% · 1h -0.26%)
+- ❌ LONG TRXUSDT SL -11.32$
