@@ -1,23 +1,29 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-07-23 15:19 UTC · Lauf #70 · 6H · N30/10
+> Aktualisiert: 2026-07-23 17:41 UTC · Lauf #71 · 6H · N30/10
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $1958.97 | -41.03$ (-2.1%) | 20% | 5 | 1 | 2.1% |
+| $1945.64 | -54.36$ (-2.7%) | 17% | 6 | 1 | 2.7% |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | Stop |
 |---|---|---|---|
-| BTC | LONG | 66263.1 | 65006.8 |
+| DOGE | SHORT | 0.0696861 | 0.0723398 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 07-23 10:00 | BTC | LONG | -13.41$ | STOP |
 | 07-22 22:00 | INJ | LONG | -6.03$ | STOP |
 | 07-22 04:00 | LTC | LONG | +0.64$ | STOP |
 | 07-21 10:00 | TIA | SHORT | -5.84$ | STOP |
 | 07-21 04:00 | FIL | SHORT | -16.62$ | STOP |
 | 07-21 04:00 | DOT | SHORT | -12.83$ | STOP |
+
+## Dieser Lauf
+
+- ✔ CLOSE LONG BTC -13.41$ (STOP)
+- ⚡ OPEN SHORT DOGE @0.0696861 SL 0.0723398
