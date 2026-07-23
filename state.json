@@ -1,36 +1,7 @@
 {
- "bal": 1264.264188092481,
+ "bal": 1675.5170546091153,
  "peak": 2104.3329815958477,
- "positions": [
-  {
-   "sym": "ATOMUSDT",
-   "side": "SHORT",
-   "price": 1.4677064,
-   "sl": 1.4801076100749893,
-   "tp": 1.4429039798500212,
-   "size": 823.6925763652697,
-   "margin": 201.48981099396585,
-   "eFee": 0.6044694329818975,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1784738334150,
-   "lastCheck": 1784804400000
-  },
-  {
-   "sym": "LTCUSDT",
-   "side": "LONG",
-   "price": 47.119422,
-   "sl": 46.704134584906456,
-   "tp": 47.94999683018709,
-   "size": 25.647675558754695,
-   "margin": 201.41727466200803,
-   "eFee": 0.6042518239860242,
-   "entryType": "BOUNCE",
-   "score": 99,
-   "ts": 1784765425605,
-   "lastCheck": 1784804400000
-  }
- ],
+ "positions": [],
  "trades": [
   {
    "ts": 1783184400000,
@@ -647,6 +618,28 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 97
+  },
+  {
+   "ts": 1784811600000,
+   "sym": "LTCUSDT",
+   "side": "LONG",
+   "entry": 47.119422,
+   "exit": 46.694794,
+   "pnl": -12.09,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 99
+  },
+  {
+   "ts": 1784811600000,
+   "sym": "ATOMUSDT",
+   "side": "SHORT",
+   "entry": 1.4677064,
+   "exit": 1.442904,
+   "pnl": 19.23,
+   "reason": "TP",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
@@ -671,8 +664,9 @@
   "TIAUSDT": 1784242800000,
   "TRXUSDT": 1784804400000,
   "JUPUSDT": 1784502000000,
-  "XLMUSDT": 1784696400000
+  "XLMUSDT": 1784696400000,
+  "LTCUSDT": 1784811600000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 194
+ "runs": 195
 }
