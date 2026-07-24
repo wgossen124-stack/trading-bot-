@@ -1,6 +1,6 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-07-23 23:06 UTC · Lauf #74 · 6H · N30/10
+> Aktualisiert: 2026-07-24 00:08 UTC · Lauf #75 · 6H · N30/10
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
@@ -24,8 +24,3 @@
 | 07-21 10:00 | TIA | SHORT | -5.84$ | STOP |
 | 07-21 04:00 | FIL | SHORT | -16.62$ | STOP |
 | 07-21 04:00 | DOT | SHORT | -12.83$ | STOP |
-
-## Dieser Lauf
-
-- ⚡ OPEN SHORT AVAX @6.29474 SL 6.57156
-- ⚡ OPEN SHORT ATOM @1.41972 SL 1.46604
