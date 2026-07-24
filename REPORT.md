@@ -1,10 +1,10 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-24 10:26 UTC · Lauf #203 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-24 12:24 UTC · Lauf #204 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1672.33 | -327.67$ (-16.4%) | 24% | 58 | 1 | 20.5% | weak |
+| $1675.52 | -324.48$ (-16.2%) | 24% | 58 | 1 | 20.4% | weak |
 
 ## Offene Positionen
 
@@ -34,4 +34,4 @@
 
 ## Dieser Lauf
 
-- Regime: weak (BTC 24h -0.8% · 1h -0.30%)
+- Regime: weak (BTC 24h -0.7% · 1h 0.20%)
