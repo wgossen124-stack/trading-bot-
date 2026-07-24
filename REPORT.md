@@ -1,21 +1,16 @@
 # Cloud-Bot v6 — Live-Report
 
-> Aktualisiert: 2026-07-24 12:24 UTC · Lauf #204 · gestartet 2026-07-04
+> Aktualisiert: 2026-07-24 15:02 UTC · Lauf #205 · gestartet 2026-07-04
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown | Regime |
 |---|---|---|---|---|---|---|
-| $1675.52 | -324.48$ (-16.2%) | 24% | 58 | 1 | 20.4% | weak |
-
-## Offene Positionen
-
-| Pair | Seite | Entry | SL | TP | Typ | Score |
-|---|---|---|---|---|---|---|
-| BNB | SHORT | 566.787 | 571.321 | 557.718 | BOUNCE | 93 |
+| $1693.62 | -306.38$ (-15.3%) | 25% | 59 | 0 | 19.5% | weak |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund | Typ |
 |---|---|---|---|---|---|
+| 07-24 13:00 | BNB | SHORT | +18.11$ | TP | BOUNCE |
 | 07-23 13:00 | ATOM | SHORT | +19.23$ | TP | BOUNCE |
 | 07-23 13:00 | LTC | LONG | -12.09$ | SL | BOUNCE |
 | 07-23 11:00 | TRX | LONG | -11.32$ | SL | BOUNCE |
@@ -30,8 +25,8 @@
 | 07-20 00:00 | DOGE | SHORT | -12.08$ | SL | BOUNCE |
 | 07-19 23:00 | JUP | SHORT | -15.21$ | SL | BOUNCE |
 | 07-19 17:00 | ATOM | SHORT | +27.07$ | TP | BOUNCE |
-| 07-18 17:00 | TRX | SHORT | -11.80$ | SL | BOUNCE |
 
 ## Dieser Lauf
 
-- Regime: weak (BTC 24h -0.7% · 1h 0.20%)
+- Regime: weak (BTC 24h -1.3% · 1h -0.14%)
+- ✅ SHORT BNBUSDT TP +18.11$
