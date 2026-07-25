@@ -17,11 +17,16 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Bot-Lauf
-        run: node bot.js
+      # Bot 1 STILLGELEGT 2026-07-25: -15,6% über 60 Trades (WR 25%, PF 0,52).
+      # v9 (nur BOUNCE) hat es verschlimmert — BOUNCE = EMA20-Rücksetzer = Mean Reversion,
+      # und Mean Reversion hat in diesem Universum nachweislich keinen Edge (Longs 0/7 seit v9,
+      # 31 Longs gesamt bei 19% WR). Breakeven bräuchte 38% WR bei Ø+24$/-15$. Kein Patch mehr.
+      # Wieder aktivieren: die beiden folgenden Zeilen einkommentieren.
+      # - name: Bot-Lauf
+      #   run: node bot.js
       - name: Bot-2-Lauf (Donchian 6h)
         run: node bot2.js
-        continue-on-error: true   # Bot-2-Fehler blockiert Bot 1 nicht
+        continue-on-error: true   # Bot-2-Fehler blockiert den Lauf nicht
       - name: Ergebnisse committen
         run: |
           git config user.name "cloud-bot"
