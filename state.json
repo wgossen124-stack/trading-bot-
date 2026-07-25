@@ -1,21 +1,7 @@
 {
- "bal": 1088.792773594824,
+ "bal": 1276.7691507983172,
  "peak": 2104.3329815958477,
  "positions": [
-  {
-   "sym": "AVAXUSDT",
-   "side": "SHORT",
-   "price": 6.2377522,
-   "sl": 6.302704125641203,
-   "tp": 6.107848348717594,
-   "size": 193.73796650154324,
-   "margin": 201.41490446142126,
-   "eFee": 0.6042447133842639,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1784953141613,
-   "lastCheck": 1784953141613
-  },
   {
    "sym": "TIAUSDT",
    "side": "SHORT",
@@ -28,7 +14,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784953141613,
-   "lastCheck": 1784953141613
+   "lastCheck": 1785009600000
   },
   {
    "sym": "XLMUSDT",
@@ -42,7 +28,7 @@
    "entryType": "BOUNCE",
    "score": 100,
    "ts": 1784953141613,
-   "lastCheck": 1784953141613
+   "lastCheck": 1785009600000
   }
  ],
  "trades": [
@@ -705,6 +691,17 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 100
+  },
+  {
+   "ts": 1784980800000,
+   "sym": "AVAXUSDT",
+   "side": "SHORT",
+   "entry": 6.2377522,
+   "exit": 6.3039647,
+   "pnl": -14.04,
+   "reason": "SL",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
@@ -719,7 +716,7 @@
   "NEARUSDT": 1784646000000,
   "XRPUSDT": 1784700000000,
   "OPUSDT": 1784584800000,
-  "AVAXUSDT": 1784030400000,
+  "AVAXUSDT": 1784980800000,
   "DOGEUSDT": 1784505600000,
   "BNBUSDT": 1784221200000,
   "DOTUSDT": 1784948400000,
@@ -733,5 +730,5 @@
   "LTCUSDT": 1784811600000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 211
+ "runs": 212
 }
