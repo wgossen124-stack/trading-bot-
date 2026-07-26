@@ -30,8 +30,10 @@ h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:
 .sumcard .val{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace}
 .sumcard .det{font-size:11px;color:var(--mut);margin-top:3px}
 .up{color:var(--grn)}.dn{color:var(--red)}.amb{color:var(--amb)}
-.grid{display:grid;grid-template-columns:1fr;gap:16px}
-@media(min-width:900px){.grid{grid-template-columns:1fr 1fr}}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.alert{background:rgba(246,70,93,.09);border:1px solid rgba(246,70,93,.45);border-radius:12px;padding:11px 14px;margin-bottom:14px;font-size:12px;line-height:1.65;color:#ffd3d9}
+.alert b{display:block;color:var(--red);font-size:12.5px;letter-spacing:.4px;margin-bottom:3px}
+.okline{color:var(--mut2);font-size:10.5px;margin-bottom:14px;padding-left:2px}
 .card{background:var(--card);border:1px solid var(--bor);border-radius:15px;padding:16px;overflow:hidden}
 .bothead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
 .bothead h2{font-size:15px;font-weight:700}
@@ -84,15 +86,19 @@ button.rf:hover{border-color:var(--acc)}
 </header>
 <div class="sub" id="sub"><span>lade…</span></div>
 <div class="summary" id="summary"></div>
+<div id="warn"></div>
 <div class="grid" id="grid"></div>
-<div class="foot">Paper-Trading · Bot-Daten aus GitHub (Verzögerung bis ~5 Min nach Lauf) · Kurse &amp; unrealisierte PnL live von OKX<br>Bot 1: Scalp/Trend 1h · Bot 2: Donchian-Breakout 6h — Auto-Refresh alle 5 Min</div>
+<div class="foot">Paper-Trading · Bot-Daten aus GitHub (Verzögerung bis ~5 Min nach Lauf) · Kurse &amp; unrealisierte PnL live von OKX<br>Bot 2: Donchian-Breakout 6h — Auto-Refresh alle 5 Min · Bot 1 (Scalp) am 25.07.2026 eingestellt: $1.672 (-16,4 %) nach 63 Trades</div>
 <script>
 const REPO='wgossen124-stack/trading-bot-';
 const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
+// Bot 1 (Scalp/Mean-Reversion) am 25.07.2026 eingestellt und hier entfernt —
+// Endstand $1672 (-16,4 %) nach 63 Trades. Archiv: state.json + bot.js im Repo.
 const BOTS=[
- {name:'BOT 1 · Scalp/Trend',tag:'Stillgelegt 25.07. — Mean Reversion ohne Edge (WR 25 %, PF 0,52) · keine neuen Einstiege',file:'state.json',init:2000,stopped:true},
  {name:'BOT 2 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000}
 ];
+// Warnschwellen (nur Anzeige, kein Eingriff in den Bot)
+const LIMITS={dd:25, pf:0.8, pfMinTrades:30, stuckDays:3};
 const $=s=>document.querySelector(s);
 const fmt=(v,d=2)=>(v>=0?'+':'')+v.toFixed(d);
 const money=v=>'$'+v.toFixed(2);
@@ -108,17 +114,24 @@ function stats(st,init,px){
  const t=[...st.trades].sort((a,b)=>a.ts-b.ts);
  const w=t.filter(x=>x.pnl>0),l=t.filter(x=>x.pnl<=0);
  const gw=w.reduce((a,x)=>a+x.pnl,0),gl=Math.abs(l.reduce((a,x)=>a+x.pnl,0));
+ // Equity-Kurve + max. Drawdown aus Kurve
  let v=init,pk=init,maxdd=0;const curve=[{ts:new Date(st.started).getTime()||t[0]?.ts||Date.now(),v}];
  t.forEach(x=>{v+=x.pnl;pk=Math.max(pk,v);maxdd=Math.max(maxdd,(pk-v)/pk*100);curve.push({ts:x.ts,v});});
+ // Tages-PnL (letzte 14 Kalendertage mit Trades)
  const byDay={};t.forEach(x=>{const d=new Date(x.ts).toISOString().slice(0,10);byDay[d]=(byDay[d]||0)+x.pnl;});
  const days=Object.entries(byDay).sort((a,b)=>a[0]<b[0]?-1:1).slice(-14);
+ // Long/Short
  const L=t.filter(x=>x.side==='LONG'),S=t.filter(x=>x.side==='SHORT');
  const wrOf=a=>a.length?a.filter(x=>x.pnl>0).length/a.length*100:0;
  const pnlOf=a=>a.reduce((s,x)=>s+x.pnl,0);
+ // Exit-Gründe
  const reasons={};t.forEach(x=>{const r=reasons[x.reason]||(reasons[x.reason]={n:0,pnl:0});r.n++;r.pnl+=x.pnl;});
+ // Paare
  const bySym={};t.forEach(x=>{const s=bySym[x.sym]||(bySym[x.sym]={n:0,pnl:0});s.n++;s.pnl+=x.pnl;});
  const symRank=Object.entries(bySym).sort((a,b)=>b[1].pnl-a[1].pnl);
+ // Serie
  let streak=0;for(let i=t.length-1;i>=0;i--){const win=t[i].pnl>0;if(i===t.length-1)streak=win?1:-1;else if((streak>0)===win&&Math.sign(streak)!==0)streak+=Math.sign(streak);else break;}
+ // Heute (UTC)
  const today=new Date().toISOString().slice(0,10);
  const todayPnl=byDay[today]||0,todayN=t.filter(x=>new Date(x.ts).toISOString().slice(0,10)===today).length;
  const ddNow=st.peak>0?Math.max(0,(st.peak-eq)/st.peak*100):0;
@@ -206,12 +219,12 @@ function drawCharts(i,st,init,px){
   scales:{x:{grid:{display:false},ticks:{maxRotation:0,maxTicksLimit:7}},y:{ticks:{maxTicksLimit:4,callback:v=>fmt(v,0)},grid:{color:'#161c29'}}}}});
 }
 async function load(){
- const [s1,s2,commit,btc]=await Promise.all([
-  getJson(RAW+BOTS[0].file),getJson(RAW+BOTS[1].file),
+ const [s2,commit,btc]=await Promise.all([
+  getJson(RAW+BOTS[0].file),
   getJson('https://api.github.com/repos/'+REPO+'/commits?per_page=1'),
   okx('market/ticker?instId=BTC-USDT')
  ]);
- const syms=[...new Set([...(s1?s1.positions:[]),...(s2?s2.positions:[])].map(p=>p.sym))];
+ const syms=[...new Set((s2?s2.positions:[]).map(p=>p.sym))];
  const px={};
  await Promise.all(syms.map(async s=>{const d=await okx('market/ticker?instId='+s.replace('USDT','-USDT-SWAP'));if(d&&d[0])px[s]=+d[0].last;}));
  // Funding-Monitor (Bot-3-Signal): Ø aktueller Funding-Raten annualisiert
@@ -220,26 +233,39 @@ async function load(){
   const d=await okx('public/funding-rate?instId='+s+'-USDT-SWAP');
   if(d&&d[0]&&d[0].fundingRate)frs.push(+d[0].fundingRate);}));
  const fApr=frs.length?frs.reduce((a,b)=>a+b,0)/frs.length*3*365*100:null;
+ // BTC-Ticker
  if(btc&&btc[0]){const p=+btc[0].last,o=+btc[0].open24h,c=(p-o)/o*100;
   $('#btcP').textContent='$'+p.toLocaleString('de-DE',{maximumFractionDigits:0});
   $('#btcC').textContent=fmt(c,1)+'%';$('#btcC').className='mono '+(c>=0?'up':'dn');}
- $('#grid').innerHTML=botCard(0,BOTS[0],s1,px)+botCard(1,BOTS[1],s2,px);
- drawCharts(0,s1,BOTS[0].init,px);drawCharts(1,s2,BOTS[1].init,px);
- let tot=0,init=0,totToday=0,nOpen=0,totLocked=0,allT=0;
- [[s1,BOTS[0]],[s2,BOTS[1]]].forEach(([st,b])=>{if(!st)return;const s=stats(st,b.init,px);
-  init+=b.init;tot+=s.eq;totToday+=s.todayPnl;nOpen+=st.positions.length;totLocked+=s.locked;allT+=s.n;});
- const tp=tot-init,tc=tp>=0?'up':'dn';
- $('#summary').innerHTML=
-  `<div class="sumcard"><div class="lbl">Gesamt-Equity</div><div class="val">${money(tot)}</div><div class="det">Start $${init.toFixed(0)}</div></div>`+
-  `<div class="sumcard"><div class="lbl">Gesamt-PnL</div><div class="val ${tc}">${fmt(tp)}$</div><div class="det ${tc}">${fmt(init?tp/init*100:0,1)}%</div></div>`+
-  `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${totToday>=0?'up':'dn'}">${fmt(totToday)}$</div><div class="det">realisiert (UTC)</div></div>`+
-  `<div class="sumcard"><div class="lbl">Positionen</div><div class="val">${nOpen}</div><div class="det">${money(totLocked)} gebunden</div></div>`+
-  `<div class="sumcard"><div class="lbl">Trades gesamt</div><div class="val">${allT}</div><div class="det">beide Bots</div></div>`+
+ // Karte
+ $('#grid').innerHTML=botCard(0,BOTS[0],s2,px);
+ drawCharts(0,s2,BOTS[0].init,px);
+ // Summary + Warnprüfung
+ const b=BOTS[0];
+ const s=s2?stats(s2,b.init,px):null;
+ const tp=s?s.eq-b.init:0,tc=tp>=0?'up':'dn';
+ $('#summary').innerHTML=!s?'':
+  `<div class="sumcard"><div class="lbl">Equity</div><div class="val">${money(s.eq)}</div><div class="det">Start $${b.init}</div></div>`+
+  `<div class="sumcard"><div class="lbl">PnL</div><div class="val ${tc}">${fmt(tp)}$</div><div class="det ${tc}">${fmt(tp/b.init*100,1)}%</div></div>`+
+  `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${s.todayPnl>=0?'up':'dn'}">${fmt(s.todayPnl)}$</div><div class="det">realisiert (UTC)</div></div>`+
+  `<div class="sumcard"><div class="lbl">Positionen</div><div class="val">${s2.positions.length}</div><div class="det">${money(s.locked)} gebunden</div></div>`+
+  `<div class="sumcard"><div class="lbl">Trades</div><div class="val">${s.n}</div><div class="det">seit ${new Date(s2.started).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit'})}</div></div>`+
   `<div class="sumcard"><div class="lbl">Funding-APR Ø</div><div class="val ${fApr==null?'':fApr>=15?'up':fApr>=5?'amb':''}">${fApr==null?'–':fApr.toFixed(1)+'%'}</div><div class="det">Bot-3-Signal ab ~15%</div></div>`;
+ // ── Warnungen (nur Anzeige — der Bot stoppt sich NICHT selbst) ──
+ const warn=[];
+ if(s){
+  if(s.ddNow>=LIMITS.dd) warn.push(`Drawdown <b>${s.ddNow.toFixed(1)} %</b> — Schwelle ${LIMITS.dd} % erreicht. Regel: Bot stoppen und überprüfen.`);
+  if(s.n>=LIMITS.pfMinTrades && s.pf<LIMITS.pf) warn.push(`Profitfaktor <b>${s.pf.toFixed(2)}</b> bei ${s.n} Trades — unter ${LIMITS.pf}. Regel: Strategie überprüfen.`);
+  const stuck=s2.positions.filter(p=>(Date.now()-p.ts)/86400000>LIMITS.stuckDays);
+  if(stuck.length) warn.push(`${stuck.length} Position(en) älter als ${LIMITS.stuckDays} Tage (${stuck.map(p=>p.sym.replace('USDT','')).join(', ')}) — Exit-Logik prüfen.`);
+ }
+ $('#warn').innerHTML = warn.length
+  ? `<div class="alert"><b>⚠ Abbruchkriterium erreicht</b>${warn.map(w=>'<div>'+w+'</div>').join('')}</div>`
+  : `<div class="okline">Wächter aktiv · Warnung bei Drawdown ≥ ${LIMITS.dd} % · Profitfaktor < ${LIMITS.pf} ab ${LIMITS.pfMinTrades} Trades · Position > ${LIMITS.stuckDays} Tage${s?` — aktuell: DD ${s.ddNow.toFixed(1)} % · PF ${s.pf.toFixed(2)} · ${s.n} Trades`:''}</div>`;
+ // Subline
  let sub=`<span>Stand: <b>${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</b></span>`;
  if(commit&&commit[0])sub+=`<span>Letzter Bot-Lauf: <b>${new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b></span>`;
- if(s1)sub+=`<span>Bot 1 Läufe: <b>${s1.runs}</b></span>`;
- if(s2)sub+=`<span>Bot 2 Läufe: <b>${s2.runs}</b></span>`;
+ if(s2)sub+=`<span>Läufe: <b>${s2.runs}</b></span>`;
  $('#sub').innerHTML=sub;
 }
 load();
