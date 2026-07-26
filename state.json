@@ -1,36 +1,7 @@
 {
- "bal": 1276.7691507983172,
+ "bal": 1672.293769999444,
  "peak": 2104.3329815958477,
- "positions": [
-  {
-   "sym": "TIAUSDT",
-   "side": "SHORT",
-   "price": 0.34323134,
-   "sl": 0.3477915575165195,
-   "tp": 0.3341109049669609,
-   "size": 3237.649043395966,
-   "margin": 185.21043660241926,
-   "eFee": 0.5556313098072578,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1784953141613,
-   "lastCheck": 1785031200000
-  },
-  {
-   "sym": "XLMUSDT",
-   "side": "SHORT",
-   "price": 0.178984196,
-   "sl": 0.18078140954647473,
-   "tp": 0.17538976890705057,
-   "size": 6747.267876275676,
-   "margin": 201.27571933863825,
-   "eFee": 0.6038271580159148,
-   "entryType": "BOUNCE",
-   "score": 100,
-   "ts": 1784953141613,
-   "lastCheck": 1785031200000
-  }
- ],
+ "positions": [],
  "trades": [
   {
    "ts": 1783184400000,
@@ -702,6 +673,28 @@
    "reason": "SL",
    "entryType": "BOUNCE",
    "score": 100
+  },
+  {
+   "ts": 1785040395723,
+   "sym": "TIAUSDT",
+   "side": "SHORT",
+   "entry": 0.34323134,
+   "exit": 0.34226844,
+   "pnl": 2.01,
+   "reason": "CLOSE",
+   "entryType": "BOUNCE",
+   "score": 100
+  },
+  {
+   "ts": 1785040395723,
+   "sym": "XLMUSDT",
+   "side": "SHORT",
+   "entry": 0.178984196,
+   "exit": 0.17793558,
+   "pnl": 5.87,
+   "reason": "CLOSE",
+   "entryType": "BOUNCE",
+   "score": 100
   }
  ],
  "cd": {
@@ -723,12 +716,13 @@
   "ETCUSDT": 1784300400000,
   "SOLUSDT": 1784030400000,
   "SHIBUSDT": 1784034000000,
-  "TIAUSDT": 1784242800000,
+  "TIAUSDT": 1785040395723,
   "TRXUSDT": 1784804400000,
   "JUPUSDT": 1784502000000,
-  "XLMUSDT": 1784696400000,
+  "XLMUSDT": 1785040395723,
   "LTCUSDT": 1784811600000
  },
  "started": "2026-07-04T09:29:00.153Z",
- "runs": 215
+ "runs": 215,
+ "stopped": "2026-07-25 — Bot eingestellt: kein Edge (WR 25 %, PF 0,51). Restpositionen manuell zum Marktkurs geschlossen."
 }
