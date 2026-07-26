@@ -90,7 +90,7 @@ button.rf:hover{border-color:var(--acc)}
 const REPO='wgossen124-stack/trading-bot-';
 const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 const BOTS=[
- {name:'BOT 1 · Scalp/Trend',tag:'GESTOPPT 25.07. — Mean Reversion ohne Edge (WR 25 %, PF 0,52)',file:'state.json',init:2000,stopped:true},
+ {name:'BOT 1 · Scalp/Trend',tag:'Stillgelegt 25.07. — Mean Reversion ohne Edge (WR 25 %, PF 0,52) · keine neuen Einstiege',file:'state.json',init:2000,stopped:true},
  {name:'BOT 2 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000}
 ];
 const $=s=>document.querySelector(s);
@@ -152,7 +152,7 @@ function botCard(i,b,st,px){
  const top=s.symRank.slice(0,3),flop=s.symRank.slice(-3).reverse();
  const rChips=Object.entries(s.reasons).map(([r,x])=>`<span class="chip">${r==='TP'?'✅':r==='SL'?'🛑':'⏱'} ${r} <b>${x.n}×</b> <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b></span>`).join('');
  return `<div class="card">
-  <div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div></div><span class="badge ${b.stopped?'wait':'live'}">${b.stopped?'gestoppt':'live'}</span></div>
+  <div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div></div><span class="badge ${b.stopped?'wait':'live'}">${b.stopped?(st.positions.length?'Abwicklung':'gestoppt'):'live'}</span></div>
   <div class="eqrow"><span class="eq">${money(s.eq)}</span><span class="pnl ${cls}">${fmt(s.pnl)}$ (${fmt(s.pct,1)}%)</span>${st.positions.length?`<span class="pnl ${s.unreal>=0?'up':'dn'}" style="font-size:12px">${fmt(s.unreal)}$ <small>unreal.</small></span>`:''}</div>
   <div class="chartbox"><canvas id="eq${i}"></canvas></div>
   <div class="kpis">
@@ -174,7 +174,7 @@ function botCard(i,b,st,px){
   <div class="chartbox sm"><canvas id="day${i}"></canvas></div>
   <div class="sec">Kapital <span class="r mono">frei ${money(s.free)} · gebunden ${money(s.locked)} (${s.heat.toFixed(0)}%)</span></div>
   <div class="heat"><i style="width:${Math.min(100,s.heat/40*100)}%"></i></div>
-  <div class="sec">Offene Positionen (${st.positions.length})</div>
+  <div class="sec">Offene Positionen (${st.positions.length})${b.stopped&&st.positions.length?'<span class="r amb">Exit-only · schließen per Stop/TP/48h-Timeout</span>':''}</div>
   ${st.positions.length?`<div style="overflow-x:auto"><table><tr><th>Pair</th><th>Seite</th><th>Entry</th><th>Stop</th><th>Margin</th><th>PnL</th><th>PnL%</th><th>Alter</th></tr>${posRows}</table></div>`:'<div class="empty">keine offenen Positionen</div>'}
   <div class="sec">Letzte Trades</div>
   ${s.n?`<div style="overflow-x:auto"><table><tr><th>Zeit</th><th>Pair</th><th>Seite</th>${hasType?'<th>Setup</th>':''}<th>PnL</th><th>Exit</th></tr>${trRows}</table></div>`:'<div class="empty">noch keine Trades</div>'}
