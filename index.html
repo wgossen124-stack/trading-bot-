@@ -98,7 +98,10 @@ const BOTS=[
  {name:'BOT 2 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000}
 ];
 // Warnschwellen (nur Anzeige, kein Eingriff in den Bot)
-const LIMITS={dd:25, pf:0.8, pfMinTrades:30, stuckDays:3};
+// stuckDays: Bot 2 hat selbst ein Timeout von 40 Bars × 6h = 10 Tagen und HÄLT Gewinner
+// bewusst lange. Erst über dem eigenen Timeout ist eine Position wirklich hängengeblieben.
+// (Korrigiert 26.07.2026 — vorher 3 Tage, das war eine Bot-1-Zahl und löste falschen Alarm aus.)
+const LIMITS={dd:25, pf:0.8, pfMinTrades:30, stuckDays:11};
 const $=s=>document.querySelector(s);
 const fmt=(v,d=2)=>(v>=0?'+':'')+v.toFixed(d);
 const money=v=>'$'+v.toFixed(2);
@@ -257,7 +260,7 @@ async function load(){
   if(s.ddNow>=LIMITS.dd) warn.push(`Drawdown <b>${s.ddNow.toFixed(1)} %</b> — Schwelle ${LIMITS.dd} % erreicht. Regel: Bot stoppen und überprüfen.`);
   if(s.n>=LIMITS.pfMinTrades && s.pf<LIMITS.pf) warn.push(`Profitfaktor <b>${s.pf.toFixed(2)}</b> bei ${s.n} Trades — unter ${LIMITS.pf}. Regel: Strategie überprüfen.`);
   const stuck=s2.positions.filter(p=>(Date.now()-p.ts)/86400000>LIMITS.stuckDays);
-  if(stuck.length) warn.push(`${stuck.length} Position(en) älter als ${LIMITS.stuckDays} Tage (${stuck.map(p=>p.sym.replace('USDT','')).join(', ')}) — Exit-Logik prüfen.`);
+  if(stuck.length) warn.push(`${stuck.length} Position(en) älter als ${LIMITS.stuckDays} Tage (${stuck.map(p=>p.sym.replace('USDT','')).join(', ')}) — über dem eigenen 10-Tage-Timeout, Exit-Logik prüfen.`);
  }
  $('#warn').innerHTML = warn.length
   ? `<div class="alert"><b>⚠ Abbruchkriterium erreicht</b>${warn.map(w=>'<div>'+w+'</div>').join('')}</div>`
