@@ -173,6 +173,7 @@ function summarize(runs,best){
   median_pnl:+sorted[Math.floor(sorted.length/2)].pnlPct.toFixed(1),
   beste:sorted.slice(0,3).map(r=>r.tag+': '+r.pnlPct+'% PF'+r.pf+' DD'+r.maxdd+'% n'+r.n+' Paare+'+r.symPos+'/'+r.symAll),
   schlechteste:sorted.slice(-2).map(r=>r.tag+': '+r.pnlPct+'% PF'+r.pf),
+  alle:runs.map(r=>r.tag+':'+r.pnlPct+'%/'+r.symPos+'P'),
   default:best
  };
 }
@@ -181,7 +182,8 @@ function summarize(runs,best){
  try{
   const D={},H4={};
   for(const s of PAIRS){ say('Lade '+s+' 1D…'); try{D[s]=await fetchTF(s,'1Dutc',86400000,800);}catch(e){D[s]=null;} await sleep(120); }
-  for(const s of PAIRS){ say('Lade '+s+' 4H…'); try{H4[s]=await fetchTF(s,'4Hutc',14400000,1500);}catch(e){H4[s]=null;} await sleep(120); }
+  // OKX kennt KEINE UTC-Variante für 4H (nur ab 6H) → schlicht '4H'
+  for(const s of PAIRS){ say('Lade '+s+' 4H…'); try{H4[s]=await fetchTF(s,'4H',14400000,1500);}catch(e){H4[s]=null;} await sleep(120); }
 
   // Kandidat A
   say('Backtest Bot 3 (Momentum)…'); await sleep(20);
