@@ -1,0 +1,25 @@
+# Cloud-Bot 3 — Momentum (Paper, UNVALIDIERT)
+
+> ⚠️ Hat den Walk-Forward nicht bestanden — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
+
+> Aktualisiert: 2026-07-27 19:47 UTC · Lauf #1 · nächstes Rebalancing: 2026-08-10
+
+| Equity | PnL | Winrate | Umschichtungen | Offen |
+|---|---|---|---|---|
+| $2000.00 | +0.00$ (0.0%) | 0% | 0 | 4 |
+
+## Offene Positionen
+
+| Pair | Seite | Entry | Notional | 20d-Rendite |
+|---|---|---|---|---|
+| LINK | LONG | 8.82400 | $300 | +10.1% |
+| ETH | LONG | 1953.75 | $300 | +8.6% |
+| SOL | SHORT | 76.7300 | $300 | -6.3% |
+| DOT | SHORT | 0.827400 | $300 | -6.5% |
+
+## Dieser Lauf
+
+- ⚡ LONG  LINK (10.1% in 20d)
+- ⚡ LONG  ETH (8.6% in 20d)
+- ⚡ SHORT SOL (-6.3% in 20d)
+- ⚡ SHORT DOT (-6.5% in 20d)

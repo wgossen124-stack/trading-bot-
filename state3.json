@@ -1,0 +1,42 @@
+{
+ "bal": 2000,
+ "peak": 2000,
+ "positions": [
+  {
+   "sym": "LINKUSDT",
+   "side": "LONG",
+   "entry": 8.824,
+   "notional": 300,
+   "ts": 1785181621836,
+   "ret": 10.1
+  },
+  {
+   "sym": "ETHUSDT",
+   "side": "LONG",
+   "entry": 1953.75,
+   "notional": 300,
+   "ts": 1785181621836,
+   "ret": 8.6
+  },
+  {
+   "sym": "SOLUSDT",
+   "side": "SHORT",
+   "entry": 76.73,
+   "notional": 300,
+   "ts": 1785181621836,
+   "ret": -6.3
+  },
+  {
+   "sym": "DOTUSDT",
+   "side": "SHORT",
+   "entry": 0.8274,
+   "notional": 300,
+   "ts": 1785181621836,
+   "ret": -6.5
+  }
+ ],
+ "trades": [],
+ "lastReb": 1785181621836,
+ "started": "2026-07-27T19:46:58.575Z",
+ "runs": 1
+}
