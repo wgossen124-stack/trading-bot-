@@ -11,19 +11,25 @@ concurrency:
 jobs:
   run:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # Bot 1 (bot.js) wurde am 25.07.2026 eingestellt und aus dem Zeitplan entfernt.
-      # Grund: kein Edge (-16 % über 61 Trades, WR 25 %, PF 0,51). Die Mechanik war
-      # Mean Reversion (EMA20-Rücksetzer) — in diesem Universum nachweislich ohne Vorteil,
-      # während Trendfolge funktioniert. bot.js und state.json bleiben als Archiv im Repo.
+      # Bot 1 (bot.js) wurde am 25.07.2026 eingestellt: kein Edge (-16 % über 63 Trades).
+      # bot.js und state.json bleiben als Archiv im Repo.
       - name: Bot-2-Lauf (Donchian 6h)
         run: node bot2.js
-        continue-on-error: true   # Bot-2-Fehler blockiert den Commit nicht
+        continue-on-error: true
+      # Bot 3 und 4 sind UNVALIDIERT (Walk-Forward nicht bestanden) und laufen
+      # ausschließlich als Papiergeld-Forward-Test. Siehe BOT34-KRITERIEN.md.
+      - name: Bot-3-Lauf (Momentum 1D)
+        run: node bot3.js
+        continue-on-error: true
+      - name: Bot-4-Lauf (Sweep-Reversal 4h)
+        run: node bot4.js
+        continue-on-error: true
       - name: Ergebnisse committen
         run: |
           git config user.name "cloud-bot"
