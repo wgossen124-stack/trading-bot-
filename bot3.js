@@ -7,7 +7,11 @@
 //     out-of-sample -28,8 % (2/10 Paare, 36,8 % Drawdown) bzw. +1,1 %.
 //     Er läuft ausschließlich mit Papiergeld als Forward-Test — der
 //     einzige Out-of-Sample-Test, der noch aussteht. Details:
-//     BOT34-KRITERIEN.md. Positionsgröße bewusst halbiert (Expo 30 statt 60).
+//     BOT34-KRITERIEN.md.
+//     Exposure 60 % = die Original-Spec, auf der auch getestet wurde
+//     (28.07.2026 von 30 auf 60 zurückgesetzt, Williams Entscheidung:
+//     der Forward-Test soll die Strategie so prüfen, wie sie gemeint ist).
+//     Greift beim nächsten Rebalancing — offene Positionen bleiben unberührt.
 //
 // Logik: alle Paare nach Rendite der letzten LB Tage sortieren,
 // die K stärksten long, die K schwächsten short, alle REB Tage neu.
@@ -16,7 +20,7 @@
 'use strict';
 const FS=require('fs');
 
-const P={ lb:20, topK:2, rebDays:14, lev:2, expoPct:30,
+const P={ lb:20, topK:2, rebDays:14, lev:2, expoPct:60,
   initBal:2000, fee:0.0005, slip:0.02, barMs:86400000 };
 
 // Exakt das Universum, auf dem getestet wurde — nicht erweitern ohne neuen Test.
