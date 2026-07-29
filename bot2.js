@@ -58,7 +58,10 @@ function signal(candles){
   if(c.c>hh && c.c>e200) sig='LONG';
   else if(c.c<ll && c.c<e200) sig='SHORT';
   if(!sig) return null;
-  return {sig, price:c.c, atr:a, e200};
+  // Ausbruchsstärke: wie weit der Schluss über den Kanal hinausgeht, in ATR.
+  // Dient als Rangfolge, wenn mehr Signale als freie Plätze da sind.
+  const strength=(sig==='LONG' ? c.c-hh : ll-c.c)/a;
+  return {sig, price:c.c, atr:a, e200, strength};
 }
 
 // ── Turtle-Trailing-Stop: N2-Bar-Gegenkanal ─────────────────────────
@@ -150,6 +153,11 @@ async function main(){
   }
 
   // ── Entries eröffnen (Cluster-Limit + Heat) ──
+  // Nach Ausbruchsstärke sortieren (ergänzt 29.07.2026). Vorher wurde in der
+  // Reihenfolge von SYMS eröffnet — bei mehr Signalen als freien Plätzen kamen
+  // also systematisch BTC/ETH/SOL zum Zug statt der stärksten Ausbrüche. Das
+  // war keine Strategieentscheidung, sondern die Reihenfolge einer Liste.
+  candidates.sort((a,b)=>b.strength-a.strength);
   for(const c of candidates){
     if(st.positions.length>=P.maxPositions) break;
     if(st.positions.filter(p=>p.side===c.sig).length>=P.maxSameSide) continue;  // max. 3 gleichgerichtet
