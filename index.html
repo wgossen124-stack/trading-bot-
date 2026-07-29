@@ -7,89 +7,185 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>Bot-Dashboard</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0a0d13;--card:#11151f;--card2:#161c29;--txt:#e8edf6;--mut:#7d8799;--mut2:#565f70;--grn:#22d992;--red:#f6465d;--acc:#4f7cff;--amb:#f0b90b;--bor:#1e2634;--bor2:#283245}
+/* ─────────────────────────────────────────────────────────────
+   Neutrale, zurückhaltende Palette. Farbe trägt ausschließlich
+   Information: grün/rot nur bei vorzeichenbehafteten Zahlen,
+   Bernstein nur bei Hinweisen. Alles andere ist Grauwert.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  --bg:#0a0b0d; --panel:#101114; --panel2:#15171b; --inset:#0d0e11;
+  --txt:#e7e8ea; --mut:#8d919b; --dim:#5c606a; --faint:#3a3d45;
+  --rule:#1e2025; --rule2:#282b31;
+  --grn:#3fb27f; --red:#d9455f; --amb:#c8952a; --acc:#5b7cc4;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{background:var(--bg);color:var(--txt);font-family:'Inter',-apple-system,sans-serif;padding:16px;max-width:1080px;margin:0 auto;font-size:14px}
-.mono{font-family:'JetBrains Mono',monospace}
-header{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-h1{font-size:17px;font-weight:800;letter-spacing:1.5px;display:flex;align-items:center;gap:9px}
-h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:0 0 8px var(--grn);animation:pulse 2s infinite}
-@keyframes pulse{50%{opacity:.35}}
-.btcbox{display:flex;align-items:center;gap:8px;background:var(--card);border:1px solid var(--bor);border-radius:10px;padding:6px 12px;font-size:12px}
-.btcbox b{font-size:13px}
-.sub{color:var(--mut);font-size:11.5px;margin-bottom:14px;display:flex;gap:14px;flex-wrap:wrap}
-.sub span b{color:var(--txt);font-weight:600}
-.summary{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-bottom:16px}
-@media(min-width:680px){.summary{grid-template-columns:repeat(6,1fr)}}
-.sumcard{background:linear-gradient(160deg,var(--card2),var(--card));border:1px solid var(--bor);border-radius:13px;padding:12px 14px}
-.sumcard .lbl{font-size:10px;color:var(--mut);text-transform:uppercase;letter-spacing:1px;font-weight:600;margin-bottom:5px}
-.sumcard .val{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace}
-.sumcard .det{font-size:11px;color:var(--mut);margin-top:3px}
+body{
+  background:var(--bg); color:var(--txt);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-size:13px; line-height:1.5;
+  padding:22px 20px 40px; max-width:1240px; margin:0 auto;
+  -webkit-font-smoothing:antialiased;
+}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+b,strong{font-weight:600}
+
+/* ── Kopf ── */
+header{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;
+  padding-bottom:12px;border-bottom:1px solid var(--rule2);margin-bottom:0}
+.brand{display:flex;align-items:center;gap:11px}
+.mark{width:3px;height:30px;background:var(--txt);flex:none}
+h1{font-size:14px;font-weight:600;letter-spacing:.14em;text-transform:uppercase}
+.tagline{font-size:11px;color:var(--dim);letter-spacing:.02em;margin-top:2px}
+.hdr-right{display:flex;align-items:center;gap:10px}
+.field{display:flex;align-items:baseline;gap:8px;border:1px solid var(--rule2);
+  padding:6px 11px;font-size:11px;color:var(--mut)}
+.field span{letter-spacing:.08em;text-transform:uppercase;font-size:9.5px;color:var(--dim)}
+.field b{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;
+  font-size:12.5px;color:var(--txt);font-weight:500}
+.field i{font-style:normal;font-family:'JetBrains Mono',monospace;font-size:11.5px}
+button.rf{background:transparent;color:var(--mut);border:1px solid var(--rule2);
+  padding:7px 13px;font-size:11px;font-weight:500;cursor:pointer;font-family:inherit;
+  letter-spacing:.06em;text-transform:uppercase}
+button.rf:hover{border-color:var(--faint);color:var(--txt)}
+
+/* ── Metazeile ── */
+.metabar{display:flex;gap:0;flex-wrap:wrap;border-bottom:1px solid var(--rule);
+  padding:9px 0;margin-bottom:20px;font-size:11px;color:var(--dim)}
+.metabar span{padding-right:20px;margin-right:20px;border-right:1px solid var(--rule);
+  letter-spacing:.01em}
+.metabar span:last-child{border-right:none}
+.metabar b{color:var(--mut);font-family:'JetBrains Mono',monospace;
+  font-variant-numeric:tabular-nums;font-weight:500}
+
+/* ── Kennzahlen oben ── */
+.summary{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin-bottom:20px}
+@media(min-width:720px){.summary{grid-template-columns:repeat(6,1fr)}}
+.sumcard{background:var(--panel);padding:13px 15px}
+.sumcard .lbl{font-size:9.5px;color:var(--dim);text-transform:uppercase;
+  letter-spacing:.1em;font-weight:500;margin-bottom:7px}
+.sumcard .val{font-size:19px;font-weight:500;font-family:'JetBrains Mono',monospace;
+  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+.sumcard .det{font-size:10.5px;color:var(--dim);margin-top:4px}
 .up{color:var(--grn)}.dn{color:var(--red)}.amb{color:var(--amb)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
-.alert{background:rgba(246,70,93,.09);border:1px solid rgba(246,70,93,.45);border-radius:12px;padding:11px 14px;margin-bottom:14px;font-size:12px;line-height:1.65;color:#ffd3d9}
-.alert b{display:block;color:var(--red);font-size:12.5px;letter-spacing:.4px;margin-bottom:3px}
-.okline{color:var(--mut2);font-size:10.5px;margin-bottom:14px;padding-left:2px}
-.card{background:var(--card);border:1px solid var(--bor);border-radius:15px;padding:16px;overflow:hidden}
-.bothead{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.bothead h2{font-size:15px;font-weight:700}
-.bothead .tag{font-size:10.5px;color:var(--mut);margin-top:2px}
-.bothead .tag.amb{color:var(--amb)}
-.badge{font-size:9.5px;font-weight:700;letter-spacing:.8px;padding:3px 8px;border-radius:20px;text-transform:uppercase}
-.badge.live{background:rgba(34,217,146,.12);color:var(--grn);border:1px solid rgba(34,217,146,.3)}
-.badge.wait{background:rgba(240,185,11,.1);color:var(--amb);border:1px solid rgba(240,185,11,.3)}
-.eqrow{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:4px 0 12px}
-.eq{font-size:30px;font-weight:800;font-family:'JetBrains Mono',monospace;letter-spacing:-.5px}
-.pnl{font-size:14px;font-weight:700;font-family:'JetBrains Mono',monospace}
-.pnl small{color:var(--mut);font-weight:500;font-family:'Inter';font-size:11px}
-.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin:12px 0}
-@media(min-width:420px){.kpis{grid-template-columns:repeat(4,1fr)}}
-.kpi{background:var(--card2);border:1px solid var(--bor);border-radius:9px;padding:8px 6px;text-align:center}
-.kpi b{display:block;font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:700}
-.kpi span{font-size:8.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.7px;font-weight:600}
-.chartbox{position:relative;height:170px;margin:8px 0 4px}
-.chartbox.sm{height:110px}
-.sec{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin:16px 0 6px;display:flex;justify-content:space-between;align-items:center}
-.sec .r{font-weight:500;letter-spacing:0;text-transform:none;font-size:11px}
-table{width:100%;border-collapse:collapse;font-size:12px}
-th{color:var(--mut2);font-weight:600;text-align:right;font-size:9.5px;text-transform:uppercase;letter-spacing:.6px;padding:5px 7px;border-bottom:1px solid var(--bor)}
-th:first-child,td:first-child{text-align:left}
-td{padding:6px 7px;border-bottom:1px solid var(--bor);text-align:right;font-family:'JetBrains Mono',monospace;font-size:11.5px}
-td b{font-family:'Inter';font-size:12px}
+
+/* ── Hinweise ── */
+.alert{border:1px solid rgba(217,69,95,.4);border-left:2px solid var(--red);
+  padding:11px 15px;margin-bottom:18px;font-size:12px;line-height:1.7;background:rgba(217,69,95,.05)}
+.alert .alert-h{color:var(--red);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;
+  font-weight:600;margin-bottom:5px}
+.alert div+div{color:#e8c4cb}
+.okline{color:var(--faint);font-size:10.5px;margin-bottom:18px;
+  font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;line-height:1.6}
+
+/* ── Bot-Karten ── */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(360px,1fr));gap:18px}
+.card{background:var(--panel);border:1px solid var(--rule);padding:0;overflow:hidden}
+.bothead{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;
+  padding:14px 16px 13px;border-bottom:1px solid var(--rule)}
+.bothead .idx{font-family:'JetBrains Mono',monospace;font-size:10.5px;color:var(--faint);
+  margin-bottom:3px;letter-spacing:.1em}
+.bothead h2{font-size:14px;font-weight:600;letter-spacing:.01em}
+.bothead .tag{font-size:10.5px;color:var(--dim);margin-top:4px;line-height:1.55}
+.bothead .flag{color:var(--amb);margin-top:5px;font-size:10px;letter-spacing:.02em}
+.bothead .flag b{letter-spacing:.1em;text-transform:uppercase;font-size:9.5px}
+.badge{font-size:9px;font-weight:600;letter-spacing:.12em;padding:3px 7px;
+  text-transform:uppercase;border:1px solid;white-space:nowrap;
+  font-family:'JetBrains Mono',monospace}
+.badge.live{color:var(--grn);border-color:rgba(63,178,127,.35)}
+.badge.wait{color:var(--amb);border-color:rgba(200,149,42,.35)}
+
+.body{padding:15px 16px 16px}
+.eqrow{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:4px}
+.eq{font-size:27px;font-weight:500;font-family:'JetBrains Mono',monospace;
+  font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.pnl{font-size:13px;font-weight:500;font-family:'JetBrains Mono',monospace;
+  font-variant-numeric:tabular-nums}
+.pnl small{color:var(--dim);font-weight:400;font-family:'Inter';font-size:10.5px;
+  letter-spacing:.04em;text-transform:uppercase}
+
+.chartbox{position:relative;height:172px;margin:14px 0 2px}
+.chartbox.sm{height:104px;margin:6px 0 2px}
+
+/* Kennzahlenblock: ein Raster mit Haarlinien, keine Einzelkacheln */
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);
+  border:1px solid var(--rule);margin:16px 0 0}
+.kpi{background:var(--inset);padding:9px 8px;text-align:right}
+.kpi b{display:block;font-size:13.5px;font-family:'JetBrains Mono',monospace;
+  font-variant-numeric:tabular-nums;font-weight:500;color:var(--txt)}
+.kpi span{display:block;font-size:8.5px;color:var(--dim);text-transform:uppercase;
+  letter-spacing:.09em;font-weight:500;margin-top:4px}
+
+.split{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule);
+  border:1px solid var(--rule);border-top:none;margin-bottom:0}
+.splitbox{background:var(--inset);padding:9px 11px;font-size:11px}
+.splitbox .t{color:var(--dim);font-size:8.5px;text-transform:uppercase;
+  letter-spacing:.09em;font-weight:500;margin-bottom:4px}
+.splitbox b{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;
+  font-size:12px;font-weight:500}
+.splitbox .sep{color:var(--faint);margin:0 5px}
+
+/* Abschnittsüberschrift mit durchlaufender Haarlinie */
+.sec{font-size:9.5px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;
+  font-weight:600;margin:20px 0 8px;display:flex;align-items:center;gap:12px}
+.sec::after{content:'';flex:1;height:1px;background:var(--rule)}
+.sec .r{font-weight:400;letter-spacing:.01em;text-transform:none;font-size:10.5px;
+  color:var(--mut);order:3;flex:none}
+.sec .r b{font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;font-weight:500}
+
+table{width:100%;border-collapse:collapse;font-size:11.5px}
+th{color:var(--faint);font-weight:500;text-align:right;font-size:9px;text-transform:uppercase;
+  letter-spacing:.09em;padding:0 8px 6px;border-bottom:1px solid var(--rule2)}
+th:first-child,td:first-child{text-align:left;padding-left:0}
+th:last-child,td:last-child{padding-right:0}
+td{padding:6px 8px;border-bottom:1px solid var(--rule);text-align:right;
+  font-family:'JetBrains Mono',monospace;font-variant-numeric:tabular-nums;font-size:11px;
+  color:var(--mut)}
+td b{font-family:'Inter';font-size:11.5px;color:var(--txt);font-weight:500}
 tr:last-child td{border-bottom:none}
-.side-L{color:var(--grn);font-weight:700}.side-S{color:var(--red);font-weight:700}
-.chip{display:inline-flex;align-items:center;gap:5px;background:var(--card2);border:1px solid var(--bor);border-radius:8px;padding:5px 9px;font-size:11px;margin:2px 3px 2px 0}
-.chip b{font-family:'JetBrains Mono',monospace}
-.chips{margin:4px 0}
-.empty{color:var(--mut2);font-size:12px;padding:8px 0;font-style:italic}
-.split{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:4px 0}
-.splitbox{background:var(--card2);border:1px solid var(--bor);border-radius:9px;padding:8px 10px;font-size:11px}
-.splitbox .t{color:var(--mut);font-size:9.5px;text-transform:uppercase;letter-spacing:.7px;font-weight:600;margin-bottom:3px}
-.splitbox b{font-family:'JetBrains Mono',monospace;font-size:12.5px}
-.heat{height:5px;background:var(--card2);border-radius:3px;margin-top:5px;overflow:hidden}
-.heat i{display:block;height:100%;background:linear-gradient(90deg,var(--grn),var(--amb));border-radius:3px}
-button.rf{background:var(--card2);color:var(--txt);border:1px solid var(--bor2);border-radius:9px;padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter'}
-button.rf:hover{border-color:var(--acc)}
-.foot{color:var(--mut2);font-size:10.5px;text-align:center;margin:20px 0 8px;line-height:1.6}
+.side-L{color:var(--grn)}.side-S{color:var(--red)}
+
+/* Aufzählungen ohne Kästchen — reine Datenzeilen */
+.datarow{font-size:11px;color:var(--mut);font-family:'JetBrains Mono',monospace;
+  font-variant-numeric:tabular-nums;line-height:1.9}
+.datarow .k{color:var(--dim)}
+.datarow .sep{color:var(--faint);margin:0 7px}
+.empty{color:var(--faint);font-size:11.5px;padding:6px 0}
+
+.heat{height:2px;background:var(--rule2);margin-top:7px;overflow:hidden}
+.heat i{display:block;height:100%;background:var(--acc)}
+
+.foot{color:var(--faint);font-size:10.5px;text-align:center;margin:32px 0 0;
+  padding-top:16px;border-top:1px solid var(--rule);line-height:1.8}
 </style>
 </head>
 <body>
 <header>
- <h1><span class="dot"></span>BOT-DASHBOARD</h1>
- <div style="display:flex;gap:8px;align-items:center">
-  <div class="btcbox" id="btcbox">BTC <b class="mono" id="btcP">–</b><span id="btcC" class="mono"></span></div>
-  <button class="rf" onclick="load()">↻</button>
+ <div class="brand">
+  <span class="mark"></span>
+  <div>
+   <h1>Trading-Bot Dashboard</h1>
+   <div class="tagline">Paper-Trading · drei Systeme · Kurse OKX, Zustand GitHub</div>
+  </div>
+ </div>
+ <div class="hdr-right">
+  <div class="field"><span>BTC/USDT</span><b id="btcP">–</b><i id="btcC" class="mono"></i></div>
+  <button class="rf" onclick="load()">Aktualisieren</button>
  </div>
 </header>
-<div class="sub" id="sub"><span>lade…</span></div>
+<div class="metabar" id="sub"><span>lade…</span></div>
 <div class="summary" id="summary"></div>
 <div id="warn"></div>
 <div class="grid" id="grid"></div>
-<div class="foot">Paper-Trading · Bot-Daten aus GitHub (Verzögerung bis ~5 Min nach Lauf) · Kurse &amp; unrealisierte PnL live von OKX<br>Bot 1: Donchian 6h (validiert) · Bot 2 &amp; 3: unvalidierte Forward-Tests — Auto-Refresh alle 5 Min<br>Vorgänger-Bot (Scalp) am 25.07.2026 eingestellt: $1.672 (-16,4 %) nach 63 Trades · Nummerierung seither neu vergeben</div>
+<div class="foot">
+ Paper-Trading · Zustandsdaten aus GitHub (Verzögerung bis ~5 Min nach Lauf) · Kurse und unrealisierte PnL live von OKX · Auto-Refresh alle 5 Min<br>
+ Bot 1 validiert · Bot 2 und Bot 3 sind unvalidierte Forward-Tests<br>
+ Vorgänger-Bot (Scalp) am 25.07.2026 eingestellt: $1.672 (−16,4 %) nach 63 Trades · Nummerierung seither neu vergeben
+</div>
 <script>
 const REPO='wgossen124-stack/trading-bot-';
 const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
@@ -101,9 +197,9 @@ const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 //   Anzeige BOT 3 = bot4.js / state4.json  (Sweep)
 // Dateinamen bewusst NICHT geändert — sonst reißt die Equity-Historie ab.
 const BOTS=[
- {name:'BOT 1 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000},
- {name:'BOT 2 · Momentum',tag:'1D · 10 Paare · Rang 20d · Top2 long / Flop2 short · alle 14 Tage · Expo 60',file:'state3.json',init:2000,unvalidiert:true},
- {name:'BOT 3 · Sweep-Reversal',tag:'4h · 10 Paare · N30-Extrem + Bestätigung · Ziel 3R',file:'state4.json',init:2000,unvalidiert:true}
+ {name:'Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000},
+ {name:'Cross-Sectional Momentum',tag:'1D · 10 Paare · Rang 20d · Top2 long / Flop2 short · alle 14 Tage · Exposure 60',file:'state3.json',init:2000,unvalidiert:true},
+ {name:'Sweep-Reversal',tag:'4h · 10 Paare · N30-Extrem + Bestätigung · Ziel 3R',file:'state4.json',init:2000,unvalidiert:true}
 ];
 // Warnschwellen (nur Anzeige, kein Eingriff in den Bot)
 // stuckDays: Der Donchian-Bot (Anzeige BOT 1) hat selbst ein Timeout von 40 Bars × 6h = 10 Tagen und HÄLT Gewinner
@@ -111,11 +207,13 @@ const BOTS=[
 // (Korrigiert 26.07.2026 — vorher 3 Tage, das war eine Bot-1-Zahl und löste falschen Alarm aus.)
 const LIMITS={dd:25, pf:0.8, pfMinTrades:30, stuckDays:11};
 const $=s=>document.querySelector(s);
-const fmt=(v,d=2)=>(v>=0?'+':'')+v.toFixed(d);
+const fmt=(v,d=2)=>(v>=0?'+':'−')+Math.abs(v).toFixed(d);
 const money=v=>'$'+v.toFixed(2);
 const charts={};
-Chart.defaults.color='#7d8799';Chart.defaults.borderColor='#1e2634';
-Chart.defaults.font.family="'Inter',sans-serif";Chart.defaults.font.size=10;
+// Chart-Grundeinstellungen an die gedämpfte Palette angeglichen
+const C={grn:'#3fb27f',red:'#d9455f',grid:'#1a1c20',axis:'#5c606a'};
+Chart.defaults.color=C.axis;Chart.defaults.borderColor=C.grid;
+Chart.defaults.font.family="'JetBrains Mono',monospace";Chart.defaults.font.size=9.5;
 async function getJson(u){try{const r=await fetch(u+(u.includes('?')?'&':'?')+'t='+Date.now());if(!r.ok)return null;return await r.json();}catch(e){return null;}}
 async function okx(path){try{const r=await fetch('https://www.okx.com/api/v5/'+path);const d=await r.json();return d.data||null;}catch(e){return null;}}
 // Momentum (state3) führt Positionen als Notional ohne Margin, state2/state4 als Size+Margin
@@ -162,8 +260,13 @@ function stats(st,init,px){
   reasons,symRank,trades:t};
 }
 function kpi(v,lbl,cls=''){return `<div class="kpi"><b class="${cls}">${v}</b><span>${lbl}</span></div>`;}
+const num=i=>('0'+(i+1)).slice(-2);
 function botCard(i,b,st,px){
- if(!st)return `<div class="card"><div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div></div><span class="badge wait">wartet</span></div><div class="empty">Wartet auf den ersten Lauf…</div></div>`;
+ const head=(badge,badgeCls)=>`<div class="bothead">
+   <div><div class="idx">BOT ${num(i)}</div><h2>${b.name}</h2><div class="tag">${b.tag}</div>
+   ${b.unvalidiert?'<div class="tag flag"><b>Unvalidiert</b> — Walk-Forward nicht bestanden, läuft als Forward-Test</div>':''}</div>
+   <span class="badge ${badgeCls}">${badge}</span></div>`;
+ if(!st)return `<div class="card">${head('wartet','wait')}<div class="body"><div class="empty">Wartet auf den ersten Lauf.</div></div></div>`;
  const s=stats(st,b.init,px);
  const cls=s.pnl>=0?'up':'dn';
  const posRows=st.positions.map(p=>{
@@ -171,45 +274,50 @@ function botCard(i,b,st,px){
   const basis=p.margin||p.notional||0;
   const upct=(u!=null&&basis)?u/basis*100:null;
   const age=Math.round((Date.now()-p.ts)/36e5);
-  return `<tr><td><b>${p.sym.replace('USDT','')}</b></td><td class="side-${p.side[0]}">${p.side}</td><td>${pEntry(p).toPrecision(5)}</td><td>${p.sl!=null?p.sl.toPrecision(5):'–'}</td><td>${money(basis)}</td><td class="${u==null?'':u>=0?'up':'dn'}">${u==null?'–':fmt(u)+'$'}</td><td class="${upct==null?'':upct>=0?'up':'dn'}">${upct==null?'–':fmt(upct,1)+'%'}</td><td>${age<48?age+'h':Math.round(age/24)+'d'}</td></tr>`;
+  return `<tr><td><b>${p.sym.replace('USDT','')}</b></td><td class="side-${p.side[0]}">${p.side}</td><td>${pEntry(p).toPrecision(5)}</td><td>${p.sl!=null?p.sl.toPrecision(5):'–'}</td><td>${money(basis)}</td><td class="${u==null?'':u>=0?'up':'dn'}">${u==null?'–':fmt(u)}</td><td class="${upct==null?'':upct>=0?'up':'dn'}">${upct==null?'–':fmt(upct,1)+'%'}</td><td>${age<48?age+'h':Math.round(age/24)+'d'}</td></tr>`;
  }).join('');
  const trRows=[...s.trades].reverse().slice(0,10).map(t=>{
   const d=new Date(t.ts),ds=('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
   const extra=t.entryType?`<td>${t.entryType}${t.score?' '+t.score:''}</td>`:'';
-  return `<tr><td>${ds}</td><td><b>${t.sym.replace('USDT','')}</b></td><td class="side-${t.side[0]}">${t.side}</td>${extra}<td class="${t.pnl>=0?'up':'dn'}">${fmt(t.pnl)}$</td><td>${t.reason}</td></tr>`;
+  return `<tr><td>${ds}</td><td><b>${t.sym.replace('USDT','')}</b></td><td class="side-${t.side[0]}">${t.side}</td>${extra}<td class="${t.pnl>=0?'up':'dn'}">${fmt(t.pnl)}</td><td>${t.reason}</td></tr>`;
  }).join('');
  const hasType=s.trades.some(t=>t.entryType);
  const top=s.symRank.slice(0,3),flop=s.symRank.slice(-3).reverse();
- const rChips=Object.entries(s.reasons).map(([r,x])=>`<span class="chip">${r==='TP'?'✅':r==='SL'?'🛑':'⏱'} ${r} <b>${x.n}×</b> <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b></span>`).join('');
+ const sepd='<span class="sep">·</span>';
+ const rRow=Object.entries(s.reasons).map(([r,x])=>
+   `<span class="k">${r}</span> ${x.n}× <span class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</span>`).join(sepd);
+ const symRow=a=>a.map(([sy,x])=>
+   `<span class="k">${sy.replace('USDT','')}</span> <span class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</span> <span style="color:var(--faint)">${x.n}×</span>`).join(sepd);
  return `<div class="card">
-  <div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div>${b.unvalidiert?'<div class="tag amb">⚠ unvalidiert — Walk-Forward nicht bestanden, läuft als Forward-Test</div>':''}</div><span class="badge ${b.stopped?'wait':'live'}">${b.stopped?(st.positions.length?'Abwicklung':'gestoppt'):'live'}</span></div>
-  <div class="eqrow"><span class="eq">${money(s.eq)}</span><span class="pnl ${cls}">${fmt(s.pnl)}$ (${fmt(s.pct,1)}%)</span>${st.positions.length?`<span class="pnl ${s.unreal>=0?'up':'dn'}" style="font-size:12px">${fmt(s.unreal)}$ <small>unreal.</small></span>`:''}</div>
+  ${head(b.stopped?(st.positions.length?'Abwicklung':'gestoppt'):'live', b.stopped?'wait':'live')}
+  <div class="body">
+  <div class="eqrow"><span class="eq">${money(s.eq)}</span><span class="pnl ${cls}">${fmt(s.pnl)} (${fmt(s.pct,1)} %)</span>${st.positions.length?`<span class="pnl ${s.unreal>=0?'up':'dn'}" style="font-size:11.5px">${fmt(s.unreal)} <small>unrealisiert</small></span>`:''}</div>
   <div class="chartbox"><canvas id="eq${i}"></canvas></div>
   <div class="kpis">
-   ${kpi(s.wr.toFixed(0)+'%','Winrate')}
-   ${kpi(s.pf.toFixed(2),'P-Faktor',s.pf>=1.3?'up':s.pf<1?'dn':'')}
-   ${kpi(fmt(s.exp,1)+'$','Erwartung/Trade',s.exp>=0?'up':'dn')}
+   ${kpi(s.wr.toFixed(0)+' %','Trefferquote')}
+   ${kpi(s.pf.toFixed(2),'Profitfaktor',s.pf>=1.3?'up':s.pf<1?'dn':'')}
+   ${kpi(fmt(s.exp,1),'Erwartung/Trade',s.exp>=0?'up':'dn')}
    ${kpi(s.n,'Trades')}
-   ${kpi('+'+s.avgW.toFixed(0)+'$','Ø Gewinn','up')}
-   ${kpi('-'+s.avgL.toFixed(0)+'$','Ø Verlust','dn')}
-   ${kpi(s.maxdd.toFixed(1)+'%','Max. DD')}
-   ${kpi(s.streak===0?'–':(s.streak>0?s.streak+'W':(-s.streak)+'L'),'Serie',s.streak>0?'up':s.streak<0?'dn':'')}
+   ${kpi('+'+s.avgW.toFixed(0),'Ø Gewinn','up')}
+   ${kpi('−'+s.avgL.toFixed(0),'Ø Verlust','dn')}
+   ${kpi(s.maxdd.toFixed(1)+' %','Max. Drawdown')}
+   ${kpi(s.streak===0?'–':(s.streak>0?s.streak+' W':(-s.streak)+' L'),'Serie',s.streak>0?'up':s.streak<0?'dn':'')}
   </div>
   <div class="split">
-   <div class="splitbox"><div class="t">Long · ${s.long.n} Trades</div><b>${s.long.wr.toFixed(0)}% WR</b> · <b class="${s.long.pnl>=0?'up':'dn'}">${fmt(s.long.pnl,0)}$</b></div>
-   <div class="splitbox"><div class="t">Short · ${s.short.n} Trades</div><b>${s.short.wr.toFixed(0)}% WR</b> · <b class="${s.short.pnl>=0?'up':'dn'}">${fmt(s.short.pnl,0)}$</b></div>
+   <div class="splitbox"><div class="t">Long · ${s.long.n} Trades</div><b>${s.long.wr.toFixed(0)} %</b><span class="sep">·</span><b class="${s.long.pnl>=0?'up':'dn'}">${fmt(s.long.pnl,0)}$</b></div>
+   <div class="splitbox"><div class="t">Short · ${s.short.n} Trades</div><b>${s.short.wr.toFixed(0)} %</b><span class="sep">·</span><b class="${s.short.pnl>=0?'up':'dn'}">${fmt(s.short.pnl,0)}$</b></div>
   </div>
-  <div class="chips">${rChips}</div>
-  <div class="sec">Tages-PnL <span class="r">Heute: <b class="${s.todayPnl>=0?'up':'dn'} mono">${fmt(s.todayPnl)}$</b> · ${s.todayN} Trades</span></div>
+  ${rRow?`<div class="sec">Ausstiegsgründe</div><div class="datarow">${rRow}</div>`:''}
+  <div class="sec">Tages-PnL <span class="r">Heute <b class="${s.todayPnl>=0?'up':'dn'}">${fmt(s.todayPnl)}</b> · ${s.todayN} Trades</span></div>
   <div class="chartbox sm"><canvas id="day${i}"></canvas></div>
-  <div class="sec">Kapital <span class="r mono">frei ${money(s.free)} · gebunden ${money(s.locked)} (${s.heat.toFixed(0)}%)</span></div>
+  <div class="sec">Kapital <span class="r">frei <b>${money(s.free)}</b> · gebunden <b>${money(s.locked)}</b> (${s.heat.toFixed(0)} %)</span></div>
   <div class="heat"><i style="width:${Math.min(100,s.heat/40*100)}%"></i></div>
-  <div class="sec">Offene Positionen (${st.positions.length})${b.stopped&&st.positions.length?'<span class="r amb">Exit-only · schließen per Stop/TP/48h-Timeout</span>':''}</div>
-  ${st.positions.length?`<div style="overflow-x:auto"><table><tr><th>Pair</th><th>Seite</th><th>Entry</th><th>Stop</th><th>Margin</th><th>PnL</th><th>PnL%</th><th>Alter</th></tr>${posRows}</table></div>`:'<div class="empty">keine offenen Positionen</div>'}
+  <div class="sec">Offene Positionen <span class="r">${st.positions.length}${b.stopped&&st.positions.length?' · Exit-only':''}</span></div>
+  ${st.positions.length?`<div style="overflow-x:auto"><table><tr><th>Paar</th><th>Seite</th><th>Entry</th><th>Stop</th><th>Einsatz</th><th>PnL</th><th>PnL %</th><th>Alter</th></tr>${posRows}</table></div>`:'<div class="empty">keine offenen Positionen</div>'}
   <div class="sec">Letzte Trades</div>
-  ${s.n?`<div style="overflow-x:auto"><table><tr><th>Zeit</th><th>Pair</th><th>Seite</th>${hasType?'<th>Setup</th>':''}<th>PnL</th><th>Exit</th></tr>${trRows}</table></div>`:'<div class="empty">noch keine Trades</div>'}
-  ${s.symRank.length>1?`<div class="sec">Beste / schlechteste Paare</div><div class="chips">${top.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}<br>${flop.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}</div>`:''}
- </div>`;
+  ${s.n?`<div style="overflow-x:auto"><table><tr><th>Zeit</th><th>Paar</th><th>Seite</th>${hasType?'<th>Setup</th>':''}<th>PnL</th><th>Ausstieg</th></tr>${trRows}</table></div>`:'<div class="empty">noch keine Trades</div>'}
+  ${s.symRank.length>1?`<div class="sec">Paare · beste und schwächste</div><div class="datarow">${symRow(top)}<br>${symRow(flop)}</div>`:''}
+  </div></div>`;
 }
 function drawCharts(i,st,init,px){
  if(!st)return;const s=stats(st,init,px);
@@ -218,22 +326,26 @@ function drawCharts(i,st,init,px){
  const pts=s.curve.map(p=>({x:p.ts,y:p.v}));
  // aktueller Stand (inkl. unrealisierter PnL) als letzter Punkt
  pts.push({x:Date.now(),y:s.eq});
- const segCol=c=>{const y0=c.p0.parsed.y,y1=c.p1.parsed.y;return (y0+y1)/2>=init?'#22d992':'#f6465d';};
- charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{datasets:[{data:pts,borderWidth:2,pointRadius:0,pointHitRadius:10,tension:0,
+ const segCol=c=>{const y0=c.p0.parsed.y,y1=c.p1.parsed.y;return (y0+y1)/2>=init?C.grn:C.red;};
+ charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{datasets:[{data:pts,borderWidth:1.4,pointRadius:0,pointHitRadius:10,tension:0,
    segment:{borderColor:segCol},
-   borderColor:pts[pts.length-1].y>=init?'#22d992':'#f6465d',
-   fill:{target:{value:init},above:'rgba(34,217,146,.08)',below:'rgba(246,70,93,.08)'}}]},
+   borderColor:pts[pts.length-1].y>=init?C.grn:C.red,
+   fill:{target:{value:init},above:'rgba(63,178,127,.05)',below:'rgba(217,69,95,.05)'}}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
-   tooltip:{mode:'nearest',intersect:false,callbacks:{
+   tooltip:{mode:'nearest',intersect:false,backgroundColor:'#15171b',borderColor:'#282b31',borderWidth:1,
+    titleColor:'#8d919b',bodyColor:'#e7e8ea',padding:9,displayColors:false,
+    callbacks:{
     title:c=>new Date(c[0].parsed.x).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})+' Uhr',
-    label:c=>' $'+c.parsed.y.toFixed(2)+' ('+(c.parsed.y-init>=0?'+':'')+(c.parsed.y-init).toFixed(2)+'$)'}}},
-  scales:{x:{type:'linear',bounds:'data',ticks:{maxTicksLimit:7,maxRotation:0,
+    label:c=>'$'+c.parsed.y.toFixed(2)+'  ('+(c.parsed.y-init>=0?'+':'−')+Math.abs(c.parsed.y-init).toFixed(2)+')'}}},
+  scales:{x:{type:'linear',bounds:'data',border:{color:C.grid},ticks:{maxTicksLimit:7,maxRotation:0,padding:6,
     callback:v=>{const d=new Date(v);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.';}},grid:{display:false}},
-   y:{ticks:{maxTicksLimit:5,callback:v=>'$'+v.toFixed(0)},grid:{color:'#161c29'}}}}});
+   y:{border:{display:false},ticks:{maxTicksLimit:5,padding:8,callback:v=>'$'+v.toFixed(0)},grid:{color:C.grid,drawTicks:false}}}}});
  if(charts['day'+i])charts['day'+i].destroy();
- charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(34,217,146,.75)':'rgba(246,70,93,.75)'),borderRadius:3}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+'$'}}},
-  scales:{x:{grid:{display:false},ticks:{maxRotation:0,maxTicksLimit:7}},y:{ticks:{maxTicksLimit:4,callback:v=>fmt(v,0)},grid:{color:'#161c29'}}}}});
+ charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(63,178,127,.8)':'rgba(217,69,95,.8)'),borderRadius:0,barPercentage:.62,categoryPercentage:.9}]},
+  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
+   tooltip:{backgroundColor:'#15171b',borderColor:'#282b31',borderWidth:1,titleColor:'#8d919b',bodyColor:'#e7e8ea',padding:9,displayColors:false,callbacks:{label:c=>fmt(c.parsed.y)+' $'}}},
+  scales:{x:{grid:{display:false},border:{color:C.grid},ticks:{maxRotation:0,maxTicksLimit:7,padding:5}},
+   y:{border:{display:false},ticks:{maxTicksLimit:4,padding:8,callback:v=>fmt(v,0)},grid:{color:C.grid,drawTicks:false}}}}});
 }
 async function load(){
  const [states,commit,btc]=await Promise.all([
@@ -244,7 +356,7 @@ async function load(){
  const syms=[...new Set(states.flatMap(s=>s?s.positions.map(p=>p.sym):[]))];
  const px={};
  await Promise.all(syms.map(async s=>{const d=await okx('market/ticker?instId='+s.replace('USDT','-USDT-SWAP'));if(d&&d[0])px[s]=+d[0].last;}));
- // Funding-Monitor (Bot-3-Signal): Ø aktueller Funding-Raten annualisiert
+ // Funding-Monitor (Harvesting-Signal): Ø aktueller Funding-Raten annualisiert
  const frs=[];
  await Promise.all(['BTC','ETH','SOL','DOGE','BNB'].map(async s=>{
   const d=await okx('public/funding-rate?instId='+s+'-USDT-SWAP');
@@ -253,7 +365,7 @@ async function load(){
  // BTC-Ticker
  if(btc&&btc[0]){const p=+btc[0].last,o=+btc[0].open24h,c=(p-o)/o*100;
   $('#btcP').textContent='$'+p.toLocaleString('de-DE',{maximumFractionDigits:0});
-  $('#btcC').textContent=fmt(c,1)+'%';$('#btcC').className='mono '+(c>=0?'up':'dn');}
+  $('#btcC').textContent=fmt(c,1)+' %';$('#btcC').className='mono '+(c>=0?'up':'dn');}
  // Karten
  $('#grid').innerHTML=BOTS.map((b,i)=>botCard(i,b,states[i],px)).join('');
  BOTS.forEach((b,i)=>drawCharts(i,states[i],b.init,px));
@@ -264,29 +376,29 @@ async function load(){
   nOpen+=states[i].positions.length; locked+=s.locked; allT+=s.n; });
  const tp=tot-init,tc=tp>=0?'up':'dn';
  $('#summary').innerHTML=!init?'':
-  `<div class="sumcard"><div class="lbl">Equity gesamt</div><div class="val">${money(tot)}</div><div class="det">Start $${init}</div></div>`+
-  `<div class="sumcard"><div class="lbl">PnL gesamt</div><div class="val ${tc}">${fmt(tp)}$</div><div class="det ${tc}">${fmt(tp/init*100,1)}%</div></div>`+
-  `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${today>=0?'up':'dn'}">${fmt(today)}$</div><div class="det">realisiert (UTC)</div></div>`+
+  `<div class="sumcard"><div class="lbl">Equity gesamt</div><div class="val">${money(tot)}</div><div class="det">Einsatz $${init}</div></div>`+
+  `<div class="sumcard"><div class="lbl">PnL gesamt</div><div class="val ${tc}">${fmt(tp)}</div><div class="det ${tc}">${fmt(tp/init*100,1)} %</div></div>`+
+  `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${today>=0?'up':'dn'}">${fmt(today)}</div><div class="det">realisiert, UTC</div></div>`+
   `<div class="sumcard"><div class="lbl">Positionen</div><div class="val">${nOpen}</div><div class="det">${money(locked)} gebunden</div></div>`+
-  `<div class="sumcard"><div class="lbl">Trades</div><div class="val">${allT}</div><div class="det">alle Bots</div></div>`+
-  `<div class="sumcard"><div class="lbl">Funding-APR Ø</div><div class="val ${fApr==null?'':fApr>=15?'up':fApr>=5?'amb':''}">${fApr==null?'–':fApr.toFixed(1)+'%'}</div><div class="det">Harvesting-Signal ab ~15%</div></div>`;
+  `<div class="sumcard"><div class="lbl">Trades</div><div class="val">${allT}</div><div class="det">alle Systeme</div></div>`+
+  `<div class="sumcard"><div class="lbl">Funding-APR Ø</div><div class="val ${fApr==null?'':fApr>=15?'up':fApr>=5?'amb':''}">${fApr==null?'–':fApr.toFixed(1)+' %'}</div><div class="det">Harvesting ab ~15 %</div></div>`;
  // ── Warnungen je Bot (nur Anzeige — kein Eingriff in die Bots) ──
  const warn=[];
  S.forEach((s,i)=>{
-  if(!s)return; const nm=BOTS[i].name.split(' · ')[0];
-  if(s.ddNow>=LIMITS.dd) warn.push(`<b>${nm}</b>: Drawdown ${s.ddNow.toFixed(1)} % — Schwelle ${LIMITS.dd} % erreicht. Regel: stoppen und überprüfen.`);
-  if(s.n>=LIMITS.pfMinTrades && s.pf<LIMITS.pf) warn.push(`<b>${nm}</b>: Profitfaktor ${s.pf.toFixed(2)} bei ${s.n} Trades — unter ${LIMITS.pf}. Regel: Strategie überprüfen.`);
+  if(!s)return; const nm='Bot '+num(i);
+  if(s.ddNow>=LIMITS.dd) warn.push(`<b>${nm}</b> · Drawdown ${s.ddNow.toFixed(1)} % — Schwelle ${LIMITS.dd} % erreicht. Regel: stoppen und überprüfen.`);
+  if(s.n>=LIMITS.pfMinTrades && s.pf<LIMITS.pf) warn.push(`<b>${nm}</b> · Profitfaktor ${s.pf.toFixed(2)} bei ${s.n} Trades — unter ${LIMITS.pf}. Regel: Strategie überprüfen.`);
   const stuck=states[i].positions.filter(p=>(Date.now()-p.ts)/86400000>LIMITS.stuckDays);
-  if(stuck.length) warn.push(`<b>${nm}</b>: ${stuck.length} Position(en) älter als ${LIMITS.stuckDays} Tage (${stuck.map(p=>p.sym.replace('USDT','')).join(', ')}) — Exit-Logik prüfen.`);
+  if(stuck.length) warn.push(`<b>${nm}</b> · ${stuck.length} Position(en) älter als ${LIMITS.stuckDays} Tage (${stuck.map(p=>p.sym.replace('USDT','')).join(', ')}) — Exit-Logik prüfen.`);
  });
- const ist=S.map((s,i)=>s?BOTS[i].name.split(' · ')[0].replace('BOT ','B')+' DD '+s.ddNow.toFixed(1)+'%/PF '+s.pf.toFixed(2):null).filter(Boolean).join(' · ');
+ const ist=S.map((s,i)=>s?'Bot '+num(i)+' DD '+s.ddNow.toFixed(1)+'% / PF '+s.pf.toFixed(2):null).filter(Boolean).join('   ');
  $('#warn').innerHTML = warn.length
-  ? `<div class="alert"><b>⚠ Abbruchkriterium erreicht</b>${warn.map(w=>'<div>'+w+'</div>').join('')}</div>`
-  : `<div class="okline">Wächter aktiv · Warnung bei Drawdown ≥ ${LIMITS.dd} % · Profitfaktor < ${LIMITS.pf} ab ${LIMITS.pfMinTrades} Trades · Position > ${LIMITS.stuckDays} Tage — aktuell: ${ist}</div>`;
- // Subline
- let sub=`<span>Stand: <b>${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</b></span>`;
- if(commit&&commit[0])sub+=`<span>Letzter Bot-Lauf: <b>${new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b></span>`;
- states.forEach((s,i)=>{ if(s)sub+=`<span>${BOTS[i].name.split(' · ')[0]}: <b>${s.runs}</b> Läufe</span>`; });
+  ? `<div class="alert"><div class="alert-h">Abbruchkriterium erreicht</div>${warn.map(w=>'<div>'+w+'</div>').join('')}</div>`
+  : `<div class="okline">Wächter aktiv — Warnung bei Drawdown ≥ ${LIMITS.dd} %, Profitfaktor < ${LIMITS.pf} ab ${LIMITS.pfMinTrades} Trades, Position > ${LIMITS.stuckDays} Tage<br>Aktuell: ${ist}</div>`;
+ // Metazeile
+ let sub=`<span>Stand <b>${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ if(commit&&commit[0])sub+=`<span>Letzter Bot-Lauf <b>${new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b></span>`;
+ states.forEach((s,i)=>{ if(s)sub+=`<span>Bot ${num(i)} <b>${s.runs}</b> Läufe</span>`; });
  $('#sub').innerHTML=sub;
 }
 load();
