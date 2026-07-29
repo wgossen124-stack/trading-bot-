@@ -139,7 +139,12 @@ async function main(){
     if(st.cd[sym] && Date.now()-st.cd[sym] < P.cooldownBars*P.barMs) continue;
     // Freshness-Guard: nur Signale der zuletzt geschlossenen Kerze, und die
     // nur innerhalb von maxEntryAge nach ihrem Schluss. Siehe Kommentar bei P.
-    if(Date.now()-(last.ts+P.barMs) > P.maxEntryAge){ st.skipStale=(st.skipStale||0)+1; continue; }
+    const closeTs=last.ts+P.barMs, tooOld=Date.now()-closeTs > P.maxEntryAge;
+    // Messpunkt: zählt KERZEN, die kein Lauf rechtzeitig erwischt hat — nicht
+    // Symbolprüfungen. Alle Symbole teilen dieselben Kerzengrenzen, deshalb
+    // greift das genau einmal pro neuer Kerze.
+    if(closeTs>(st.lastBarSeen||0)){ if(tooOld) st.missedBars=(st.missedBars||0)+1; st.lastBarSeen=closeTs; }
+    if(tooOld) continue;
     const s=signal(k);
     if(s) candidates.push({sym,...s,live,ts:last.ts});
   }
@@ -186,7 +191,7 @@ async function main(){
   L.push('');
   L.push('> Aktualisiert: '+new Date().toISOString().replace('T',' ').slice(0,16)+' UTC · Lauf #'+st.runs+' · '+P.tf+' · N'+P.nEntry+'/'+P.nExit);
   L.push('>');
-  L.push('> Verworfen seit Start: '+(st.skipStale||0)+'× Fenster zu alt (>'+(P.maxEntryAge/3600000)+' h) · '+(st.skipDrift||0)+'× Kurs mehr als 1×ATR gelaufen');
+  L.push('> Verpasste Kerzen (kein Lauf binnen '+(P.maxEntryAge/3600000)+' h nach Schluss): '+(st.missedBars||0)+' · verworfen wegen Kursdrift >1×ATR: '+(st.skipDrift||0));
   L.push('');
   L.push('| Equity | PnL | Winrate | Trades | Offen | Drawdown |');
   L.push('|---|---|---|---|---|---|');
