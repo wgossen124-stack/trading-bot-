@@ -36,7 +36,11 @@ async function candles(sym,limit){
   const d=await r.json();
   if(d.code!=='0'||!d.data||!d.data.length) return null;
   const now=Date.now();
-  return [...d.data].reverse().map(c=>({ts:+c[0],c:+c[4]})).filter(b=>b.ts+P.barMs<=now);
+  const all=[...d.data].reverse().map(c=>({ts:+c[0],c:+c[4]}));
+  // Die Rangliste braucht abgeschlossene Tageskerzen, die AUSFÜHRUNG dagegen den
+  // aktuellen Kurs — sonst wird zu einem bis zu 24 h alten Schlusskurs gebucht.
+  // (Bug gefunden und behoben 29.07.2026.)
+  return { k: all.filter(b=>b.ts+P.barMs<=now), live: all[all.length-1].c };
 }
 
 function loadState(){
@@ -50,13 +54,13 @@ async function main(){
   const log=[];
 
   // Kurse holen
-  const data={};
+  const data={}; const px={};
   for(const s of SYMS){
     await sleep(150);
-    try{ data[s]=await candles(s,P.lb+5); }catch(e){ data[s]=null; }
+    let res=null; try{ res=await candles(s,P.lb+5); }catch(e){ res=null; }
+    data[s]=res&&res.k&&res.k.length?res.k:null;
+    if(res&&res.live!=null) px[s]=res.live;   // Live-Kurs für Ausführung und Bewertung
   }
-  const px={};
-  for(const s of SYMS){ const k=data[s]; if(k&&k.length) px[s]=k[k.length-1].c; }
 
   const unreal=()=>st.positions.reduce((a,p)=>{
     const lp=px[p.sym]; if(lp==null) return a;
@@ -84,7 +88,12 @@ async function main(){
       if(!now||!then) continue;
       rets.push({s, r:now/then-1});
     }
-    if(rets.length>=2*P.topK){
+    // Nur umschichten, wenn wirklich alles glattgestellt werden konnte — sonst
+    // stünden alte und neue Positionen nebeneinander und die Größenrechnung
+    // (eq = st.bal) wäre falsch. (Korrigiert 29.07.2026.)
+    if(st.positions.length){
+      log.push('⚠ '+st.positions.length+' Position(en) ohne Kurs — Rebalancing verschoben');
+    } else if(rets.length>=2*P.topK){
       rets.sort((a,b)=>b.r-a.r);
       const eq=st.bal; // nach dem Schließen ist alles Cash
       const notionalEach=eq*P.lev*(P.expoPct/100)/(2*P.topK);
