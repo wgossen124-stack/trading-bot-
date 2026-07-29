@@ -18,6 +18,12 @@ const FS=require('fs');
 
 const P={ n:30, r:3, confirm:true, timeoutBars:20,
   risk:1.0, lev:3, maxPos:5, maxMarginPct:12,
+  // Höchstens 3 der 5 Positionen in dieselbe Richtung (ergänzt 29.07.2026).
+  // Vorher gab es kein Limit: alle fünf durften long sein — und waren es auch.
+  // In Krypto hängt praktisch alles am Bitcoin, fünf gleichgerichtete Positionen
+  // sind deshalb keine Streuung, sondern eine fünffache Wette. Bot 1 hat
+  // dasselbe Limit (3 von 8) seit seinem Start.
+  maxSameSide:3,
   initBal:2000, fee:0.0005, slip:0.02, barMs:4*3600000,
   // ── Ausführungsfenster (korrigiert 29.07.2026) ──────────────────────
   // Der alte 1,5-h-Guard war der engste von allen und traf auf einen Cron,
@@ -115,6 +121,7 @@ async function main(){
   // ── Einstiege ──
   for(const c of cands){
     if(st.positions.length>=P.maxPos) break;
+    if(st.positions.filter(p=>p.side===c.side).length>=P.maxSameSide) continue;
     // Ausführung zum Live-Kurs; ist er zu weit vom Signal weggelaufen, kein Einstieg.
     const base=c.live!=null?c.live:c.price;
     const refDist=Math.abs(c.price-c.extreme);
