@@ -2,11 +2,13 @@
 
 > ⚠️ Walk-Forward gemischt bis negativ — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
 
-> Aktualisiert: 2026-07-29 12:10 UTC · Lauf #18 · 4h · N30 · Ziel 3R
+> Aktualisiert: 2026-07-29 14:32 UTC · Lauf #19 · 4h · N30 · Ziel 3R
+>
+> Verworfen seit Start: 0× Fenster zu alt (>3 h) · 0× Kurs zu weit gelaufen
 
 | Equity | PnL | Winrate | Trades | Offen |
 |---|---|---|---|---|
-| $2016.05 | +16.05$ (0.8%) | 0% | 0 | 4 |
+| $1991.99 | -8.01$ (-0.4%) | 0% | 0 | 4 |
 
 ## Offene Positionen
 
