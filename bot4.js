@@ -18,7 +18,16 @@ const FS=require('fs');
 
 const P={ n:30, r:3, confirm:true, timeoutBars:20,
   risk:1.0, lev:3, maxPos:5, maxMarginPct:12,
-  initBal:2000, fee:0.0005, slip:0.02, barMs:4*3600000 };
+  initBal:2000, fee:0.0005, slip:0.02, barMs:4*3600000,
+  // ── Ausführungsfenster (korrigiert 29.07.2026) ──────────────────────
+  // Der alte 1,5-h-Guard war der engste von allen und traf auf einen Cron,
+  // der real im Median nur alle 1,54 h läuft: 28 von 84 Vier-Stunden-Schlüssen
+  // fielen in eine Lücke, also ein Drittel. Bei 3 h sind es 4 von 84.
+  // Zusätzlich Ausführung zum Live-Kurs statt zum alten Kerzenschluss.
+  maxEntryAge:3*3600000,
+  // Sweep-Setups leben vom Einstieg nahe am Umkehrpunkt. Ist der Kurs seit
+  // dem Signal um mehr als die halbe Stopdistanz gelaufen, ist er weg.
+  maxDriftFrac:0.5 };
 
 // Exakt das getestete Universum.
 const SYMS=['BTC','ETH','SOL','BNB','XRP','DOGE','AVAX','LINK','LTC','DOT'].map(s=>s+'USDT');
@@ -34,9 +43,9 @@ async function candles(sym,limit){
   const d=await r.json();
   if(d.code!=='0'||!d.data||!d.data.length) return null;
   const now=Date.now();
-  return [...d.data].reverse()
-    .map(c=>({ts:+c[0],o:+c[1],h:+c[2],l:+c[3],c:+c[4]}))
-    .filter(b=>b.ts+P.barMs<=now);
+  const all=[...d.data].reverse().map(c=>({ts:+c[0],o:+c[1],h:+c[2],l:+c[3],c:+c[4]}));
+  // OKX liefert die laufende Kerze mit — ihr Schluss IST der aktuelle Kurs.
+  return { k: all.filter(b=>b.ts+P.barMs<=now), live: all[all.length-1].c };
 }
 
 function loadState(){
@@ -51,10 +60,11 @@ async function main(){
 
   for(const sym of SYMS){
     await sleep(150);
-    let k; try{ k=await candles(sym,P.n+40); }catch(e){ k=null; }
-    if(!k||k.length<P.n+5) continue;
+    let res; try{ res=await candles(sym,P.n+40); }catch(e){ res=null; }
+    if(!res||!res.k||res.k.length<P.n+5) continue;
+    const k=res.k, live=res.live;
     const last=k[k.length-1];
-    px[sym]=last.c;
+    px[sym]=live;                     // Mark-to-Market zum Live-Kurs, nicht zum Kerzenschluss
 
     // ── Exits ──
     const pos=st.positions.find(p=>p.sym===sym);
@@ -87,8 +97,8 @@ async function main(){
     // ── Einstiegssignal auf der zuletzt geschlossenen Kerze ──
     if(st.positions.find(p=>p.sym===sym)) continue;
     if(st.cd[sym] && Date.now()-st.cd[sym] < 2*P.barMs) continue;
-    // Freshness: nur direkt nach dem 4h-Schluss handeln (Bot läuft stündlich)
-    if(Date.now()-(last.ts+P.barMs) > 1.5*3600000) continue;
+    // Freshness: Signal nur von der zuletzt geschlossenen Kerze, siehe Kommentar bei P.
+    if(Date.now()-(last.ts+P.barMs) > P.maxEntryAge){ st.skipStale=(st.skipStale||0)+1; continue; }
     const prev=k.slice(k.length-1-P.n, k.length-1);
     if(prev.length<P.n) continue;
     const hi=Math.max(...prev.map(x=>x.h)), lo=Math.min(...prev.map(x=>x.l));
@@ -96,13 +106,17 @@ async function main(){
     if(last.h>hi && last.c<hi && (!P.confirm || last.c<last.o)){ side='SHORT'; extreme=last.h; }
     else if(last.l<lo && last.c>lo && (!P.confirm || last.c>last.o)){ side='LONG'; extreme=last.l; }
     if(!side) continue;
-    cands.push({sym,side,price:last.c,extreme,ts:last.ts});
+    cands.push({sym,side,price:last.c,live,extreme,ts:last.ts});
   }
 
   // ── Einstiege ──
   for(const c of cands){
     if(st.positions.length>=P.maxPos) break;
-    const price=c.side==='LONG'?c.price*(1+P.slip/100):c.price*(1-P.slip/100);
+    // Ausführung zum Live-Kurs; ist er zu weit vom Signal weggelaufen, kein Einstieg.
+    const base=c.live!=null?c.live:c.price;
+    const refDist=Math.abs(c.price-c.extreme);
+    if(refDist>0 && Math.abs(base-c.price) > P.maxDriftFrac*refDist){ st.skipDrift=(st.skipDrift||0)+1; continue; }
+    const price=c.side==='LONG'?base*(1+P.slip/100):base*(1-P.slip/100);
     const sl=c.side==='LONG'?c.extreme*0.999:c.extreme*1.001;
     const slDist=Math.abs(price-sl);
     if(slDist<=0 || slDist/price>0.15) continue;   // absurd weite Stops überspringen
@@ -135,6 +149,8 @@ async function main(){
   L.push('> ⚠️ Walk-Forward gemischt bis negativ — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md');
   L.push('');
   L.push('> Aktualisiert: '+new Date().toISOString().replace('T',' ').slice(0,16)+' UTC · Lauf #'+st.runs+' · 4h · N'+P.n+' · Ziel '+P.r+'R');
+  L.push('>');
+  L.push('> Verworfen seit Start: '+(st.skipStale||0)+'× Fenster zu alt (>'+(P.maxEntryAge/3600000)+' h) · '+(st.skipDrift||0)+'× Kurs zu weit gelaufen');
   L.push('');
   L.push('| Equity | PnL | Winrate | Trades | Offen |');
   L.push('|---|---|---|---|---|');
