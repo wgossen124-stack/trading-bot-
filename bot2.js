@@ -14,6 +14,18 @@ const P = {
   initBal:2000, riskPct:1.0, leverage:3,
   maxPositions:8, maxSameSide:3, maxHeatPct:40,       // Cluster-Limit wie Bot 1 v8
   feeRate:0.0005, slipPct:0.02, cooldownBars:2,
+  // ── Ausführungsfenster (korrigiert 29.07.2026) ──────────────────────
+  // GitHub Actions läuft NICHT stündlich: Median-Abstand 1,54 h, max 5,2 h
+  // (gemessen an 412 echten Läufen). Mit dem alten 2-h-Guard fielen 10 von 48
+  // Kerzenschlüssen in eine Lücke — 20 von 60 Ausbruchssignalen waren dadurch
+  // unerreichbar, allein am 28.07. dreizehn gleichzeitige Shorts.
+  // Deshalb: Fenster auf 4 h geweitet (0/48 Ausfälle) UND Ausführung zum
+  // Live-Kurs statt zum womöglich Stunden alten Kerzenschluss. Ein Fill zu
+  // einem Preis, den es nicht mehr gibt, macht die Equity-Kurve zur Fiktion.
+  maxEntryAge:4*3600000,
+  // Ist der Kurs seit dem Signal um mehr als 1×ATR gelaufen, ist die Bewegung
+  // vorbei (oder der Ausbruch wurde zurückgenommen) — dann kein Einstieg.
+  maxDriftAtr:1.0,
 };
 
 // Liquide Paper-Universe (OKX-Perps)
@@ -78,10 +90,16 @@ async function main(){
   const st=loadState(); st.runs=(st.runs||0)+1;
   const log=[];
   const candidates=[];
+  const px={};                       // Live-Kurse für Ausführung und Mark-to-Market
 
   for(const sym of SYMS){
     await sleep(150);
-    let k; try{ k=closedOnly(await okxK(sym,P.tf,300),P.barMs); }catch(e){ k=null; }
+    let kAll; try{ kAll=await okxK(sym,P.tf,300); }catch(e){ kAll=null; }
+    if(!kAll||!kAll.length) continue;
+    // OKX liefert die laufende Kerze mit — ihr Schlusskurs IST der aktuelle Kurs.
+    const live=kAll[kAll.length-1].c;
+    px[sym]=live;
+    const k=closedOnly(kAll,P.barMs);
     if(!k||k.length<205) continue;
     const last=k[k.length-1];
 
@@ -119,11 +137,11 @@ async function main(){
     // ── Entry-Kandidat ──
     if(st.positions.find(p=>p.sym===sym)) continue;
     if(st.cd[sym] && Date.now()-st.cd[sym] < P.cooldownBars*P.barMs) continue;
-    // Freshness-Guard: Bot läuft stündlich, aber Entries nur direkt nach 6h-Kerzenschluss
-    // (sonst würde ein altes Breakout-Signal bis zu 5h später zu Stale-Preisen eröffnet)
-    if(Date.now()-(last.ts+P.barMs) > 2*3600000) continue;
+    // Freshness-Guard: nur Signale der zuletzt geschlossenen Kerze, und die
+    // nur innerhalb von maxEntryAge nach ihrem Schluss. Siehe Kommentar bei P.
+    if(Date.now()-(last.ts+P.barMs) > P.maxEntryAge){ st.skipStale=(st.skipStale||0)+1; continue; }
     const s=signal(k);
-    if(s) candidates.push({sym,...s,ts:last.ts});
+    if(s) candidates.push({sym,...s,live,ts:last.ts});
   }
 
   // ── Entries eröffnen (Cluster-Limit + Heat) ──
@@ -133,7 +151,11 @@ async function main(){
     const locked=st.positions.reduce((a,p)=>a+p.margin,0);
     const eq=st.bal+locked;
     if(eq<=0 || locked/eq*100>=P.maxHeatPct) break;
-    const price=c.sig==='LONG'?c.price*(1+P.slipPct/100):c.price*(1-P.slipPct/100);
+    // Ausführung zum Live-Kurs. Ist er seit dem Signal weiter als 1×ATR gelaufen,
+    // ist der Einstieg nicht mehr der, den die Strategie gemeint hat.
+    const base=c.live!=null?c.live:c.price;
+    if(Math.abs(base-c.price)/c.atr > P.maxDriftAtr){ st.skipDrift=(st.skipDrift||0)+1; continue; }
+    const price=c.sig==='LONG'?base*(1+P.slipPct/100):base*(1-P.slipPct/100);
     const slDist=P.slMult*c.atr;
     if(slDist<=0) continue;
     const sl=c.sig==='LONG'?price-slDist:price+slDist;
@@ -148,7 +170,12 @@ async function main(){
 
   // ── Report + State ──
   const locked=st.positions.reduce((a,p)=>a+p.margin,0);
-  const equity=st.bal+locked;
+  // Peak MIT unrealisiertem PnL — sonst vergleicht das Dashboard einen rein
+  // realisierten Höchststand mit einer Mark-to-Market-Equity, und der
+  // angezeigte Drawdown stimmt nicht. (Korrigiert 29.07.2026.)
+  const unreal=st.positions.reduce((a,p)=>{ const lp=px[p.sym]; if(lp==null) return a;
+    return a+(p.side==='LONG'?lp-p.price:p.price-lp)*p.size; },0);
+  const equity=st.bal+locked+unreal;
   if(equity>st.peak) st.peak=equity;
   const w=st.trades.filter(t=>t.pnl>0);
   const wr=st.trades.length?w.length/st.trades.length*100:0;
@@ -158,6 +185,8 @@ async function main(){
   L.push('# Cloud-Bot 2 — Donchian-Breakout (Paper)');
   L.push('');
   L.push('> Aktualisiert: '+new Date().toISOString().replace('T',' ').slice(0,16)+' UTC · Lauf #'+st.runs+' · '+P.tf+' · N'+P.nEntry+'/'+P.nExit);
+  L.push('>');
+  L.push('> Verworfen seit Start: '+(st.skipStale||0)+'× Fenster zu alt (>'+(P.maxEntryAge/3600000)+' h) · '+(st.skipDrift||0)+'× Kurs mehr als 1×ATR gelaufen');
   L.push('');
   L.push('| Equity | PnL | Winrate | Trades | Offen | Drawdown |');
   L.push('|---|---|---|---|---|---|');
