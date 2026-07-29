@@ -98,7 +98,10 @@ async function main(){
     if(st.positions.find(p=>p.sym===sym)) continue;
     if(st.cd[sym] && Date.now()-st.cd[sym] < 2*P.barMs) continue;
     // Freshness: Signal nur von der zuletzt geschlossenen Kerze, siehe Kommentar bei P.
-    if(Date.now()-(last.ts+P.barMs) > P.maxEntryAge){ st.skipStale=(st.skipStale||0)+1; continue; }
+    const closeTs=last.ts+P.barMs, tooOld=Date.now()-closeTs > P.maxEntryAge;
+    // Messpunkt: zählt verpasste KERZEN, nicht Symbolprüfungen (siehe bot2.js).
+    if(closeTs>(st.lastBarSeen||0)){ if(tooOld) st.missedBars=(st.missedBars||0)+1; st.lastBarSeen=closeTs; }
+    if(tooOld) continue;
     const prev=k.slice(k.length-1-P.n, k.length-1);
     if(prev.length<P.n) continue;
     const hi=Math.max(...prev.map(x=>x.h)), lo=Math.min(...prev.map(x=>x.l));
@@ -150,7 +153,7 @@ async function main(){
   L.push('');
   L.push('> Aktualisiert: '+new Date().toISOString().replace('T',' ').slice(0,16)+' UTC · Lauf #'+st.runs+' · 4h · N'+P.n+' · Ziel '+P.r+'R');
   L.push('>');
-  L.push('> Verworfen seit Start: '+(st.skipStale||0)+'× Fenster zu alt (>'+(P.maxEntryAge/3600000)+' h) · '+(st.skipDrift||0)+'× Kurs zu weit gelaufen');
+  L.push('> Verpasste Kerzen (kein Lauf binnen '+(P.maxEntryAge/3600000)+' h nach Schluss): '+(st.missedBars||0)+' · verworfen wegen Kursdrift: '+(st.skipDrift||0));
   L.push('');
   L.push('| Equity | PnL | Winrate | Trades | Offen |');
   L.push('|---|---|---|---|---|');
