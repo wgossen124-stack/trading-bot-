@@ -1,7 +1,13 @@
 name: cloud-bot
 on:
   schedule:
-    - cron: '6 * * * *'   # stündlich, 6 Min nach Kerzenschluss
+    # Alle 15 Minuten statt stündlich (geändert 29.07.2026).
+    # Grund: GitHub drosselt geplante Workflows. Gemessen an 412 echten Läufen
+    # betrug der Median-Abstand 1,54 h und das Maximum 5,2 h — der Bot lief also
+    # NICHT stündlich. Dadurch fielen Kerzenschlüsse in Lücken und Einstiegs-
+    # signale wurden verworfen. Mehr geplante Versuche = höhere Trefferquote.
+    # Die eigentliche Absicherung sitzt aber in den Bots (maxEntryAge + Live-Kurs).
+    - cron: '*/15 * * * *'
   workflow_dispatch: {}     # manueller Start über Actions-Tab möglich
 permissions:
   contents: write
@@ -35,5 +41,24 @@ jobs:
           git config user.name "cloud-bot"
           git config user.email "bot@users.noreply.github.com"
           git add -A
-          git diff --cached --quiet || git commit -m "run $(date -u '+%Y-%m-%d %H:%M') UTC"
-          git push
+          if git diff --cached --quiet; then
+            echo "Nichts zu committen."
+            exit 0
+          fi
+          git commit -m "run $(date -u '+%Y-%m-%d %H:%M') UTC"
+          # Push mit Rebase und Wiederholung (ergänzt 29.07.2026).
+          # Vorher stand hier ein einziges 'git push'. Wurde in der Zwischenzeit
+          # irgendetwas anderes ins Repo committet — etwa eine Dashboard-Änderung —,
+          # scheiterte der Push und der GESAMTE Bot-Lauf ging verloren: Einstiege,
+          # Ausstiege, Zustandsänderungen, alles weg, ohne dass es auffiel.
+          for i in 1 2 3 4 5; do
+            if git push; then
+              echo "Push erfolgreich (Versuch $i)."
+              exit 0
+            fi
+            echo "Push abgelehnt (Versuch $i) — rebase und erneut versuchen."
+            git pull --rebase --autostash origin main || true
+            sleep $((i * 5))
+          done
+          echo "Push nach 5 Versuchen fehlgeschlagen — Zustand NICHT gespeichert."
+          exit 1
