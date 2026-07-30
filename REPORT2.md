@@ -1,25 +1,26 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-07-30 15:23 UTC · Lauf #146 · 6H · N30/10
+> Aktualisiert: 2026-07-30 16:59 UTC · Lauf #147 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 1 · verworfen wegen Kursdrift >1×ATR: 0
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $1916.30 | -83.70$ (-4.2%) | 10% | 10 | 3 | 4.2% |
+| $1914.07 | -85.93$ (-4.3%) | 18% | 11 | 3 | 4.3% |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | Stop |
 |---|---|---|---|
-| ATOM | SHORT | 1.41972 | 1.35600 |
-| INJ | SHORT | 4.88702 | 4.89000 |
+| ATOM | SHORT | 1.41972 | 1.33400 |
 | APT | SHORT | 0.559688 | 0.588308 |
+| BNB | LONG | 593.519 | 579.184 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 07-30 10:00 | INJ | SHORT | +2.93$ | STOP |
 | 07-28 22:00 | ADA | SHORT | -15.02$ | STOP |
 | 07-27 22:00 | LINK | LONG | -17.09$ | STOP |
 | 07-25 16:00 | DOGE | SHORT | -20.09$ | STOP |
@@ -30,3 +31,8 @@
 | 07-21 10:00 | TIA | SHORT | -5.84$ | STOP |
 | 07-21 04:00 | FIL | SHORT | -16.62$ | STOP |
 | 07-21 04:00 | DOT | SHORT | -12.83$ | STOP |
+
+## Dieser Lauf
+
+- ✔ CLOSE SHORT INJ +2.93$ (STOP)
+- ⚡ OPEN LONG BNB @593.519 SL 579.184
