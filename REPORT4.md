@@ -2,13 +2,13 @@
 
 > ⚠️ Walk-Forward gemischt bis negativ — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
 
-> Aktualisiert: 2026-07-31 16:11 UTC · Lauf #46 · 4h · N30 · Ziel 3R
+> Aktualisiert: 2026-07-31 17:52 UTC · Lauf #47 · 4h · N30 · Ziel 3R
 >
 > Verpasste Kerzen (kein Lauf binnen 3 h nach Schluss): 1 · verworfen wegen Kursdrift: 0
 
 | Equity | PnL | Winrate | Trades | Offen |
 |---|---|---|---|---|
-| $1957.96 | -42.04$ (-2.1%) | 0% | 2 | 2 |
+| $1965.93 | -34.07$ (-1.7%) | 0% | 2 | 2 |
 
 ## Offene Positionen
 
@@ -23,7 +23,3 @@
 |---|---|---|---|---|
 | 07-31 12:00 | BTC | LONG | -15.17$ | STOP |
 | 07-29 20:00 | LINK | LONG | -13.75$ | STOP |
-
-## Dieser Lauf
-
-- ❌ LONG BTC STOP -15.17$
