@@ -2,13 +2,13 @@
 
 > ⚠️ Walk-Forward gemischt bis negativ — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
 
-> Aktualisiert: 2026-08-01 00:05 UTC · Lauf #52 · 4h · N30 · Ziel 3R
+> Aktualisiert: 2026-08-01 03:49 UTC · Lauf #53 · 4h · N30 · Ziel 3R
 >
 > Verpasste Kerzen (kein Lauf binnen 3 h nach Schluss): 1 · verworfen wegen Kursdrift: 0
 
 | Equity | PnL | Winrate | Trades | Offen |
 |---|---|---|---|---|
-| $1956.75 | -43.25$ (-2.2%) | 0% | 2 | 2 |
+| $1957.98 | -42.02$ (-2.1%) | 0% | 2 | 2 |
 
 ## Offene Positionen
 
