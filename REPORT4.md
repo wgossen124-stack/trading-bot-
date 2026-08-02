@@ -2,7 +2,7 @@
 
 > ⚠️ Walk-Forward gemischt bis negativ — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
 
-> Aktualisiert: 2026-08-02 05:43 UTC · Lauf #70 · 4h · N30 · Ziel 3R
+> Aktualisiert: 2026-08-02 07:53 UTC · Lauf #71 · 4h · N30 · Ziel 3R
 >
 > Verpasste Kerzen (kein Lauf binnen 3 h nach Schluss): 1 · verworfen wegen Kursdrift: 0
 
