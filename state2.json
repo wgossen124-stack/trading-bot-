@@ -181,7 +181,7 @@
   "ARBUSDT": 1785600000000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 190,
+ "runs": 191,
  "skipStale": 18,
  "missedBars": 1,
  "lastBarSeen": 1785686400000,
