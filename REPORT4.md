@@ -2,7 +2,7 @@
 
 > ⚠️ Walk-Forward gemischt bis negativ — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
 
-> Aktualisiert: 2026-08-04 04:30 UTC · Lauf #96 · 4h · N30 · Ziel 3R
+> Aktualisiert: 2026-08-04 07:23 UTC · Lauf #97 · 4h · N30 · Ziel 3R
 >
 > Verpasste Kerzen (kein Lauf binnen 3 h nach Schluss): 2 · verworfen wegen Kursdrift: 0
 
@@ -21,7 +21,3 @@
 | 08-01 04:00 | SOL | LONG | -12.33$ | ZEIT |
 | 07-31 12:00 | BTC | LONG | -15.17$ | STOP |
 | 07-29 20:00 | LINK | LONG | -13.75$ | STOP |
-
-## Dieser Lauf
-
-- ❌ SHORT DOT STOP -10.87$
