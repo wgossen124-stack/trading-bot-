@@ -28,13 +28,16 @@ jobs:
       - name: Bot-2-Lauf (Donchian 6h)
         run: node bot2.js
         continue-on-error: true
-      # Bot 3 und 4 sind UNVALIDIERT (Walk-Forward nicht bestanden) und laufen
-      # ausschließlich als Papiergeld-Forward-Test. Siehe BOT34-KRITERIEN.md.
+      # Bot 3 (bot3.js) und Bot 5 (bot5.js) sind UNVALIDIERT und laufen
+      # ausschliesslich als Papiergeld-Forward-Test. Siehe BOT34-KRITERIEN.md
+  # bzw. BOT3-ERSATZ-KRITERIEN.md.
+  # bot4.js (Sweep-Reversal) am 05.08.2026 abgeschaltet: -48,6 % ueber 2 Jahre auf
+  # 1.204 Trades, 0 von 21 Gitterkombis in-sample positiv. Bleibt als Archiv im Repo.
       - name: Bot-3-Lauf (Momentum 1D)
         run: node bot3.js
         continue-on-error: true
-      - name: Bot-4-Lauf (Sweep-Reversal 4h)
-        run: node bot4.js
+      - name: Bot-5-Lauf (SMA150-Trendfilter 1D)
+        run: node bot5.js
         continue-on-error: true
       - name: Ergebnisse committen
         run: |
