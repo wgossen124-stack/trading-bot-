@@ -134,7 +134,10 @@ async function main(){
     const eFee=notional*P.fee;
     if(notional<1) continue;                           // kein Hebel: nur mit freier Kasse
     st.bal-=notional+eFee;
-    st.positions.push({sym,side:'LONG',price,size,eFee,ts:Date.now()});
+    // `margin` ist ohne Hebel schlicht der eingesetzte Betrag. Das Feld heisst so,
+    // weil das Dashboard `Equity = bal + Summe margin + Summe unrealisiert` rechnet — ohne
+    // dieses Feld wuerde BOT 3 dort mit fast null Equity erscheinen.
+    st.positions.push({sym,side:'LONG',price,size,margin:notional,eFee,ts:Date.now()});
     log.push('⚡ OPEN '+sym.replace('USDT','')+' @'+price.toPrecision(6)+' ('+notional.toFixed(0)+'$)');
   }
 
