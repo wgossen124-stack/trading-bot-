@@ -89,7 +89,7 @@ button.rf:hover{border-color:var(--acc)}
 <div class="summary" id="summary"></div>
 <div id="warn"></div>
 <div class="grid" id="grid"></div>
-<div class="foot">Paper-Trading · Bot-Daten aus GitHub (Verzögerung bis ~5 Min nach Lauf) · Kurse &amp; unrealisierte PnL live von OKX<br>Bot 1: Donchian 6h (validiert) · Bot 2 &amp; 3: unvalidierte Forward-Tests — Auto-Refresh alle 5 Min<br>Vorgänger-Bot (Scalp) am 25.07.2026 eingestellt: $1.672 (-16,4 %) nach 63 Trades · Nummerierung seither neu vergeben</div>
+<div class="foot">Paper-Trading · Bot-Daten aus GitHub (Verzögerung bis ~5 Min nach Lauf) · Kurse &amp; unrealisierte PnL live von OKX<br>Bot 1: Donchian 6h (validiert) · Bot 2 &amp; 3: unvalidierte Forward-Tests (Bot 3 = SMA150 seit 05.08.2026) — Auto-Refresh alle 5 Min<br>Vorgänger-Bot (Scalp) am 25.07.2026 eingestellt: $1.672 (-16,4 %) nach 63 Trades · Nummerierung seither neu vergeben</div>
 <script>
 const REPO='wgossen124-stack/trading-bot-';
 const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
@@ -98,12 +98,14 @@ const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 // Archiv state.json + bot.js im Repo), danach lückenlos durchnummeriert:
 //   Anzeige BOT 1 = bot2.js / state2.json  (Donchian)
 //   Anzeige BOT 2 = bot3.js / state3.json  (Momentum)
-//   Anzeige BOT 3 = bot4.js / state4.json  (Sweep)
+//   Anzeige BOT 3 = bot5.js / state5.json  (SMA150-Trendfilter)
+// Der Sweep-Bot (bot4.js) wurde am 05.08.2026 abgeschaltet: -48,6 % ueber zwei Jahre auf
+// 1.204 Trades, 0 von 21 Gitterkombis in-sample positiv. bot4.js/state4.json bleiben als Archiv.
 // Dateinamen bewusst NICHT geändert — sonst reißt die Equity-Historie ab.
 const BOTS=[
  {name:'BOT 1 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000},
  {name:'BOT 2 · Momentum',tag:'1D · 10 Paare · Rang 20d · Top2 long / Flop2 short · alle 14 Tage · Expo 60',file:'state3.json',init:2000,unvalidiert:true},
- {name:'BOT 3 · Sweep-Reversal',tag:'4h · 10 Paare · N30-Extrem + Bestätigung · Ziel 3R',file:'state4.json',init:2000,unvalidiert:true}
+ {name:'BOT 3 · SMA150-Trendfilter',tag:'1D · 10 Paare · long solange Schluss > SMA150 · kein Hebel, kein Stop, kein Ziel',file:'state5.json',init:2000,unvalidiert:true}
 ];
 // Warnschwellen (nur Anzeige, kein Eingriff in den Bot)
 // stuckDays: Der Donchian-Bot (Anzeige BOT 1) hat selbst ein Timeout von 40 Bars × 6h = 10 Tagen und HÄLT Gewinner
