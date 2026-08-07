@@ -1,12 +1,12 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-08-07 00:23 UTC · Lauf #238 · 6H · N30/10
+> Aktualisiert: 2026-08-07 03:27 UTC · Lauf #239 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 1 · verworfen wegen Kursdrift >1×ATR: 2
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $1846.04 | -153.96$ (-7.7%) | 16% | 19 | 2 | 7.7% |
+| $1849.71 | -150.29$ (-7.5%) | 16% | 19 | 2 | 7.5% |
 
 ## Offene Positionen
 
