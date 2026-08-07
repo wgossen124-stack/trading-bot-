@@ -6,7 +6,7 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-08-06 14:53 UTC · Lauf #12 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-08-07 00:23 UTC · Lauf #13 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
@@ -18,13 +18,13 @@
 
 | Pair | Kurs | SMA150 | Soll |
 |---|---|---|---|
-| BTC | 64626.8 | 69498.2 | flach |
-| ETH | 1907.99 | 2007.61 | flach |
-| SOL | 73.9900 | 80.6353 | flach |
-| BNB | 593.400 | 612.606 | flach |
-| XRP | 1.06170 | 1.26769 | flach |
-| DOGE | 0.0700200 | 0.0896071 | flach |
-| AVAX | 6.65600 | 8.16751 | flach |
-| LINK | 8.15500 | 8.73923 | flach |
-| LTC | 45.2900 | 50.4160 | flach |
-| DOT | 0.841700 | 1.12125 | flach |
+| BTC | 64297.6 | 69471.0 | flach |
+| ETH | 1903.35 | 2007.02 | flach |
+| SOL | 72.6400 | 80.5536 | flach |
+| BNB | 592.100 | 612.325 | flach |
+| XRP | 1.03460 | 1.26550 | flach |
+| DOGE | 0.0690500 | 0.0894646 | flach |
+| AVAX | 6.43600 | 8.14867 | flach |
+| LINK | 8.19000 | 8.73475 | flach |
+| LTC | 45.4200 | 50.3607 | flach |
+| DOT | 0.820700 | 1.11677 | flach |
