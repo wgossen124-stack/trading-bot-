@@ -6,7 +6,7 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-08-08 22:02 UTC · Lauf #62 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-08-08 22:46 UTC · Lauf #63 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 

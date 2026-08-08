@@ -247,7 +247,7 @@
   "APTUSDT": 1785686400000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 287,
+ "runs": 288,
  "skipStale": 18,
  "missedBars": 1,
  "lastBarSeen": 1786226400000,
