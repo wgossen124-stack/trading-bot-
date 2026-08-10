@@ -1,42 +1,79 @@
 {
- "bal": 2000,
+ "bal": 1978.0109873030804,
  "peak": 2017.6910779703533,
  "positions": [
   {
-   "sym": "LINKUSDT",
+   "sym": "BNBUSDT",
    "side": "LONG",
-   "entry": 8.824,
-   "notional": 300,
-   "ts": 1785181621836,
-   "ret": 10.1
+   "entry": 600.4,
+   "notional": 593.403296190924,
+   "ts": 1786393435332,
+   "ret": 5.4
   },
   {
    "sym": "ETHUSDT",
    "side": "LONG",
-   "entry": 1953.75,
-   "notional": 300,
-   "ts": 1785181621836,
-   "ret": 8.6
+   "entry": 1877.61,
+   "notional": 593.403296190924,
+   "ts": 1786393435332,
+   "ret": 0.3
   },
   {
+   "sym": "LINKUSDT",
+   "side": "SHORT",
+   "entry": 8.288,
+   "notional": 593.403296190924,
+   "ts": 1786393435332,
+   "ret": -4.7
+  },
+  {
+   "sym": "XRPUSDT",
+   "side": "SHORT",
+   "entry": 1.0192,
+   "notional": 593.403296190924,
+   "ts": 1786393435332,
+   "ret": -7.4
+  }
+ ],
+ "trades": [
+  {
+   "ts": 1786393435332,
+   "sym": "LINKUSDT",
+   "side": "LONG",
+   "entry": 8.824,
+   "exit": 8.288,
+   "pnl": -18.64,
+   "reason": "REBAL"
+  },
+  {
+   "ts": 1786393435332,
+   "sym": "ETHUSDT",
+   "side": "LONG",
+   "entry": 1953.75,
+   "exit": 1877.61,
+   "pnl": -12.11,
+   "reason": "REBAL"
+  },
+  {
+   "ts": 1786393435332,
    "sym": "SOLUSDT",
    "side": "SHORT",
    "entry": 76.73,
-   "notional": 300,
-   "ts": 1785181621836,
-   "ret": -6.3
+   "exit": 76.23,
+   "pnl": 1.53,
+   "reason": "REBAL"
   },
   {
+   "ts": 1786393435332,
    "sym": "DOTUSDT",
    "side": "SHORT",
    "entry": 0.8274,
-   "notional": 300,
-   "ts": 1785181621836,
-   "ret": -6.5
+   "exit": 0.8063,
+   "pnl": 7.23,
+   "reason": "REBAL"
   }
  ],
- "trades": [],
- "lastReb": 1785181621836,
+ "lastReb": 1786393435332,
  "started": "2026-07-27T19:46:58.575Z",
- "runs": 222
+ "runs": 223
 }

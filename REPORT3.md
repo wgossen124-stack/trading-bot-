@@ -2,17 +2,37 @@
 
 > ⚠️ Hat den Walk-Forward nicht bestanden — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
 
-> Aktualisiert: 2026-08-10 19:42 UTC · Lauf #222 · nächstes Rebalancing: 2026-08-10
+> Aktualisiert: 2026-08-10 20:23 UTC · Lauf #223 · nächstes Rebalancing: 2026-08-24
 
 | Equity | PnL | Winrate | Umschichtungen | Offen |
 |---|---|---|---|---|
-| $1980.21 | -19.79$ (-1.0%) | 0% | 0 | 4 |
+| $1978.01 | -21.99$ (-1.1%) | 50% | 4 | 4 |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | Notional | 20d-Rendite |
 |---|---|---|---|---|
-| LINK | LONG | 8.82400 | $300 | +10.1% |
-| ETH | LONG | 1953.75 | $300 | +8.6% |
-| SOL | SHORT | 76.7300 | $300 | -6.3% |
-| DOT | SHORT | 0.827400 | $300 | -6.5% |
+| BNB | LONG | 600.400 | $593 | +5.4% |
+| ETH | LONG | 1877.61 | $593 | +0.3% |
+| LINK | SHORT | 8.28800 | $593 | -4.7% |
+| XRP | SHORT | 1.01920 | $593 | -7.4% |
+
+## Letzte Umschichtungen
+
+| Zeit (UTC) | Pair | Seite | PnL |
+|---|---|---|---|
+| 08-10 20:23 | DOT | SHORT | +7.23$ |
+| 08-10 20:23 | SOL | SHORT | +1.53$ |
+| 08-10 20:23 | ETH | LONG | -12.11$ |
+| 08-10 20:23 | LINK | LONG | -18.64$ |
+
+## Dieser Lauf
+
+- ❌ CLOSE LONG LINK -18.64$
+- ❌ CLOSE LONG ETH -12.11$
+- ✅ CLOSE SHORT SOL +1.53$
+- ✅ CLOSE SHORT DOT +7.23$
+- ⚡ LONG  BNB (5.4% in 20d)
+- ⚡ LONG  ETH (0.3% in 20d)
+- ⚡ SHORT LINK (-4.7% in 20d)
+- ⚡ SHORT XRP (-7.4% in 20d)
