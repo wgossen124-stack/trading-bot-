@@ -313,7 +313,7 @@
   "NEARUSDT": 1786334400000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 481,
+ "runs": 482,
  "skipStale": 18,
  "missedBars": 1,
  "lastBarSeen": 1786852800000,
