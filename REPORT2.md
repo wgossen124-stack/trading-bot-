@@ -1,19 +1,18 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-08-19 09:48 UTC · Lauf #600 · 6H · N30/10
+> Aktualisiert: 2026-08-19 10:25 UTC · Lauf #601 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 1 · verworfen wegen Kursdrift >1×ATR: 2
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $1899.88 | -100.12$ (-5.0%) | 18% | 28 | 5 | 5.0% |
+| $1893.12 | -106.88$ (-5.3%) | 21% | 29 | 4 | 5.3% |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | Stop |
 |---|---|---|---|
-| LINK | LONG | 8.69974 | 9.28800 |
-| APT | SHORT | 0.569586 | 0.536400 |
+| LINK | LONG | 8.69974 | 9.31500 |
 | ADA | SHORT | 0.177265 | 0.179100 |
 | OP | SHORT | 0.0831734 | 0.0857300 |
 | BTC | LONG | 64764.2 | 63699.1 |
@@ -22,6 +21,7 @@
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 08-19 04:00 | APT | SHORT | +20.34$ | STOP |
 | 08-16 16:00 | ATOM | LONG | -7.77$ | STOP |
 | 08-16 10:00 | XRP | SHORT | +24.30$ | TIME |
 | 08-15 22:00 | AVAX | LONG | -11.43$ | STOP |
@@ -36,4 +36,7 @@
 | 08-04 16:00 | INJ | LONG | -12.88$ | STOP |
 | 08-02 16:00 | APT | SHORT | -6.25$ | STOP |
 | 08-02 16:00 | ATOM | SHORT | +55.64$ | STOP |
-| 08-02 16:00 | SOL | SHORT | -16.35$ | STOP |
+
+## Dieser Lauf
+
+- ✔ CLOSE SHORT APT +20.34$ (STOP)
