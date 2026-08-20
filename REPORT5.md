@@ -6,34 +6,38 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-08-19 23:58 UTC · Lauf #400 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-08-20 01:37 UTC · Lauf #401 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2032.13 | +32.13$ (1.6%) | 0% | 0.00 | 3 | 1/10 |
+| $2030.32 | +30.32$ (1.5%) | 0% | 0.00 | 3 | 5/10 |
 
 ## Signallage
 
 | Pair | Kurs | SMA150 | Soll |
 |---|---|---|---|
-| BTC | 64700.6 | 68889.0 | flach |
-| ETH | 1916.94 | 1986.80 | flach |
-| SOL | 77.0100 | 79.4451 | flach |
-| BNB | 603.600 | 608.438 | flach |
-| XRP | 1.00140 | 1.23155 | flach |
-| DOGE | 0.0702200 | 0.0874115 | flach |
-| AVAX | 6.33000 | 7.88147 | flach |
-| LINK | 9.53100 | 8.70495 | LONG |
-| LTC | 44.3500 | 49.4899 | flach |
-| DOT | 0.750900 | 1.05822 | flach |
+| BTC | 69307.8 | 68898.9 | LONG |
+| ETH | 2252.09 | 1988.13 | LONG |
+| SOL | 85.3800 | 79.4399 | LONG |
+| BNB | 627.400 | 608.448 | LONG |
+| XRP | 1.10580 | 1.22970 | flach |
+| DOGE | 0.0750200 | 0.0873111 | flach |
+| AVAX | 6.77900 | 7.86654 | flach |
+| LINK | 10.5480 | 8.71739 | LONG |
+| LTC | 46.7600 | 49.4451 | flach |
+| DOT | 0.789200 | 1.05407 | flach |
 
 ## Offene Positionen
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| LINK | 8.82977 | 10.5480 | $238 | +38.81$ |
+| LINK | 8.82977 | 10.4930 | $237 | +37.56$ |
+| BTC | 69508.9 | 69495.0 | $203 | -0.04$ |
+| ETH | 2261.38 | 2260.93 | $203 | -0.04$ |
+| SOL | 84.9370 | 84.9200 | $203 | -0.04$ |
+| BNB | 625.325 | 625.200 | $203 | -0.04$ |
 
 ## Letzte Trades
 
@@ -42,3 +46,10 @@
 | 08-15 01:06 | BNB | 609.822 | 607.678 | -0.90$ |
 | 08-13 02:22 | LINK | 8.77275 | 8.62727 | -3.51$ |
 | 08-13 02:22 | BNB | 616.423 | 610.378 | -2.16$ |
+
+## Dieser Lauf
+
+- ⚡ OPEN BTC @69508.9 (203$)
+- ⚡ OPEN ETH @2261.38 (203$)
+- ⚡ OPEN SOL @84.9370 (203$)
+- ⚡ OPEN BNB @625.325 (203$)
