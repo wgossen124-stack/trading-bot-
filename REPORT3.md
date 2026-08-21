@@ -2,11 +2,11 @@
 
 > ⚠️ Hat den Walk-Forward nicht bestanden — läuft als Forward-Test. Siehe BOT34-KRITERIEN.md
 
-> Aktualisiert: 2026-08-21 12:41 UTC · Lauf #563 · nächstes Rebalancing: 2026-08-24
+> Aktualisiert: 2026-08-21 13:32 UTC · Lauf #564 · nächstes Rebalancing: 2026-08-24
 
 | Equity | PnL | Winrate | Umschichtungen | Offen |
 |---|---|---|---|---|
-| $1787.07 | -212.93$ (-10.6%) | 50% | 4 | 4 |
+| $1784.77 | -215.23$ (-10.8%) | 50% | 4 | 4 |
 
 ## Offene Positionen
 
