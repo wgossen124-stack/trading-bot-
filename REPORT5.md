@@ -6,38 +6,39 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-08-20 23:50 UTC · Lauf #434 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-08-21 01:10 UTC · Lauf #435 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2067.05 | +67.05$ (3.4%) | 0% | 0.00 | 3 | 5/10 |
+| $2075.51 | +75.51$ (3.8%) | 0% | 0.00 | 3 | 6/10 |
 
 ## Signallage
 
 | Pair | Kurs | SMA150 | Soll |
 |---|---|---|---|
-| BTC | 69307.8 | 68898.9 | LONG |
-| ETH | 2252.09 | 1988.13 | LONG |
-| SOL | 85.3800 | 79.4399 | LONG |
-| BNB | 627.400 | 608.448 | LONG |
-| XRP | 1.10580 | 1.22970 | flach |
-| DOGE | 0.0750200 | 0.0873111 | flach |
-| AVAX | 6.77900 | 7.86654 | flach |
-| LINK | 10.5480 | 8.71739 | LONG |
-| LTC | 46.7600 | 49.4451 | flach |
-| DOT | 0.789200 | 1.05407 | flach |
+| BTC | 72996.6 | 68913.1 | LONG |
+| ETH | 2326.16 | 1989.30 | LONG |
+| SOL | 87.6200 | 79.4147 | LONG |
+| BNB | 654.300 | 608.550 | LONG |
+| XRP | 1.26780 | 1.22861 | LONG |
+| DOGE | 0.0804300 | 0.0872199 | flach |
+| AVAX | 7.29100 | 7.85141 | flach |
+| LINK | 10.6860 | 8.72795 | LONG |
+| LTC | 47.7900 | 49.3924 | flach |
+| DOT | 0.848100 | 1.05027 | flach |
 
 ## Offene Positionen
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| LINK | 8.82977 | 10.6780 | $241 | +41.74$ |
-| BTC | 69508.9 | 73071.3 | $213 | +10.41$ |
-| ETH | 2261.38 | 2326.31 | $209 | +5.83$ |
-| SOL | 84.9370 | 87.6500 | $210 | +6.49$ |
-| BNB | 625.325 | 655.100 | $213 | +9.67$ |
+| LINK | 8.82977 | 10.7790 | $243 | +44.02$ |
+| BTC | 69508.9 | 73897.8 | $216 | +12.82$ |
+| ETH | 2261.38 | 2344.71 | $211 | +7.48$ |
+| SOL | 84.9370 | 88.3200 | $211 | +8.09$ |
+| BNB | 625.325 | 657.100 | $213 | +10.32$ |
+| XRP | 1.27255 | 1.27230 | $208 | -0.04$ |
 
 ## Letzte Trades
 
@@ -46,3 +47,7 @@
 | 08-15 01:06 | BNB | 609.822 | 607.678 | -0.90$ |
 | 08-13 02:22 | LINK | 8.77275 | 8.62727 | -3.51$ |
 | 08-13 02:22 | BNB | 616.423 | 610.378 | -2.16$ |
+
+## Dieser Lauf
+
+- ⚡ OPEN XRP @1.27255 (208$)
