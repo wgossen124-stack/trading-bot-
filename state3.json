@@ -1,40 +1,7 @@
 {
- "bal": 1978.0109873030804,
+ "bal": 1752.22,
  "peak": 2017.6910779703533,
- "positions": [
-  {
-   "sym": "BNBUSDT",
-   "side": "LONG",
-   "entry": 600.4,
-   "notional": 593.403296190924,
-   "ts": 1786393435332,
-   "ret": 5.4
-  },
-  {
-   "sym": "ETHUSDT",
-   "side": "LONG",
-   "entry": 1877.61,
-   "notional": 593.403296190924,
-   "ts": 1786393435332,
-   "ret": 0.3
-  },
-  {
-   "sym": "LINKUSDT",
-   "side": "SHORT",
-   "entry": 8.288,
-   "notional": 593.403296190924,
-   "ts": 1786393435332,
-   "ret": -4.7
-  },
-  {
-   "sym": "XRPUSDT",
-   "side": "SHORT",
-   "entry": 1.0192,
-   "notional": 593.403296190924,
-   "ts": 1786393435332,
-   "ret": -7.4
-  }
- ],
+ "positions": [],
  "trades": [
   {
    "ts": 1786393435332,
@@ -71,9 +38,47 @@
    "exit": 0.8063,
    "pnl": 7.23,
    "reason": "REBAL"
+  },
+  {
+   "ts": 1787357892802,
+   "sym": "BNBUSDT",
+   "side": "LONG",
+   "entry": 600.4,
+   "exit": 684.9,
+   "pnl": 83.22,
+   "reason": "ENDE"
+  },
+  {
+   "ts": 1787357893453,
+   "sym": "ETHUSDT",
+   "side": "LONG",
+   "entry": 1877.61,
+   "exit": 2501.85,
+   "pnl": 196.99,
+   "reason": "ENDE"
+  },
+  {
+   "ts": 1787357894449,
+   "sym": "LINKUSDT",
+   "side": "SHORT",
+   "entry": 8.288,
+   "exit": 11.969,
+   "pnl": -263.85,
+   "reason": "ENDE"
+  },
+  {
+   "ts": 1787357895451,
+   "sym": "XRPUSDT",
+   "side": "SHORT",
+   "entry": 1.0192,
+   "exit": 1.4346,
+   "pnl": -242.15,
+   "reason": "ENDE"
   }
  ],
  "lastReb": 1786393435332,
  "started": "2026-07-27T19:46:58.575Z",
- "runs": 582
+ "runs": 582,
+ "gestoppt": "2026-08-21",
+ "gestopptGrund": "Walk-Forward nicht bestanden; live -12,6 Prozent (PF 0,28) in einem Markt, der im selben Zeitraum +25,6 Prozent machte. Die vier offenen Positionen wurden am 21.08.2026 zu Marktkursen glattgestellt (Grund ENDE), damit eine endgueltige Schlussbilanz existiert statt einer ewig weiterlaufenden Bewertung."
 }
