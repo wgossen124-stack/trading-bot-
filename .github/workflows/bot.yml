@@ -33,9 +33,9 @@ jobs:
   # bzw. BOT3-ERSATZ-KRITERIEN.md.
   # bot4.js (Sweep-Reversal) am 05.08.2026 abgeschaltet: -48,6 % ueber 2 Jahre auf
   # 1.204 Trades, 0 von 21 Gitterkombis in-sample positiv. Bleibt als Archiv im Repo.
-      - name: Bot-3-Lauf (Momentum 1D)
-        run: node bot3.js
-        continue-on-error: true
+      # BOT 2 (bot3.js, Momentum 1D) am 21.08.2026 abgeschaltet: Walk-Forward nicht
+      # bestanden, und live -12,6 % (PF 0,28) in einem Markt, der im selben Zeitraum
+      # +25,6 % gemacht hat. Die Short-Seite wird in Rallyes zerlegt. Archiv bleibt.
       - name: Bot-5-Lauf (SMA150-Trendfilter 1D)
         run: node bot5.js
         continue-on-error: true
