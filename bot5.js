@@ -38,6 +38,17 @@ const FS=require('fs');
 
 const P={
   sma:150,                 // der einzige Strategie-Parameter
+  // ── Chandelier-Stop, ergaenzt 22.08.2026 auf Williams Wunsch ────
+  // Verkauf auch dann, wenn der Kurs mehr als N x ATR(14) unter sein Hoch
+  // SEIT EINSTIEG faellt. Anlass: am 22.08. lag der SMA150-Ausstieg bei JEDER
+  // der acht Positionen UNTER dem Einstiegskurs — LINK stand +39 %, waere aber
+  // erst bei -0,9 % gegenueber Einstieg verkauft worden. Der gesamte
+  // unrealisierte Gewinn war geliehen.
+  // UNGETESTET. Kein Walk-Forward. N=3 ist der Lehrbuchwert (Chandelier nach
+  // Chuck LeBeau), NICHT aus den Daten optimiert — bewusst, weil
+  // In-sample-Optimierung in diesem Projekt zweimal den out-of-sample
+  // schlechtesten Wert gewaehlt hat.
+  chandAtr:3.0,
   initBal:2000,
   slots:10,                // gleichgewichtet: je 1/10 der Equity
   fee:0.0005,              // 0,05 % je Seite
@@ -74,6 +85,17 @@ function sma(arr,n){
   return s/n;
 }
 
+// Wilder-ATR(14) auf abgeschlossenen Tageskerzen.
+function atr14(k,n){
+  n=n||14;
+  if(k.length<n+1) return 0;
+  const tr=[];
+  for(let i=1;i<k.length;i++) tr.push(Math.max(k[i].h-k[i].l,Math.abs(k[i].h-k[i-1].c),Math.abs(k[i].l-k[i-1].c)));
+  let a=tr.slice(0,n).reduce((x,y)=>x+y,0)/n;
+  for(let i=n;i<tr.length;i++) a=(a*(n-1)+tr[i])/n;
+  return a;
+}
+
 function loadState(){
   try{ return JSON.parse(FS.readFileSync('state5.json','utf8')); }
   catch(e){ return {bal:P.initBal,peak:P.initBal,positions:[],trades:[],
@@ -98,29 +120,47 @@ async function main(){
     px[sym]=res.live;
     const line=sma(k.map(b=>b.c),P.sma);
     if(line==null) continue;
-    wanted[sym]={long:last.c>line, close:last.c, sma:line};
+    wanted[sym]={long:last.c>line, close:last.c, sma:line, atr:atr14(k), hi:last.h};
   }
 
   // ── 2. Ausstiege: Position vorhanden, Sollzustand flach ──
   for(const pos of [...st.positions]){
     const w=wanted[pos.sym]; if(!w) continue;      // ohne frische Daten nichts anfassen
-    if(w.long) continue;
+    // Hoch seit Einstieg fortschreiben. Bei Altpositionen ohne `hh` beginnt es
+    // beim Einstiegskurs — der Stop startet dadurch weiter weg und zieht sich
+    // erst mit neuen Hochs zusammen. Bewusst die vorsichtige Richtung: lieber
+    // zu spaet ausgestoppt als eine laufende Position sofort glattgestellt.
+    pos.hh=Math.max(pos.hh||pos.price, w.hi, px[pos.sym]);
+    const chand = w.atr>0 ? pos.hh-P.chandAtr*w.atr : null;
+    const trailAus = chand!=null && px[pos.sym]<=chand;
+    if(w.long && !trailAus) continue;
+    const grund = w.long ? 'TRAIL' : 'SMA';
     const price=px[pos.sym]*(1-P.slip/100);
     const proceeds=pos.size*price;
     const fee=proceeds*P.fee;
     const pnl=proceeds-fee-(pos.size*pos.price)-pos.eFee;
     st.bal+=proceeds-fee;
     st.trades.push({ts:Date.now(),sym:pos.sym,side:'LONG',entry:pos.price,
-      exit:+price.toPrecision(8),pnl:+pnl.toFixed(2),reason:'SMA'});
+      exit:+price.toPrecision(8),pnl:+pnl.toFixed(2),reason:grund});
     st.positions=st.positions.filter(p=>p.sym!==pos.sym);
-    log.push((pnl>=0?'✅ ':'❌ ')+'CLOSE '+pos.sym.replace('USDT','')+' '+(pnl>=0?'+':'')+pnl.toFixed(2)+'$');
+    // Nach einem Trail-Ausstieg sagt die SMA-Regel weiterhin "long" — ohne Sperre
+    // wuerde der Bot im selben Lauf sofort zurueckkaufen und endlos hin- und
+    // herhandeln (im Test am 22.08. exakt so passiert: 10 TRAIL-Ausstiege und
+    // 10 sofortige Neukaeufe). Wiedereinstieg erst, wenn das Signal sich
+    // zurueckgesetzt hat, also der Kurs einmal unter der SMA150 geschlossen hat.
+    if(grund==='TRAIL'){ st.gesperrt=st.gesperrt||{}; st.gesperrt[pos.sym]=true; }
+    log.push((pnl>=0?'✅ ':'❌ ')+'CLOSE '+pos.sym.replace('USDT','')+' '+grund+' '+(pnl>=0?'+':'')+pnl.toFixed(2)+'$');
   }
 
   // ── 3. Einstiege: keine Position, Sollzustand long ──
   // Equity nach den Ausstiegen, damit die Größe zum aktuellen Stand passt.
   const held=()=>st.positions.reduce((a,p)=>a+p.size*(px[p.sym]||p.price),0);
   for(const sym of SYMS){
-    const w=wanted[sym]; if(!w||!w.long) continue;
+    const w=wanted[sym]; if(!w) continue;
+    // Sperre aufheben, sobald das Signal sich zurueckgesetzt hat.
+    if(st.gesperrt&&st.gesperrt[sym]&&!w.long) delete st.gesperrt[sym];
+    if(!w.long) continue;
+    if(st.gesperrt&&st.gesperrt[sym]) continue;
     if(st.positions.find(p=>p.sym===sym)) continue;
     const equity=st.bal+held();
     let notional=equity/P.slots;
@@ -137,7 +177,7 @@ async function main(){
     // `margin` ist ohne Hebel schlicht der eingesetzte Betrag. Das Feld heisst so,
     // weil das Dashboard `Equity = bal + Summe margin + Summe unrealisiert` rechnet — ohne
     // dieses Feld wuerde BOT 3 dort mit fast null Equity erscheinen.
-    st.positions.push({sym,side:'LONG',price,size,margin:notional,eFee,ts:Date.now()});
+    st.positions.push({sym,side:'LONG',price,size,margin:notional,eFee,hh:price,ts:Date.now()});
     log.push('⚡ OPEN '+sym.replace('USDT','')+' @'+price.toPrecision(6)+' ('+notional.toFixed(0)+'$)');
   }
 
