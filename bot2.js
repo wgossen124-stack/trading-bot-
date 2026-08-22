@@ -10,7 +10,16 @@ const FS = require('fs');
 
 const P = {
   tf:'6H', barMs:6*3600000,
-  nEntry:30, nExit:10, slMult:2.0, timeoutBars:40,   // Strategie-Parameter (Plateau-Mitte)
+  nEntry:30, nExit:10, slMult:2.0, timeoutBars:40,
+  // ── Chandelier-Stop, ergaenzt 22.08.2026 auf Williams Wunsch ────────
+  // Zusaetzlich zum Turtle-Kanal: N x ATR(14) vom Extrem SEIT EINSTIEG.
+  // Anlass: der Turtle-Stop haengt am 10-Bar-Tief und kommt in schnellen
+  // Rallyes nicht hinterher — am 22.08.2026 lag BTCs Stop trotz +21,3 %
+  // Buchgewinn noch 0,7 % UNTER dem Einstiegskurs.
+  // UNGETESTET, kein Walk-Forward. N=3 ist der Lehrbuchwert, NICHT aus den
+  // Daten gewaehlt — In-sample-Optimierung hat hier zweimal den out-of-sample
+  // schlechtesten Parameter geliefert.
+  chandAtr:3.0,   // Strategie-Parameter (Plateau-Mitte)
   initBal:2000, riskPct:1.0, leverage:3,
   maxPositions:8, maxSameSide:3, maxHeatPct:40,       // Cluster-Limit wie Bot 1 v8
   feeRate:0.0005, slipPct:0.02, cooldownBars:2,
@@ -116,6 +125,19 @@ async function main(){
         const tstop=turtleStop(k.slice(0,idx), pos.side);
         if(pos.side==='LONG') pos.sl=Math.max(pos.sl, tstop);
         else                  pos.sl=Math.min(pos.sl, tstop);
+        // Chandelier zusaetzlich nachziehen (siehe P.chandAtr). Extrem seit
+        // Einstieg fortschreiben; bei Altpositionen ohne hh/ll startet es beim
+        // Einstiegskurs — der Stop liegt dadurch anfangs weiter weg und zieht
+        // sich erst mit neuen Extremen zusammen. Bewusst die vorsichtige
+        // Richtung, damit die Umstellung keine laufende Position glattstellt.
+        pos.hh=Math.max(pos.hh||pos.price, bar.h);
+        pos.ll=Math.min(pos.ll||pos.price, bar.l);
+        const aNow=atr(k.slice(0,idx+1),14).at(-1)||0;
+        if(aNow>0){
+          const chand = pos.side==='LONG' ? pos.hh-P.chandAtr*aNow : pos.ll+P.chandAtr*aNow;
+          if(pos.side==='LONG') pos.sl=Math.max(pos.sl, chand);
+          else                  pos.sl=Math.min(pos.sl, chand);
+        }
         let exit=null, reason='';
         if(pos.side==='LONG'){ if(bar.l<=pos.sl){exit=pos.sl*(1-P.slipPct/100);reason='STOP';} }
         else                 { if(bar.h>=pos.sl){exit=pos.sl*(1+P.slipPct/100);reason='STOP';} }
@@ -177,7 +199,7 @@ async function main(){
     const eFee=size*price*P.feeRate;
     if(margin+eFee>st.bal||margin<1) continue;
     st.bal-=margin+eFee;
-    st.positions.push({sym:c.sym,side:c.sig,price,sl,size,margin,eFee,ts:Date.now(),lastCheck:c.ts});
+    st.positions.push({sym:c.sym,side:c.sig,price,sl,size,margin,eFee,hh:price,ll:price,ts:Date.now(),lastCheck:c.ts});
     log.push('⚡ OPEN '+c.sig+' '+c.sym.replace('USDT','')+' @'+price.toPrecision(6)+' SL '+sl.toPrecision(6));
   }
 
