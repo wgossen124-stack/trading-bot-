@@ -159,6 +159,40 @@ async function main(){
       }
     }
 
+    // ── Live-Trail: unabhaengig vom Kerzenschluss (22.08.2026) ──────────
+    // Der Block oben laeuft NUR, wenn eine neue Kerze geschlossen hat — bei 6h
+    // also mit bis zu 6 Stunden Verzoegerung. Der Chandelier braucht das nicht:
+    // er vergleicht das Hoch seit Einstieg mit dem aktuellen Kurs, und beides
+    // liegt bei JEDEM Lauf vor. Damit sinkt die Reaktionszeit auf den
+    // Lauf-Abstand (real ~1,6 h wegen GitHub-Drosselung).
+    // Weicht bewusst vom Backtest ab, der nur Kerzentiefs prueft. Ein Live-Stop
+    // feuert auch auf kurze Ausschlaege — schneller, aber anfaelliger fuer
+    // Dochte. Bei BOT 1 vertretbar, weil er den Walk-Forward ohnehin nicht
+    // bestanden hat und die Backtest-Vergleichbarkeit damit wenig wert ist.
+    const offen=st.positions.find(p=>p.sym===sym);
+    if(offen){
+      offen.hh=Math.max(offen.hh||offen.price, live);
+      offen.ll=Math.min(offen.ll||offen.price, live);
+      const aLive=atr(k,14).at(-1)||0;
+      if(aLive>0){
+        const chandL = offen.side==='LONG' ? offen.hh-P.chandAtr*aLive : offen.ll+P.chandAtr*aLive;
+        if(offen.side==='LONG') offen.sl=Math.max(offen.sl, chandL);
+        else                    offen.sl=Math.min(offen.sl, chandL);
+        const treffer = offen.side==='LONG' ? live<=offen.sl : live>=offen.sl;
+        if(treffer){
+          const exitL = offen.side==='LONG' ? live*(1-P.slipPct/100) : live*(1+P.slipPct/100);
+          const diff  = offen.side==='LONG' ? exitL-offen.price : offen.price-exitL;
+          const pnl   = diff*offen.size - exitL*offen.size*P.feeRate - offen.eFee;
+          st.bal += offen.margin + pnl + offen.eFee;
+          st.trades.push({ts:Date.now(),sym,side:offen.side,entry:offen.price,
+            exit:+exitL.toPrecision(8),pnl:+pnl.toFixed(2),reason:'TRAIL'});
+          st.cd[sym]=Date.now();
+          st.positions=st.positions.filter(p=>p.sym!==sym);
+          log.push('✔ CLOSE '+offen.side+' '+sym.replace('USDT','')+' '+(pnl>=0?'+':'')+pnl.toFixed(2)+'$ (TRAIL)');
+        }
+      }
+    }
+
     // ── Entry-Kandidat ──
     if(st.positions.find(p=>p.sym===sym)) continue;
     if(st.cd[sym] && Date.now()-st.cd[sym] < P.cooldownBars*P.barMs) continue;
