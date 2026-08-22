@@ -102,9 +102,15 @@ const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 // Der Sweep-Bot (bot4.js) wurde am 05.08.2026 abgeschaltet: -48,6 % ueber zwei Jahre auf
 // 1.204 Trades, 0 von 21 Gitterkombis in-sample positiv. bot4.js/state4.json bleiben als Archiv.
 // Dateinamen bewusst NICHT geändert — sonst reißt die Equity-Historie ab.
+// ── NULLTEST ─────────────────────────────────────
+// Gleichgewichteter Korb, einfach gekauft und liegengelassen. Ohne diesen
+// Vergleich sieht ein Bot, der dem Markt hinterherhinkt, nach Erfolg aus:
+// am 21.08.2026 stand BOT 3 bei +9,2 %, der Korb im selben Zeitraum bei +25,6 %.
+const BASKET=['BTC','ETH','SOL','BNB','XRP','DOGE','AVAX','LINK','LTC','DOT'];
+let BENCH=[];
 const BOTS=[
  {name:'BOT 1 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000},
- {name:'BOT 2 · Momentum',tag:'1D · 10 Paare · Rang 20d · Top2 long / Flop2 short · alle 14 Tage · Expo 60',file:'state3.json',init:2000,unvalidiert:true},
+ {name:'BOT 2 · Momentum',tag:'1D · 10 Paare · Rang 20d · Top2 long / Flop2 short · alle 14 Tage · Expo 60',file:'state3.json',init:2000,unvalidiert:true,stopped:true},
  {name:'BOT 3 · SMA150-Trendfilter',tag:'1D · 10 Paare · long solange Schluss > SMA150 · kein Hebel, kein Stop, kein Ziel',file:'state5.json',init:2000,unvalidiert:true}
 ];
 // Warnschwellen (nur Anzeige, kein Eingriff in den Bot)
@@ -120,6 +126,21 @@ Chart.defaults.color='#7d8799';Chart.defaults.borderColor='#1e2634';
 Chart.defaults.font.family="'Inter',sans-serif";Chart.defaults.font.size=10;
 async function getJson(u){try{const r=await fetch(u+(u.includes('?')?'&':'?')+'t='+Date.now());if(!r.ok)return null;return await r.json();}catch(e){return null;}}
 async function okx(path){try{const r=await fetch('https://www.okx.com/api/v5/'+path);const d=await r.json();return d.data||null;}catch(e){return null;}}
+let _bser=null;
+async function basketSeries(){
+ if(_bser)return _bser;
+ const o={};
+ await Promise.all(BASKET.map(async s=>{
+  const d=await okx('market/candles?instId='+s+'-USDT-SWAP&bar=1Dutc&limit=300');
+  if(d)o[s]=d.map(c=>({ts:+c[0],c:+c[4]})).reverse();}));
+ _bser=o;return o;}
+function basketReturn(ser,sinceTs){
+ let sum=0,n=0;
+ for(const s of BASKET){
+  const k=ser[s];if(!k||!k.length)continue;
+  const st=k.filter(x=>x.ts<=sinceTs).pop();if(!st||!st.c)continue;
+  sum+=(k[k.length-1].c/st.c-1)*100;n++;}
+ return n?sum/n:null;}
 // Momentum (state3) führt Positionen als Notional ohne Margin, state2/state4 als Size+Margin
 const pEntry=p=>p.price!=null?p.price:p.entry;
 const pUnreal=(p,l)=>p.notional!=null
@@ -185,7 +206,7 @@ function botCard(i,b,st,px){
  const rChips=Object.entries(s.reasons).map(([r,x])=>`<span class="chip">${r==='TP'?'✅':r==='SL'?'🛑':'⏱'} ${r} <b>${x.n}×</b> <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b></span>`).join('');
  return `<div class="card">
   <div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div>${b.unvalidiert?'<div class="tag amb">⚠ unvalidiert — Walk-Forward nicht bestanden, läuft als Forward-Test</div>':''}</div><span class="badge ${b.stopped?'wait':'live'}">${b.stopped?(st.positions.length?'Abwicklung':'gestoppt'):'live'}</span></div>
-  <div class="eqrow"><span class="eq">${money(s.eq)}</span><span class="pnl ${cls}">${fmt(s.pnl)}$ (${fmt(s.pct,1)}%)</span>${st.positions.length?`<span class="pnl ${s.unreal>=0?'up':'dn'}" style="font-size:12px">${fmt(s.unreal)}$ <small>unreal.</small></span>`:''}</div>
+  <div class="eqrow"><span class="eq">${money(s.eq)}</span><span class="pnl ${cls}">${fmt(s.pnl)}$ (${fmt(s.pct,1)}%)</span>${BENCH[i]!=null?`<span class="pnl ${(s.pct-BENCH[i])>=0?'up':'dn'}" style="font-size:12px" title="Nulltest: gleichgewichteter Korb, gekauft am Botstart und gehalten">${fmt(s.pct-BENCH[i],1)} pp <small>vs. Korb (${fmt(BENCH[i],1)}%)</small></span>`:''}${st.positions.length?`<span class="pnl ${s.unreal>=0?'up':'dn'}" style="font-size:12px">${fmt(s.unreal)}$ <small>unreal.</small></span>`:''}</div>
   <div class="chartbox"><canvas id="eq${i}"></canvas></div>
   <div class="kpis">
    ${kpi(s.wr.toFixed(0)+'%','Winrate')}
@@ -257,6 +278,9 @@ async function load(){
   $('#btcP').textContent='$'+p.toLocaleString('de-DE',{maximumFractionDigits:0});
   $('#btcC').textContent=fmt(c,1)+'%';$('#btcC').className='mono '+(c>=0?'up':'dn');}
  // Karten
+ const _bs=await basketSeries();
+ BENCH=BOTS.map((b,i)=>{const stt=states[i];
+  return (stt&&stt.started)?basketReturn(_bs,Date.parse(stt.started)):null;});
  $('#grid').innerHTML=BOTS.map((b,i)=>botCard(i,b,states[i],px)).join('');
  BOTS.forEach((b,i)=>drawCharts(i,states[i],b.init,px));
  // Summary über alle Bots
@@ -271,6 +295,7 @@ async function load(){
   `<div class="sumcard"><div class="lbl">Heute</div><div class="val ${today>=0?'up':'dn'}">${fmt(today)}$</div><div class="det">realisiert (UTC)</div></div>`+
   `<div class="sumcard"><div class="lbl">Positionen</div><div class="val">${nOpen}</div><div class="det">${money(locked)} gebunden</div></div>`+
   `<div class="sumcard"><div class="lbl">Trades</div><div class="val">${allT}</div><div class="det">alle Bots</div></div>`+
+  `<div class="sumcard"><div class="lbl">Nulltest: Korb halten</div><div class="val">${BENCH.filter(x=>x!=null).length?fmt(Math.max.apply(null,BENCH.filter(x=>x!=null)),1)+'%':'–'}</div><div class="det">seit dem ältesten Botstart</div></div>`+
   `<div class="sumcard"><div class="lbl">Funding-APR Ø</div><div class="val ${fApr==null?'':fApr>=15?'up':fApr>=5?'amb':''}">${fApr==null?'–':fApr.toFixed(1)+'%'}</div><div class="det">Harvesting-Signal ab ~15%</div></div>`;
  // ── Warnungen je Bot (nur Anzeige — kein Eingriff in die Bots) ──
  const warn=[];
