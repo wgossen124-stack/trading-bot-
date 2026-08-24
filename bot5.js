@@ -120,7 +120,7 @@ async function main(){
     px[sym]=res.live;
     const line=sma(k.map(b=>b.c),P.sma);
     if(line==null) continue;
-    wanted[sym]={long:last.c>line, close:last.c, sma:line, atr:atr14(k), hi:last.h};
+    wanted[sym]={long:last.c>line, close:last.c, sma:line, atr:atr14(k), hi:last.h, hiTs:last.ts};
   }
 
   // ── 2. Ausstiege: Position vorhanden, Sollzustand flach ──
@@ -130,7 +130,15 @@ async function main(){
     // beim Einstiegskurs — der Stop startet dadurch weiter weg und zieht sich
     // erst mit neuen Hochs zusammen. Bewusst die vorsichtige Richtung: lieber
     // zu spaet ausgestoppt als eine laufende Position sofort glattgestellt.
-    pos.hh=Math.max(pos.hh||pos.price, w.hi, px[pos.sym]);
+    // ⚠️ Fehler vom 22.08., behoben am 24.08.: hier wurde `w.hi` bedingungslos
+    // eingerechnet — das Hoch der letzten GESCHLOSSENEN Kerze, auch wenn die
+    // noch VOR dem Einstieg lag. Bei Kaeufen nach einem Ruecksetzer war das
+    // Vorkerzen-Hoch hoeher als alles danach: DOGE lag dadurch 6,7 % und LTC
+    // 2,6 % zu hoch, der Chandelier-Stop entsprechend zu eng — also genau in
+    // die gefaehrliche Richtung (vorzeitiger Ausstieg). Jetzt zaehlt die Kerze
+    // nur, wenn sie nach dem Einstieg begonnen hat.
+    if(w.hiTs>=pos.ts) pos.hh=Math.max(pos.hh||pos.price, w.hi);
+    pos.hh=Math.max(pos.hh||pos.price, px[pos.sym]);
     const chand = w.atr>0 ? pos.hh-P.chandAtr*w.atr : null;
     const trailAus = chand!=null && px[pos.sym]<=chand;
     if(w.long && !trailAus) continue;
