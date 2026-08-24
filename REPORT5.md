@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-08-24 22:43 UTC · Lauf #583 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-08-24 22:49 UTC · Lauf #584 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2175.08 | +175.08$ (8.8%) | 0% | 0.00 | 3 | 8/10 |
+| $2176.32 | +176.32$ (8.8%) | 0% | 0.00 | 3 | 8/10 |
 
 ## Signallage
 
@@ -33,13 +33,13 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| LINK | 8.82977 | 11.6080 | $262 | +62.75$ |
-| BTC | 69508.9 | 78695.0 | $230 | +26.84$ |
-| ETH | 2261.38 | 2475.97 | $222 | +19.27$ |
-| SOL | 84.9370 | 97.6700 | $234 | +30.44$ |
-| BNB | 625.325 | 701.400 | $228 | +24.70$ |
-| XRP | 1.27255 | 1.47760 | $241 | +33.44$ |
-| DOGE | 0.0919484 | 0.0897800 | $214 | -5.17$ |
+| LINK | 8.82977 | 11.6150 | $262 | +62.90$ |
+| BTC | 69508.9 | 78760.4 | $230 | +27.03$ |
+| ETH | 2261.38 | 2477.81 | $223 | +19.44$ |
+| SOL | 84.9370 | 97.7800 | $234 | +30.70$ |
+| BNB | 625.325 | 701.900 | $228 | +24.86$ |
+| XRP | 1.27255 | 1.48030 | $241 | +33.89$ |
+| DOGE | 0.0919484 | 0.0897200 | $214 | -5.31$ |
 | LTC | 53.9608 | 51.5500 | $209 | -9.79$ |
 
 ## Letzte Trades
