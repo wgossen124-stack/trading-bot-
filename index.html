@@ -109,14 +109,14 @@ const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 const BASKET=['BTC','ETH','SOL','BNB','XRP','DOGE','AVAX','LINK','LTC','DOT'];
 let BENCH=[];
 const BOTS=[
- {name:'BOT 1 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Turtle-Exit N10 · 2×ATR-Stop',file:'state2.json',init:2000},
- {name:'BOT 3 · SMA150-Trendfilter',tag:'1D · 10 Paare · long solange Schluss > SMA150 · kein Hebel, kein Stop, kein Ziel',file:'state5.json',init:2000,unvalidiert:true}
+ {name:'BOT 1 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Ausstieg NUR per Stop: Turtle N10 + 3×ATR-Trail',file:'state2.json',init:2000},
+ {name:'BOT 3 · SMA150-Trendfilter',tag:'1D · 10 Paare · Einstieg > SMA150 · Ausstieg NUR per Trailing-Stop (3×ATR) · kein Hebel',file:'state5.json',init:2000,unvalidiert:true}
 ];
 // Warnschwellen (nur Anzeige, kein Eingriff in den Bot)
-// stuckDays: Der Donchian-Bot (Anzeige BOT 1) hat selbst ein Timeout von 40 Bars × 6h = 10 Tagen und HÄLT Gewinner
-// bewusst lange. Erst über dem eigenen Timeout ist eine Position wirklich hängengeblieben.
-// (Korrigiert 26.07.2026 — vorher 3 Tage, das war eine Bot-1-Zahl und löste falschen Alarm aus.)
-const LIMITS={dd:25, pf:0.8, pfMinTrades:30, stuckDays:11};
+// Die fruehere Alters-Warnung ist am 24.08.2026 entfallen: seit die
+// Abbruchkriterien aus den Bots raus sind, laufen Positionen absichtlich bis
+// zum Stop. Ein hohes Positionsalter ist gewollt, keine Stoerung.
+const LIMITS={dd:25, pf:0.8, pfMinTrades:30};
 const $=s=>document.querySelector(s);
 const fmt=(v,d=2)=>(v>=0?'+':'')+v.toFixed(d);
 const money=v=>'$'+v.toFixed(2);
@@ -302,13 +302,14 @@ async function load(){
   if(!s)return; const nm=BOTS[i].name.split(' · ')[0];
   if(s.ddNow>=LIMITS.dd) warn.push(`<b>${nm}</b>: Drawdown ${s.ddNow.toFixed(1)} % — Schwelle ${LIMITS.dd} % erreicht. Regel: stoppen und überprüfen.`);
   if(s.n>=LIMITS.pfMinTrades && s.pf<LIMITS.pf) warn.push(`<b>${nm}</b>: Profitfaktor ${s.pf.toFixed(2)} bei ${s.n} Trades — unter ${LIMITS.pf}. Regel: Strategie überprüfen.`);
-  const stuck=states[i].positions.filter(p=>(Date.now()-p.ts)/86400000>LIMITS.stuckDays);
-  if(stuck.length) warn.push(`<b>${nm}</b>: ${stuck.length} Position(en) älter als ${LIMITS.stuckDays} Tage (${stuck.map(p=>p.sym.replace('USDT','')).join(', ')}) — Exit-Logik prüfen.`);
+  // Alters-Warnung am 24.08.2026 entfernt: seit die Abbruchkriterien raus sind
+ // (BOT 1 Timeout, BOT 3 SMA-Ausstieg), laufen Positionen absichtlich bis zum
+ // Stop. Ein hohes Alter ist damit gewolltes Verhalten, keine Stoerung.
  });
  const ist=S.map((s,i)=>s?BOTS[i].name.split(' · ')[0].replace('BOT ','B')+' DD '+s.ddNow.toFixed(1)+'%/PF '+s.pf.toFixed(2):null).filter(Boolean).join(' · ');
  $('#warn').innerHTML = warn.length
-  ? `<div class="alert"><b>⚠ Abbruchkriterium erreicht</b>${warn.map(w=>'<div>'+w+'</div>').join('')}</div>`
-  : `<div class="okline">Wächter aktiv · Warnung bei Drawdown ≥ ${LIMITS.dd} % · Profitfaktor < ${LIMITS.pf} ab ${LIMITS.pfMinTrades} Trades · Position > ${LIMITS.stuckDays} Tage — aktuell: ${ist}</div>`;
+  ? `<div class="alert"><b>⚠ Warnschwelle erreicht</b>${warn.map(w=>'<div>'+w+'</div>').join('')}</div>`
+  : `<div class="okline">Wächter aktiv · Warnung bei Drawdown ≥ ${LIMITS.dd} % · Profitfaktor < ${LIMITS.pf} ab ${LIMITS.pfMinTrades} Trades  — aktuell: ${ist}</div>`;
  // Subline
  let sub=`<span>Stand: <b>${new Date().toLocaleTimeString('de-DE',{hour:'2-digit',minute:'2-digit'})}</b></span>`;
  if(commit&&commit[0])sub+=`<span>Letzter Bot-Lauf: <b>${new Date(commit[0].commit.committer.date).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',hour:'2-digit',minute:'2-digit'})}</b></span>`;
