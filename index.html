@@ -10,8 +10,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
 <style>
-:root{--bg:#0a0d13;--card:#11151f;--card2:#161c29;--txt:#e8edf6;--mut:#7d8799;--mut2:#565f70;--grn:#22d992;--red:#f6465d;--acc:#4f7cff;--amb:#f0b90b;--bor:#1e2634;--bor2:#283245}
+:root{--bg:#0b0e13;--card:#12161f;--card2:#171c27;--txt:#e8edf6;--mut:#7d8799;--mut2:#565f70;--grn:#22d992;--red:#f6465d;--acc:#4f7cff;--amb:#f0b90b;--bor:#1e2634;--bor2:#283245}
 *{margin:0;padding:0;box-sizing:border-box}
+body,table,.mono,.val,.eq,.pnl,.kpi{font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1,'lnum' 1}
 html{-webkit-text-size-adjust:100%}
 body{background:var(--bg);color:var(--txt);font-family:'Inter',-apple-system,sans-serif;padding:16px;max-width:1080px;margin:0 auto;font-size:14px}
 .mono{font-family:'JetBrains Mono',monospace}
@@ -51,7 +52,9 @@ h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:
 .kpi{background:var(--card2);border:1px solid var(--bor);border-radius:9px;padding:8px 6px;text-align:center}
 .kpi b{display:block;font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:700}
 .kpi span{font-size:8.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.7px;font-weight:600}
-.chartbox{position:relative;height:360px;margin:10px 0 6px}
+.chartbox{position:relative;height:330px;margin:10px 0 2px}
+.chartbox.dd{height:130px;margin:0 0 6px}
+.axlabel{font-size:9.5px;color:var(--mut2);text-transform:uppercase;letter-spacing:1.2px;margin:8px 0 1px;font-weight:600}
 .chartbox.sm{height:170px}
 .sec{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin:16px 0 6px;display:flex;justify-content:space-between;align-items:center}
 .sec .r{font-weight:500;letter-spacing:0;text-transform:none;font-size:11px}
@@ -206,7 +209,10 @@ function botCard(i,b,st,px){
  return `<div class="card">
   <div class="bothead"><div><h2>${b.name}</h2><div class="tag">${b.tag}</div>${b.unvalidiert?'<div class="tag amb">⚠ unvalidiert — Walk-Forward nicht bestanden, läuft als Forward-Test</div>':''}</div><span class="badge ${b.stopped?'wait':'live'}">${b.stopped?(st.positions.length?'Abwicklung':'gestoppt'):'live'}</span></div>
   <div class="eqrow"><span class="eq">${money(s.eq)}</span><span class="pnl ${cls}">${fmt(s.pnl)}$ (${fmt(s.pct,1)}%)</span>${BENCH[i]!=null?`<span class="pnl ${(s.pct-BENCH[i])>=0?'up':'dn'}" style="font-size:12px" title="Nulltest: gleichgewichteter Korb, gekauft am Botstart und gehalten">${fmt(s.pct-BENCH[i],1)} pp <small>vs. Korb (${fmt(BENCH[i],1)}%)</small></span>`:''}${st.positions.length?`<span class="pnl ${s.unreal>=0?'up':'dn'}" style="font-size:12px">${fmt(s.unreal)}$ <small>unreal.</small></span>`:''}</div>
-  <div class="chartbox"><canvas id="eq${i}"></canvas></div>
+  <div class="axlabel">Equity vs. Korb halten</div>
+ <div class="chartbox"><canvas id="eq${i}"></canvas></div>
+ <div class="axlabel">Drawdown vom Höchststand</div>
+ <div class="chartbox dd"><canvas id="dd${i}"></canvas></div>
   <div class="kpis">
    ${kpi(s.wr.toFixed(0)+'%','Winrate')}
    ${kpi(s.pf.toFixed(2),'P-Faktor',s.pf>=1.3?'up':s.pf<1?'dn':'')}
@@ -269,14 +275,14 @@ function drawCharts(i,st,init,px){
    return {x:t.ts, y:best?best.y:init, pnl:t.pnl, sym:t.sym, grund:t.reason};
  });
  charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{datasets:[
-  {label:'Bot', data:pts, borderWidth:2.5, pointRadius:0, pointHitRadius:12, tension:0, order:1,
+  {label:'Bot', data:pts, borderWidth:1.8, pointRadius:0, pointHitRadius:12, tension:0, order:1,
    segment:{borderColor:segCol},
    borderColor:pts[pts.length-1].y>=init?'#22d992':'#f6465d',
-   fill:{target:{value:init},above:'rgba(34,217,146,.08)',below:'rgba(246,70,93,.08)'}},
-  {label:'Korb halten', data:korb, borderWidth:1.6, borderColor:'#6b7a99', borderDash:[5,4],
+   fill:{target:{value:init},above:'rgba(34,217,146,.05)',below:'rgba(246,70,93,.05)'}},
+  {label:'Korb halten', data:korb, borderWidth:1.3, borderColor:'#5d6a80', borderDash:[4,4],
    pointRadius:0, pointHitRadius:8, tension:0, fill:false, order:2},
   {label:'Trades', type:'scatter', data:mk, order:0, showLine:false,
-   pointRadius:5, pointHoverRadius:7, pointStyle:'triangle',
+   pointRadius:4, pointHoverRadius:6.5, pointStyle:'triangle',
    backgroundColor:mk.map(m=>m.pnl>=0?'#22d992':'#f6465d'),
    borderColor:'#0d1117', borderWidth:1}
  ]},
@@ -291,6 +297,27 @@ function drawCharts(i,st,init,px){
   scales:{x:{type:'linear',bounds:'data',ticks:{maxTicksLimit:12,maxRotation:0,
    callback:v=>{const d=new Date(v);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.';}},grid:{color:'#141a26'}},
   y:{ticks:{maxTicksLimit:9,callback:v=>'$'+v.toFixed(0)},grid:{color:'#161c29'}}}}});
+  // ── Underwater-Chart: Abstand zum bisherigen Hoechststand ──────────
+ // Die Equity-Kurve zeigt, WAS verdient wurde; der Underwater-Chart zeigt,
+ // WIE WEH es zwischendurch tat — Tiefe und Dauer der Ruecksetzer. Fuer die
+ // Beurteilung eines Trendfolgers ist das die aussagekraeftigere Haelfte.
+ if(charts['dd'+i])charts['dd'+i].destroy();
+ let spitze=-Infinity;
+ const ddPts=pts.map(p=>{ if(p.y>spitze) spitze=p.y;
+   return {x:p.x, y: spitze>0 ? -(spitze-p.y)/spitze*100 : 0}; });
+ const ddMin=Math.min.apply(null, ddPts.map(p=>p.y).concat([-0.5]));
+ charts['dd'+i]=new Chart($('#dd'+i),{type:'line',data:{datasets:[
+  {data:ddPts, borderColor:'#f6465d', borderWidth:1.3, pointRadius:0, pointHitRadius:10,
+   tension:0, fill:{target:{value:0}, below:'rgba(246,70,93,.13)'}}]},
+ options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},
+  plugins:{legend:{display:false},tooltip:{callbacks:{
+   title:c=>new Date(c[0].parsed.x).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})+' Uhr',
+   label:c=>' '+c.parsed.y.toFixed(2)+' % unter Hoch'}}},
+  scales:{x:{type:'linear',bounds:'data',ticks:{maxTicksLimit:12,maxRotation:0,
+   callback:v=>{const d=new Date(v);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.';}},
+   grid:{color:'#151a24'}},
+  y:{suggestedMin:ddMin*1.15, max:0, ticks:{maxTicksLimit:4,callback:v=>v.toFixed(0)+'%'},
+   grid:{color:'#151a24'}}}}});
  if(charts['day'+i])charts['day'+i].destroy();
  charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(34,217,146,.75)':'rgba(246,70,93,.75)'),borderRadius:3}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+'$'}}},
