@@ -141,8 +141,15 @@ async function main(){
     pos.hh=Math.max(pos.hh||pos.price, px[pos.sym]);
     const chand = w.atr>0 ? pos.hh-P.chandAtr*w.atr : null;
     const trailAus = chand!=null && px[pos.sym]<=chand;
-    if(w.long && !trailAus) continue;
-    const grund = w.long ? 'TRAIL' : 'SMA';
+    // ⚠️ Geaendert 24.08.2026 auf Williams Wunsch: das Abbruchkriterium ist raus.
+    // Frueher schloss AUCH ein Tagesschluss unter der SMA150 die Position
+    // (Grund 'SMA'). Jetzt schliesst NUR noch der nachlaufende Stop.
+    // Die SMA150 ist damit reine EINSTIEGS-Regel.
+    // Folge, die man kennen muss: faellt ein Paar unter die SMA150, bleibt die
+    // Position offen, bis der Chandelier 3xATR unter dem Hoch erreicht ist —
+    // der Ausstieg kommt also spaeter und tiefer als vorher.
+    if(!trailAus) continue;
+    const grund='TRAIL';
     const price=px[pos.sym]*(1-P.slip/100);
     const proceeds=pos.size*price;
     const fee=proceeds*P.fee;
