@@ -10,7 +10,8 @@
    "margin": 199.418522649655,
    "eFee": 0.09970926132482749,
    "ts": 1786674235070,
-   "hh": 12.625
+   "hh": 12.625,
+   "sl": 10.86278733360997
   },
   {
    "sym": "BTCUSDT",
@@ -20,7 +21,8 @@
    "margin": 203.08888551307024,
    "eFee": 0.10154444275653512,
    "ts": 1787189840220,
-   "hh": 80789.9
+   "hh": 80789.9,
+   "sl": 73964.01383062734
   },
   {
    "sym": "ETHUSDT",
@@ -30,7 +32,8 @@
    "margin": 203.0746701032774,
    "eFee": 0.10153733505163871,
    "ts": 1787189840220,
-   "hh": 2549.34
+   "hh": 2549.34,
+   "sl": 2255.8536305181833
   },
   {
    "sym": "SOLUSDT",
@@ -40,7 +43,8 @@
    "margin": 203.06045568850647,
    "eFee": 0.10153022784425324,
    "ts": 1787189840220,
-   "hh": 102.78
+   "hh": 102.78,
+   "sl": 90.02738408750938
   },
   {
    "sym": "BNBUSDT",
@@ -50,7 +54,8 @@
    "margin": 203.04624226868765,
    "eFee": 0.10152312113434382,
    "ts": 1787189840220,
-   "hh": 727
+   "hh": 727,
+   "sl": 667.4074012685429
   },
   {
    "sym": "XRPUSDT",
@@ -60,7 +65,8 @@
    "margin": 207.56535891611315,
    "eFee": 0.10378267945805658,
    "ts": 1787274609536,
-   "hh": 1.701
+   "hh": 1.701,
+   "sl": 1.4498918386650004
   },
   {
    "sym": "DOGEUSDT",
@@ -70,7 +76,8 @@
    "margin": 219.13213979136407,
    "eFee": 0.10956606989568203,
    "ts": 1787360771207,
-   "hh": 0.09454
+   "hh": 0.09454,
+   "sl": 0.0799040995179096
   },
   {
    "sym": "LTCUSDT",
@@ -80,7 +87,8 @@
    "margin": 219.11680141793195,
    "eFee": 0.10955840070896598,
    "ts": 1787360771207,
-   "hh": 54.06
+   "hh": 54.06,
+   "sl": 48.02883122605382
   }
  ],
  "trades": [
@@ -113,7 +121,7 @@
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 589,
+ "runs": 590,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts)."
 }
