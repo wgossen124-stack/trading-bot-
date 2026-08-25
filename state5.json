@@ -1,5 +1,5 @@
 {
- "bal": 335.0929141011634,
+ "bal": 570.6044687563898,
  "peak": 2282.3596732905103,
  "positions": [
   {
@@ -58,17 +58,6 @@
    "sl": 667.4074012685429
   },
   {
-   "sym": "XRPUSDT",
-   "side": "LONG",
-   "price": 1.27255446,
-   "size": 163.10921492201845,
-   "margin": 207.56535891611315,
-   "eFee": 0.10378267945805658,
-   "ts": 1787274609536,
-   "hh": 1.701,
-   "sl": 1.4498918386650004
-  },
-  {
    "sym": "DOGEUSDT",
    "side": "LONG",
    "price": 0.091948386,
@@ -118,10 +107,22 @@
    "exit": 607.67844,
    "pnl": -0.9,
    "reason": "SMA"
+  },
+  {
+   "ts": 1787691777208,
+   "sym": "XRPUSDT",
+   "side": "LONG",
+   "entry": 1.27255446,
+   "exit": 1.444611,
+   "pnl": 27.84,
+   "reason": "TRAIL"
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 613,
+ "runs": 614,
  "skipStale": 0,
- "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts)."
+ "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
+ "gesperrt": {
+  "XRPUSDT": true
+ }
 }
