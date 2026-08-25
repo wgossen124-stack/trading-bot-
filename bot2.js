@@ -141,9 +141,11 @@ async function main(){
         let exit=null, reason='';
         if(pos.side==='LONG'){ if(bar.l<=pos.sl){exit=pos.sl*(1-P.slipPct/100);reason='STOP';} }
         else                 { if(bar.h>=pos.sl){exit=pos.sl*(1+P.slipPct/100);reason='STOP';} }
-        if(exit==null && (bar.ts-(pos.ts||0))>=P.timeoutBars*P.barMs){
-          exit=pos.side==='LONG'?bar.c*(1-P.slipPct/100):bar.c*(1+P.slipPct/100); reason='TIME';
-        }
+        // ⚠️ Zeit-Ausstieg (Timeout nach 40 Bars) am 24.08.2026 auf Williams
+        // Wunsch entfernt: das Abbruchkriterium ist raus, Positionen laufen bis
+        // zum Stop. `P.timeoutBars` bleibt als Dokumentation stehen, wirkt aber
+        // nicht mehr. Folge: Positionen koennen beliebig lange offen bleiben —
+        // die 11-Tage-Warnschwelle im Dashboard wird dadurch haeufiger anspringen.
         if(exit!=null){
           const diff=pos.side==='LONG'?exit-pos.price:pos.price-exit;
           const pnl=diff*pos.size - exit*pos.size*P.feeRate - pos.eFee;
