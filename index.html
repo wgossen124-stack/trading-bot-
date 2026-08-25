@@ -78,6 +78,47 @@ tr:last-child td{border-bottom:none}
 button.rf{background:var(--card2);color:var(--txt);border:1px solid var(--bor2);border-radius:9px;padding:7px 13px;font-size:12px;font-weight:600;cursor:pointer;font-family:'Inter'}
 button.rf:hover{border-color:var(--acc)}
 .foot{color:var(--mut2);font-size:10.5px;text-align:center;margin:20px 0 8px;line-height:1.6}
+
+/* ═══ Profi-Pass 24.08.2026 ══════════════════════════════════════════
+   Konventionen aus Handelsoberflaechen: Zahlen rechtsbuendig und
+   tabellarisch, Farbe NUR fuer Gewinn/Verlust, alles andere neutral,
+   duenne Trennlinien statt Kaesten, ruhige Typo-Stufen. */
+body{font-size:13px;line-height:1.5}
+header{position:sticky;top:0;z-index:20;background:rgba(11,14,19,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--bor);padding:11px 0 10px;margin-bottom:12px}
+h1{font-size:13px;letter-spacing:2.4px;font-weight:700;color:var(--mut)}
+h1 .dot{width:6px;height:6px}
+.sub{font-size:11px;color:var(--mut2);gap:16px;margin-bottom:16px}
+.sub b{font-weight:600}
+.summary{gap:0;border:1px solid var(--bor);border-radius:10px;overflow:hidden;background:var(--card)}
+.sumcard{background:transparent;border:0;border-right:1px solid var(--bor);border-radius:0;padding:13px 15px}
+.sumcard:last-child{border-right:0}
+.sumcard .lbl{font-size:9.5px;letter-spacing:1.3px;color:var(--mut2);font-weight:600}
+.sumcard .val{font-size:19px;font-weight:650;letter-spacing:-.3px}
+.sumcard .det{font-size:10.5px;color:var(--mut2)}
+.card{border:1px solid var(--bor);border-radius:12px;padding:16px 18px 14px;background:var(--card)}
+.bothead h2{font-size:14.5px;font-weight:650;letter-spacing:.2px}
+.bothead .tag{font-size:10.5px;color:var(--mut2);margin-top:3px;line-height:1.45}
+.eqrow{align-items:baseline;gap:12px;margin:12px 0 2px}
+.eq{font-size:26px;font-weight:650;letter-spacing:-.6px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{position:sticky;top:0;background:var(--card);font-size:9.5px;text-transform:uppercase;
+  letter-spacing:1.1px;color:var(--mut2);font-weight:600;text-align:left;
+  padding:7px 9px;border-bottom:1px solid var(--bor2);white-space:nowrap}
+td{padding:8px 9px;border-bottom:1px solid rgba(30,38,52,.55);white-space:nowrap}
+tr:last-child td{border-bottom:0}
+tbody tr:hover td,table tr:hover td{background:rgba(255,255,255,.022)}
+th.n,td.n{text-align:right;font-variant-numeric:tabular-nums}
+td.mut{color:var(--mut2)}
+td.amb{color:var(--amb)}
+.sec{font-size:9.5px;letter-spacing:1.3px;color:var(--mut2);margin:16px 0 6px;font-weight:600}
+.axlabel{font-size:9.5px;letter-spacing:1.3px;color:var(--mut2);margin:12px 0 2px;font-weight:600}
+.kpis{border-top:1px solid var(--bor);border-bottom:1px solid var(--bor);padding:11px 0;margin:12px 0 4px}
+.empty{font-size:11.5px;color:var(--mut2);padding:14px 0}
+.foot{font-size:10px;color:var(--mut2);line-height:1.75;margin-top:22px;
+  border-top:1px solid var(--bor);padding-top:12px}
+@media(max-width:680px){.summary{grid-template-columns:repeat(2,1fr)}
+  .sumcard{border-bottom:1px solid var(--bor)}}
 </style>
 </head>
 <body>
@@ -196,7 +237,10 @@ function botCard(i,b,st,px){
   const basis=p.margin||p.notional||0;
   const upct=(u!=null&&basis)?u/basis*100:null;
   const age=Math.round((Date.now()-p.ts)/36e5);
-  return `<tr><td><b>${p.sym.replace('USDT','')}</b></td><td class="side-${p.side[0]}">${p.side}</td><td>${pEntry(p).toPrecision(5)}</td><td>${p.sl!=null?p.sl.toPrecision(5):'–'}</td><td>${money(basis)}</td><td class="${u==null?'':u>=0?'up':'dn'}">${u==null?'–':fmt(u)+'$'}</td><td class="${upct==null?'':upct>=0?'up':'dn'}">${upct==null?'–':fmt(upct,1)+'%'}</td><td>${age<48?age+'h':Math.round(age/24)+'d'}</td></tr>`;
+  // Abstand zum Stop: die Zahl, die man beim Beobachten tatsaechlich braucht.
+  const dist=(lp!=null&&p.sl!=null&&p.sl>0)?(p.side==='SHORT'?(1-lp/p.sl):(lp/p.sl-1))*100:null;
+  const dCls=dist==null?'':dist<3?'dn':dist<8?'amb':'mut';
+  return `<tr><td><b>${p.sym.replace('USDT','')}</b></td><td class="side-${p.side[0]}">${p.side}</td><td class="n">${pEntry(p).toPrecision(5)}</td><td class="n">${lp!=null?lp.toPrecision(5):'–'}</td><td class="n">${p.sl!=null?p.sl.toPrecision(5):'–'}</td><td class="n ${dCls}">${dist==null?'–':dist.toFixed(1)+'%'}</td><td class="n">${money(basis)}</td><td class="n ${u==null?'':u>=0?'up':'dn'}">${u==null?'–':fmt(u)+'$'}</td><td class="n ${upct==null?'':upct>=0?'up':'dn'}">${upct==null?'–':fmt(upct,1)+'%'}</td><td class="n mut">${age<48?age+'h':Math.round(age/24)+'d'}</td></tr>`;
  }).join('');
  const trRows=[...s.trades].reverse().slice(0,10).map(t=>{
   const d=new Date(t.ts),ds=('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+' '+('0'+d.getHours()).slice(-2)+':'+('0'+d.getMinutes()).slice(-2);
@@ -233,7 +277,7 @@ function botCard(i,b,st,px){
   <div class="sec">Kapital <span class="r mono">frei ${money(s.free)} · gebunden ${money(s.locked)} (${s.heat.toFixed(0)}%)</span></div>
   <div class="heat"><i style="width:${Math.min(100,s.heat/40*100)}%"></i></div>
   <div class="sec">Offene Positionen (${st.positions.length})${b.stopped&&st.positions.length?'<span class="r amb">Exit-only · schließen per Stop/TP/48h-Timeout</span>':''}</div>
-  ${st.positions.length?`<div style="overflow-x:auto"><table><tr><th>Pair</th><th>Seite</th><th>Entry</th><th>Stop</th><th>Margin</th><th>PnL</th><th>PnL%</th><th>Alter</th></tr>${posRows}</table></div>`:'<div class="empty">keine offenen Positionen</div>'}
+  ${st.positions.length?`<div style="overflow-x:auto"><table><tr><th>Pair</th><th>Seite</th><th class="n">Entry</th><th class="n">Kurs</th><th class="n">Stop</th><th class="n">Abst.</th><th class="n">Wert</th><th class="n">PnL</th><th class="n">PnL%</th><th class="n">Alter</th></tr>${posRows}</table></div>`:'<div class="empty">keine offenen Positionen</div>'}
   <div class="sec">Letzte Trades</div>
   ${s.n?`<div style="overflow-x:auto"><table><tr><th>Zeit</th><th>Pair</th><th>Seite</th>${hasType?'<th>Setup</th>':''}<th>PnL</th><th>Exit</th></tr>${trRows}</table></div>`:'<div class="empty">noch keine Trades</div>'}
   ${s.symRank.length>1?`<div class="sec">Beste / schlechteste Paare</div><div class="chips">${top.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}<br>${flop.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}</div>`:''}
