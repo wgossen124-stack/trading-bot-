@@ -139,8 +139,17 @@ async function main(){
     // nur, wenn sie nach dem Einstieg begonnen hat.
     if(w.hiTs>=pos.ts) pos.hh=Math.max(pos.hh||pos.price, w.hi);
     pos.hh=Math.max(pos.hh||pos.price, px[pos.sym]);
+    // ⚠️ Sperrklinke, ergaenzt 24.08.2026. Vorher wurde der Stop bei jedem Lauf
+    // NEU gerechnet und nirgends gespeichert. Da er `Hoch - 3xATR` ist und die
+    // ATR im Abverkauf STEIGT, wanderte der Stop bei Turbulenz nach UNTEN — er
+    // wich also genau dann zurueck, wenn er halten muss. Am 24.08. gemessen:
+    // alle 8 Positionen hatten binnen einer Woche einen um 3,5-10,5 % tieferen
+    // Stop, weil die ATR um 67-210 % gestiegen war (XRP: -10,5 %).
+    // Ein nachlaufender Stop darf sich NIE lockern. Deshalb wird er jetzt in
+    // `pos.sl` gespeichert und nur noch nach oben nachgezogen.
     const chand = w.atr>0 ? pos.hh-P.chandAtr*w.atr : null;
-    const trailAus = chand!=null && px[pos.sym]<=chand;
+    if(chand!=null) pos.sl = pos.sl==null ? chand : Math.max(pos.sl, chand);
+    const trailAus = pos.sl!=null && px[pos.sym]<=pos.sl;
     // ⚠️ Geaendert 24.08.2026 auf Williams Wunsch: das Abbruchkriterium ist raus.
     // Frueher schloss AUCH ein Tagesschluss unter der SMA150 die Position
     // (Grund 'SMA'). Jetzt schliesst NUR noch der nachlaufende Stop.
@@ -192,7 +201,10 @@ async function main(){
     // `margin` ist ohne Hebel schlicht der eingesetzte Betrag. Das Feld heisst so,
     // weil das Dashboard `Equity = bal + Summe margin + Summe unrealisiert` rechnet — ohne
     // dieses Feld wuerde BOT 3 dort mit fast null Equity erscheinen.
-    st.positions.push({sym,side:'LONG',price,size,margin:notional,eFee,hh:price,ts:Date.now()});
+    // Stop gleich beim Einstieg setzen, damit die Position nicht einen Lauf lang
+    // ohne Stop dasteht (Ausstiege laufen vor den Einstiegen).
+    const slNeu = w.atr>0 ? price-P.chandAtr*w.atr : null;
+    st.positions.push({sym,side:'LONG',price,size,margin:notional,eFee,hh:price,sl:slNeu,ts:Date.now()});
     log.push('⚡ OPEN '+sym.replace('USDT','')+' @'+price.toPrecision(6)+' ('+notional.toFixed(0)+'$)');
   }
 
