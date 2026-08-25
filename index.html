@@ -30,7 +30,7 @@ h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:
 .sumcard .val{font-size:20px;font-weight:800;font-family:'JetBrains Mono',monospace}
 .sumcard .det{font-size:11px;color:var(--mut);margin-top:3px}
 .up{color:var(--grn)}.dn{color:var(--red)}.amb{color:var(--amb)}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:16px}
+.grid{display:grid;grid-template-columns:1fr;gap:18px}
 .alert{background:rgba(246,70,93,.09);border:1px solid rgba(246,70,93,.45);border-radius:12px;padding:11px 14px;margin-bottom:14px;font-size:12px;line-height:1.65;color:#ffd3d9}
 .alert b{display:block;color:var(--red);font-size:12.5px;letter-spacing:.4px;margin-bottom:3px}
 .okline{color:var(--mut2);font-size:10.5px;margin-bottom:14px;padding-left:2px}
@@ -51,8 +51,8 @@ h1 .dot{width:8px;height:8px;border-radius:50%;background:var(--grn);box-shadow:
 .kpi{background:var(--card2);border:1px solid var(--bor);border-radius:9px;padding:8px 6px;text-align:center}
 .kpi b{display:block;font-size:14px;font-family:'JetBrains Mono',monospace;font-weight:700}
 .kpi span{font-size:8.5px;color:var(--mut);text-transform:uppercase;letter-spacing:.7px;font-weight:600}
-.chartbox{position:relative;height:170px;margin:8px 0 4px}
-.chartbox.sm{height:110px}
+.chartbox{position:relative;height:360px;margin:10px 0 6px}
+.chartbox.sm{height:170px}
 .sec{font-size:10.5px;color:var(--mut);text-transform:uppercase;letter-spacing:1.2px;font-weight:700;margin:16px 0 6px;display:flex;justify-content:space-between;align-items:center}
 .sec .r{font-weight:500;letter-spacing:0;text-transform:none;font-size:11px}
 table{width:100%;border-collapse:collapse;font-size:12px}
@@ -233,6 +233,25 @@ function botCard(i,b,st,px){
   ${s.symRank.length>1?`<div class="sec">Beste / schlechteste Paare</div><div class="chips">${top.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}<br>${flop.map(([sy,x])=>`<span class="chip">${sy.replace('USDT','')} <b class="${x.pnl>=0?'up':'dn'}">${fmt(x.pnl,0)}$</b> <span style="color:var(--mut2)">${x.n}×</span></span>`).join('')}</div>`:''}
  </div>`;
 }
+// Korb-Vergleichskurve: gleichgewichtet gekauft am Botstart, auf das
+// Startkapital skaliert. Damit sieht man im Graphen direkt, ob der Bot
+// den Markt schlaegt oder ihm nur hinterherlaeuft.
+function korbKurve(sinceTs, init){
+  if(!_bser) return [];
+  const maps={}, start={};
+  for(const sy of BASKET){ const k=_bser[sy]; if(!k||!k.length) continue;
+    maps[sy]=new Map(k.map(x=>[x.ts,x.c]));
+    const st0=k.filter(x=>x.ts<=sinceTs).pop(); if(st0) start[sy]=st0.c; }
+  const base=_bser['BTC']; if(!base) return [];
+  const letzte={}; const pts=[];
+  for(const b of base){ if(b.ts<sinceTs) continue;
+    let sum=0,n=0;
+    for(const sy of BASKET){ if(!start[sy]||!maps[sy]) continue;
+      const c=maps[sy].get(b.ts); if(c!=null) letzte[sy]=c;
+      if(letzte[sy]!=null){ sum+=letzte[sy]/start[sy]; n++; } }
+    if(n) pts.push({x:b.ts, y:init*sum/n}); }
+  return pts;
+}
 function drawCharts(i,st,init,px){
  if(!st)return;const s=stats(st,init,px);
  if(charts['eq'+i])charts['eq'+i].destroy();
@@ -241,21 +260,41 @@ function drawCharts(i,st,init,px){
  // aktueller Stand (inkl. unrealisierter PnL) als letzter Punkt
  pts.push({x:Date.now(),y:s.eq});
  const segCol=c=>{const y0=c.p0.parsed.y,y1=c.p1.parsed.y;return (y0+y1)/2>=init?'#22d992':'#f6465d';};
- charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{datasets:[{data:pts,borderWidth:2,pointRadius:0,pointHitRadius:10,tension:0,
+  // Kurve des Bots
+ const korb=korbKurve(new Date(st.started).getTime(), init);
+ // Marker fuer abgeschlossene Trades, auf der Equity-Kurve platziert
+ const mk=(st.trades||[]).map(t=>{
+   let best=pts[0];
+   for(const p of pts) if(Math.abs(p.x-t.ts)<Math.abs(best.x-t.ts)) best=p;
+   return {x:t.ts, y:best?best.y:init, pnl:t.pnl, sym:t.sym, grund:t.reason};
+ });
+ charts['eq'+i]=new Chart($('#eq'+i),{type:'line',data:{datasets:[
+  {label:'Bot', data:pts, borderWidth:2.5, pointRadius:0, pointHitRadius:12, tension:0, order:1,
    segment:{borderColor:segCol},
    borderColor:pts[pts.length-1].y>=init?'#22d992':'#f6465d',
-   fill:{target:{value:init},above:'rgba(34,217,146,.08)',below:'rgba(246,70,93,.08)'}}]},
-  options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},
-   tooltip:{mode:'nearest',intersect:false,callbacks:{
-    title:c=>new Date(c[0].parsed.x).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})+' Uhr',
-    label:c=>' $'+c.parsed.y.toFixed(2)+' ('+(c.parsed.y-init>=0?'+':'')+(c.parsed.y-init).toFixed(2)+'$)'}}},
-  scales:{x:{type:'linear',bounds:'data',ticks:{maxTicksLimit:7,maxRotation:0,
-    callback:v=>{const d=new Date(v);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.';}},grid:{display:false}},
-   y:{ticks:{maxTicksLimit:5,callback:v=>'$'+v.toFixed(0)},grid:{color:'#161c29'}}}}});
+   fill:{target:{value:init},above:'rgba(34,217,146,.08)',below:'rgba(246,70,93,.08)'}},
+  {label:'Korb halten', data:korb, borderWidth:1.6, borderColor:'#6b7a99', borderDash:[5,4],
+   pointRadius:0, pointHitRadius:8, tension:0, fill:false, order:2},
+  {label:'Trades', type:'scatter', data:mk, order:0, showLine:false,
+   pointRadius:5, pointHoverRadius:7, pointStyle:'triangle',
+   backgroundColor:mk.map(m=>m.pnl>=0?'#22d992':'#f6465d'),
+   borderColor:'#0d1117', borderWidth:1}
+ ]},
+ options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',intersect:false},
+  plugins:{legend:{display:true,position:'top',align:'end',labels:{boxWidth:14,boxHeight:2,font:{size:10.5},color:'#7d8799',usePointStyle:false,filter:l=>l.text!=='Trades'}},
+  tooltip:{callbacks:{
+   title:c=>new Date(c[0].parsed.x).toLocaleString('de-DE',{day:'2-digit',month:'2-digit',year:'2-digit',hour:'2-digit',minute:'2-digit'})+' Uhr',
+   label:c=>{const d=c.dataset.label;
+     if(d==='Trades'){const m=mk[c.dataIndex];return ' '+m.sym.replace('USDT','')+' '+m.grund+' '+(m.pnl>=0?'+':'')+m.pnl.toFixed(2)+'$';}
+     const diff=c.parsed.y-init;
+     return ' '+d+': $'+c.parsed.y.toFixed(2)+' ('+(diff>=0?'+':'')+diff.toFixed(2)+'$ / '+(diff>=0?'+':'')+(diff/init*100).toFixed(1)+'%)';}}}},
+  scales:{x:{type:'linear',bounds:'data',ticks:{maxTicksLimit:12,maxRotation:0,
+   callback:v=>{const d=new Date(v);return ('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.';}},grid:{color:'#141a26'}},
+  y:{ticks:{maxTicksLimit:9,callback:v=>'$'+v.toFixed(0)},grid:{color:'#161c29'}}}}});
  if(charts['day'+i])charts['day'+i].destroy();
  charts['day'+i]=new Chart($('#day'+i),{type:'bar',data:{labels:s.days.map(d=>d[0].slice(8,10)+'.'+d[0].slice(5,7)),datasets:[{data:s.days.map(d=>d[1]),backgroundColor:s.days.map(d=>d[1]>=0?'rgba(34,217,146,.75)':'rgba(246,70,93,.75)'),borderRadius:3}]},
   options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false},tooltip:{callbacks:{label:c=>fmt(c.parsed.y)+'$'}}},
-  scales:{x:{grid:{display:false},ticks:{maxRotation:0,maxTicksLimit:7}},y:{ticks:{maxTicksLimit:4,callback:v=>fmt(v,0)},grid:{color:'#161c29'}}}}});
+  scales:{x:{grid:{display:false},ticks:{maxRotation:0,maxTicksLimit:14}},y:{ticks:{maxTicksLimit:6,callback:v=>fmt(v,0)},grid:{color:'#161c29'}}}}});
 }
 async function load(){
  const [states,commit,btc]=await Promise.all([
