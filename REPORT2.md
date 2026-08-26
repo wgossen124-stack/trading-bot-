@@ -1,25 +1,25 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-08-26 15:59 UTC · Lauf #862 · 6H · N30/10
+> Aktualisiert: 2026-08-26 16:53 UTC · Lauf #863 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 1 · verworfen wegen Kursdrift >1×ATR: 2
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $2193.51 | +193.51$ (9.7%) | 21% | 33 | 3 | 3.0% |
+| $2193.03 | +193.03$ (9.7%) | 21% | 34 | 2 | 3.0% |
 
 ## Offene Positionen
 
 | Pair | Seite | Entry | Stop |
 |---|---|---|---|
-| BTC | LONG | 64764.2 | 76749.0 |
+| BTC | LONG | 64764.2 | 76792.4 |
 | ETH | LONG | 2102.35 | 2413.56 |
-| INJ | LONG | 5.37307 | 5.31879 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 08-26 10:00 | INJ | LONG | -2.34$ | STOP |
 | 08-22 04:00 | DOGE | LONG | -16.68$ | STOP |
 | 08-21 16:00 | LINK | LONG | +182.36$ | TIME |
 | 08-19 10:00 | OP | SHORT | -9.92$ | STOP |
@@ -34,4 +34,7 @@
 | 08-10 04:00 | NEAR | SHORT | -7.69$ | STOP |
 | 08-10 04:00 | LTC | LONG | -12.52$ | STOP |
 | 08-07 04:00 | BNB | LONG | -15.33$ | STOP |
-| 08-06 04:00 | ADA | LONG | -0.64$ | STOP |
+
+## Dieser Lauf
+
+- ✔ CLOSE LONG INJ -2.34$ (STOP)
