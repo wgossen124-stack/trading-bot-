@@ -1,12 +1,12 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-08-27 12:49 UTC · Lauf #867 · 6H · N30/10
+> Aktualisiert: 2026-08-27 22:48 UTC · Lauf #868 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 2 · verworfen wegen Kursdrift >1×ATR: 2
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $2217.09 | +217.09$ (10.9%) | 21% | 34 | 3 | 2.0% |
+| $2240.68 | +240.68$ (12.0%) | 21% | 34 | 3 | 0.9% |
 
 ## Offene Positionen
 
@@ -14,7 +14,7 @@
 |---|---|---|---|
 | BTC | LONG | 64764.2 | 77554.5 |
 | ETH | LONG | 2102.35 | 2413.56 |
-| SOL | LONG | 104.561 | 97.9111 |
+| SOL | LONG | 104.561 | 99.6329 |
 
 ## Letzte Trades
 
@@ -35,7 +35,3 @@
 | 08-10 04:00 | NEAR | SHORT | -7.69$ | STOP |
 | 08-10 04:00 | LTC | LONG | -12.52$ | STOP |
 | 08-07 04:00 | BNB | LONG | -15.33$ | STOP |
-
-## Dieser Lauf
-
-- ⚡ OPEN LONG SOL @104.561 SL 97.9111
