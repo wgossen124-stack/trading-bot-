@@ -377,7 +377,7 @@
   "ETHUSDT": 1787932800000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 881,
+ "runs": 882,
  "skipStale": 18,
  "missedBars": 5,
  "lastBarSeen": 1788105600000,
