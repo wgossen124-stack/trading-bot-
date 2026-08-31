@@ -6,40 +6,40 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-08-30 21:58 UTC · Lauf #657 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-08-31 00:19 UTC · Lauf #658 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2159.86 | +159.86$ (8.0%) | 25% | 4.24 | 4 | 7/10 |
+| $2126.85 | +126.85$ (6.3%) | 25% | 4.24 | 4 | 7/10 |
 
 ## Signallage
 
 | Pair | Kurs | SMA150 | Soll |
 |---|---|---|---|
-| BTC | 78194.6 | 69535.8 | LONG |
-| ETH | 2456.40 | 2013.41 | LONG |
-| SOL | 105.540 | 80.3287 | LONG |
-| BNB | 692.100 | 613.244 | LONG |
-| XRP | 1.39580 | 1.23407 | LONG |
-| DOGE | 0.0852400 | 0.0870191 | flach |
-| AVAX | 7.32500 | 7.75833 | flach |
-| LINK | 11.4500 | 8.89616 | LONG |
-| LTC | 48.9700 | 49.1844 | flach |
-| DOT | 0.845200 | 1.02601 | flach |
+| BTC | 77640.2 | 69607.6 | LONG |
+| ETH | 2415.70 | 2015.81 | LONG |
+| SOL | 101.690 | 80.4807 | LONG |
+| BNB | 684.200 | 613.917 | LONG |
+| XRP | 1.35630 | 1.23432 | LONG |
+| DOGE | 0.0820000 | 0.0869635 | flach |
+| AVAX | 7.10700 | 7.74741 | flach |
+| LINK | 11.1350 | 8.91289 | LONG |
+| LTC | 47.9100 | 49.1555 | flach |
+| DOT | 0.818300 | 1.02323 | flach |
 
 ## Offene Positionen
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| LINK | 8.82977 | 11.5220 | $260 | +60.80$ |
-| BTC | 69508.9 | 78632.8 | $230 | +26.66$ |
-| ETH | 2261.38 | 2480.99 | $223 | +19.72$ |
-| SOL | 84.9370 | 104.380 | $250 | +46.48$ |
-| BNB | 625.325 | 696.400 | $226 | +23.08$ |
-| DOGE | 0.0919484 | 0.0845100 | $201 | -17.73$ |
-| LTC | 53.9608 | 49.1100 | $199 | -19.70$ |
+| LINK | 8.82977 | 11.1780 | $252 | +53.03$ |
+| BTC | 69508.9 | 77833.9 | $227 | +24.32$ |
+| ETH | 2261.38 | 2426.48 | $218 | +14.83$ |
+| SOL | 84.9370 | 102.060 | $244 | +40.94$ |
+| BNB | 625.325 | 685.600 | $223 | +19.57$ |
+| DOGE | 0.0919484 | 0.0822000 | $196 | -23.23$ |
+| LTC | 53.9608 | 48.2600 | $196 | -23.15$ |
 
 ## Letzte Trades
 
