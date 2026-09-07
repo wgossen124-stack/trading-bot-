@@ -1,5 +1,5 @@
 {
- "bal": 570.6044687563898,
+ "bal": 343.7587146994597,
  "peak": 2282.3596732905103,
  "positions": [
   {
@@ -10,8 +10,8 @@
    "margin": 199.418522649655,
    "eFee": 0.09970926132482749,
    "ts": 1786674235070,
-   "hh": 13.052,
-   "sl": 11.213328133668272
+   "hh": 13.343,
+   "sl": 11.355376113166239
   },
   {
    "sym": "BTCUSDT",
@@ -22,7 +22,7 @@
    "eFee": 0.10154444275653512,
    "ts": 1787189840220,
    "hh": 82279.9,
-   "sl": 75001.98699795072
+   "sl": 75215.38752425188
   },
   {
    "sym": "ETHUSDT",
@@ -44,7 +44,7 @@
    "eFee": 0.10153022784425324,
    "ts": 1787189840220,
    "hh": 110.64,
-   "sl": 95.46525835038146
+   "sl": 95.65131065124346
   },
   {
    "sym": "BNBUSDT",
@@ -78,6 +78,17 @@
    "ts": 1787360771207,
    "hh": 55.31,
    "sl": 48.91203286696301
+  },
+  {
+   "sym": "AVAXUSDT",
+   "side": "LONG",
+   "price": 7.8925782,
+   "size": 28.72729064160538,
+   "margin": 226.73238786299862,
+   "eFee": 0.11336619393149931,
+   "hh": 7.8925782,
+   "sl": 6.819928940405065,
+   "ts": 1788740471560
   }
  ],
  "trades": [
@@ -119,7 +130,7 @@
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 706,
+ "runs": 707,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
