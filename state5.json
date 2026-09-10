@@ -22,7 +22,7 @@
    "eFee": 0.10154444275653512,
    "ts": 1787189840220,
    "hh": 82279.9,
-   "sl": 75430.50793875949
+   "sl": 75483.8074012379
   },
   {
    "sym": "ETHUSDT",
@@ -33,7 +33,7 @@
    "eFee": 0.10153733505163871,
    "ts": 1787189840220,
    "hh": 2566.26,
-   "sl": 2287.549276156374
+   "sl": 2290.0957508037427
   },
   {
    "sym": "SOLUSDT",
@@ -97,7 +97,7 @@
    "size": 211.31222456774898,
    "margin": 224.92344507887546,
    "eFee": 0.11246172253943773,
-   "hh": 1.2461,
+   "hh": 1.2579,
    "sl": 1.0722522628154503,
    "ts": 1788827905797
   }
@@ -141,7 +141,7 @@
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 726,
+ "runs": 727,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
