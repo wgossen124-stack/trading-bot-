@@ -13,7 +13,7 @@
    "hh": 2.649,
    "ll": 1.825,
    "ts": 1788281731520,
-   "lastCheck": 1789012800000
+   "lastCheck": 1789034400000
   }
  ],
  "trades": [
@@ -472,9 +472,9 @@
   "ETHUSDT": 1787932800000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 955,
+ "runs": 956,
  "skipStale": 18,
  "missedBars": 8,
- "lastBarSeen": 1789034400000,
+ "lastBarSeen": 1789056000000,
  "skipDrift": 2
 }
