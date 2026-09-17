@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-09-17 00:46 UTC · Lauf #774 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-09-17 05:44 UTC · Lauf #775 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2130.40 | +130.40$ (6.5%) | 50% | 3.21 | 10 | 4/10 |
+| $2129.03 | +129.03$ (6.5%) | 50% | 3.21 | 10 | 4/10 |
 
 ## Signallage
 
@@ -33,10 +33,10 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| ETH | 2261.38 | 2421.89 | $217 | +14.41$ |
-| SOL | 84.9370 | 98.8900 | $236 | +33.36$ |
-| AVAX | 7.89258 | 7.51500 | $216 | -10.85$ |
-| DOT | 1.02911 | 1.02890 | $213 | -0.04$ |
+| ETH | 2261.38 | 2437.58 | $219 | +15.82$ |
+| SOL | 84.9370 | 99.5600 | $238 | +34.96$ |
+| AVAX | 7.89258 | 7.50400 | $216 | -11.16$ |
+| DOT | 1.02911 | 1.00930 | $209 | -4.10$ |
 
 ## Letzte Trades
 
@@ -52,7 +52,3 @@
 | 08-15 01:06 | BNB | 609.822 | 607.678 | -0.90$ |
 | 08-13 02:22 | LINK | 8.77275 | 8.62727 | -3.51$ |
 | 08-13 02:22 | BNB | 616.423 | 610.378 | -2.16$ |
-
-## Dieser Lauf
-
-- ⚡ OPEN DOT @1.02911 (213$)
