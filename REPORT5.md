@@ -6,37 +6,38 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-09-18 22:17 UTC · Lauf #786 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-09-19 00:29 UTC · Lauf #787 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2227.88 | +227.88$ (11.4%) | 50% | 3.21 | 10 | 4/10 |
+| $2225.24 | +225.24$ (11.3%) | 50% | 3.21 | 10 | 5/10 |
 
 ## Signallage
 
 | Pair | Kurs | SMA150 | Soll |
 |---|---|---|---|
-| BTC | 76390.1 | 70274.7 | LONG |
-| ETH | 2446.27 | 2042.42 | LONG |
-| SOL | 101.580 | 82.5854 | LONG |
-| BNB | 738.200 | 627.267 | LONG |
-| XRP | 1.29550 | 1.23426 | LONG |
-| DOGE | 0.0816700 | 0.0858919 | flach |
-| AVAX | 7.60600 | 7.53713 | LONG |
-| LINK | 11.3840 | 9.22347 | LONG |
-| LTC | 53.9000 | 48.9020 | LONG |
-| DOT | 1.07860 | 0.991292 | LONG |
+| BTC | 80876.6 | 70305.2 | LONG |
+| ETH | 2611.05 | 2044.31 | LONG |
+| SOL | 112.690 | 82.7634 | LONG |
+| BNB | 761.000 | 628.133 | LONG |
+| XRP | 1.39640 | 1.23402 | LONG |
+| DOGE | 0.0874500 | 0.0858406 | LONG |
+| AVAX | 8.20200 | 7.52923 | LONG |
+| LINK | 12.2260 | 9.24235 | LONG |
+| LTC | 58.1300 | 48.9194 | LONG |
+| DOT | 1.13380 | 0.990337 | LONG |
 
 ## Offene Positionen
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| ETH | 2261.38 | 2630.83 | $236 | +33.18$ |
-| SOL | 84.9370 | 113.510 | $271 | +68.31$ |
-| AVAX | 7.89258 | 8.24600 | $237 | +10.15$ |
-| DOT | 1.02911 | 1.13890 | $236 | +22.73$ |
+| ETH | 2261.38 | 2614.62 | $235 | +31.72$ |
+| SOL | 84.9370 | 113.110 | $270 | +67.35$ |
+| AVAX | 7.89258 | 8.24900 | $237 | +10.24$ |
+| DOT | 1.02911 | 1.13810 | $236 | +22.56$ |
+| DOGE | 0.0877675 | 0.0877500 | $222 | -0.04$ |
 
 ## Letzte Trades
 
@@ -52,3 +53,7 @@
 | 08-15 01:06 | BNB | 609.822 | 607.678 | -0.90$ |
 | 08-13 02:22 | LINK | 8.77275 | 8.62727 | -3.51$ |
 | 08-13 02:22 | BNB | 616.423 | 610.378 | -2.16$ |
+
+## Dieser Lauf
+
+- ⚡ OPEN DOGE @0.0877675 (223$)
