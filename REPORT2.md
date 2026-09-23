@@ -1,23 +1,18 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-09-23 19:03 UTC · Lauf #1042 · 6H · N30/10
+> Aktualisiert: 2026-09-23 22:16 UTC · Lauf #1043 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 8 · verworfen wegen Kursdrift >1×ATR: 2
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $2252.22 | +252.22$ (12.6%) | 29% | 59 | 1 | 3.3% |
-
-## Offene Positionen
-
-| Pair | Seite | Entry | Stop |
-|---|---|---|---|
-| OP | LONG | 0.111272 | 0.122312 |
+| $2248.65 | +248.65$ (12.4%) | 30% | 60 | 0 | 3.4% |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 09-23 16:00 | OP | LONG | +23.78$ | STOP |
 | 09-23 10:00 | SUI | LONG | +72.50$ | STOP |
 | 09-23 15:00 | BNB | LONG | +11.20$ | TRAIL |
 | 09-18 13:51 | XRP | SHORT | -16.83$ | TRAIL |
@@ -32,8 +27,7 @@
 | 09-09 15:08 | DOT | LONG | -19.87$ | TRAIL |
 | 09-09 04:00 | ATOM | LONG | +2.82$ | STOP |
 | 09-08 10:00 | OP | LONG | -11.74$ | STOP |
-| 09-08 04:00 | LTC | LONG | +21.23$ | STOP |
 
 ## Dieser Lauf
 
-- ✔ CLOSE LONG SUI +72.50$ (STOP)
+- ✔ CLOSE LONG OP +23.78$ (STOP)
