@@ -21,8 +21,8 @@
    "margin": 203.06045568850647,
    "eFee": 0.10153022784425324,
    "ts": 1787189840220,
-   "hh": 119.96,
-   "sl": 104.1233140855022
+   "hh": 121.7,
+   "sl": 105.4314090315174
   },
   {
    "sym": "AVAXUSDT",
@@ -151,7 +151,7 @@
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 826,
+ "runs": 827,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
