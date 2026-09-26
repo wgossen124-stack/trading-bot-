@@ -11,7 +11,7 @@
    "eFee": 0.10153733505163871,
    "ts": 1787189840220,
    "hh": 2806.96,
-   "sl": 2494.968882009229
+   "sl": 2496.027705025304
   },
   {
    "sym": "SOLUSDT",
@@ -21,8 +21,8 @@
    "margin": 203.06045568850647,
    "eFee": 0.10153022784425324,
    "ts": 1787189840220,
-   "hh": 122.18,
-   "sl": 105.9114090315174
+   "hh": 122.91,
+   "sl": 106.26916532153746
   },
   {
    "sym": "AVAXUSDT",
@@ -151,7 +151,7 @@
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 830,
+ "runs": 831,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
