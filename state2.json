@@ -13,7 +13,7 @@
    "hh": 12.005,
    "ll": 10.794,
    "ts": 1790686740136,
-   "lastCheck": 1790762400000
+   "lastCheck": 1790784000000
   }
  ],
  "trades": [
@@ -626,9 +626,9 @@
   "SUIUSDT": 1790589600000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 1080,
+ "runs": 1081,
  "skipStale": 18,
  "missedBars": 11,
- "lastBarSeen": 1790784000000,
+ "lastBarSeen": 1790805600000,
  "skipDrift": 3
 }
