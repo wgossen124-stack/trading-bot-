@@ -626,7 +626,7 @@
   "SUIUSDT": 1790589600000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 1084,
+ "runs": 1085,
  "skipStale": 18,
  "missedBars": 12,
  "lastBarSeen": 1790870400000,
