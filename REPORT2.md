@@ -1,24 +1,19 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-10-02 18:26 UTC · Lauf #1089 · 6H · N30/10
+> Aktualisiert: 2026-10-02 22:26 UTC · Lauf #1090 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 12 · verworfen wegen Kursdrift >1×ATR: 3
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $2147.79 | +147.79$ (7.4%) | 28% | 65 | 2 | 7.7% |
-
-## Offene Positionen
-
-| Pair | Seite | Entry | Stop |
-|---|---|---|---|
-| AVAX | LONG | 11.6853 | 10.8056 |
-| BTC | LONG | 86650.9 | 84415.2 |
+| $2143.25 | +143.25$ (7.2%) | 27% | 67 | 0 | 7.9% |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 10-02 16:00 | AVAX | LONG | -19.52$ | STOP |
+| 10-02 16:00 | BTC | LONG | -21.21$ | STOP |
 | 09-28 16:00 | NEAR | LONG | -9.37$ | STOP |
 | 09-28 10:00 | SUI | LONG | -20.89$ | STOP |
 | 09-28 04:00 | LINK | LONG | -9.08$ | STOP |
@@ -32,5 +27,8 @@
 | 09-17 22:00 | NEAR | LONG | +15.82$ | STOP |
 | 09-17 16:00 | TIA | SHORT | -16.04$ | STOP |
 | 09-17 16:00 | APT | SHORT | -8.55$ | STOP |
-| 09-15 04:00 | ETH | LONG | -13.61$ | STOP |
-| 09-15 01:54 | FIL | LONG | -18.45$ | TRAIL |
+
+## Dieser Lauf
+
+- ✔ CLOSE LONG BTC -21.21$ (STOP)
+- ✔ CLOSE LONG AVAX -19.52$ (STOP)
