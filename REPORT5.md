@@ -6,38 +6,38 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-10-02 22:26 UTC · Lauf #865 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-10-03 01:19 UTC · Lauf #866 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2322.26 | +322.26$ (16.1%) | 50% | 3.21 | 10 | 5/10 |
+| $2343.74 | +343.74$ (17.2%) | 50% | 3.21 | 10 | 5/10 |
 
 ## Signallage
 
 | Pair | Kurs | SMA150 | Soll |
 |---|---|---|---|
-| BTC | 84837.7 | 70847.9 | LONG |
-| ETH | 2705.00 | 2077.10 | LONG |
-| SOL | 118.330 | 85.6191 | LONG |
-| BNB | 771.200 | 640.966 | LONG |
-| XRP | 1.49360 | 1.24285 | LONG |
-| DOGE | 0.0943200 | 0.0851794 | LONG |
-| AVAX | 10.9810 | 7.66709 | LONG |
-| LINK | 14.3750 | 9.62401 | LONG |
-| LTC | 68.0600 | 49.8553 | LONG |
-| DOT | 1.17550 | 0.986535 | LONG |
+| BTC | 84480.0 | 70872.0 | LONG |
+| ETH | 2667.55 | 2079.16 | LONG |
+| SOL | 118.560 | 85.8346 | LONG |
+| BNB | 767.700 | 641.883 | LONG |
+| XRP | 1.48390 | 1.24332 | LONG |
+| DOGE | 0.0928800 | 0.0850334 | LONG |
+| AVAX | 10.7940 | 7.67639 | LONG |
+| LINK | 13.7850 | 9.65083 | LONG |
+| LTC | 69.8400 | 49.9458 | LONG |
+| DOT | 1.15370 | 0.985713 | LONG |
 
 ## Offene Positionen
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| ETH | 2261.38 | 2662.76 | $239 | +36.04$ |
-| SOL | 84.9370 | 118.110 | $282 | +79.31$ |
-| AVAX | 7.89258 | 10.6650 | $306 | +79.64$ |
-| DOT | 1.02911 | 1.13960 | $236 | +22.88$ |
-| DOGE | 0.0877675 | 0.0921000 | $234 | +10.99$ |
+| ETH | 2261.38 | 2679.05 | $241 | +37.51$ |
+| SOL | 84.9370 | 119.340 | $285 | +82.25$ |
+| AVAX | 7.89258 | 10.9280 | $314 | +87.20$ |
+| DOT | 1.02911 | 1.17030 | $242 | +29.23$ |
+| DOGE | 0.0877675 | 0.0933500 | $237 | +14.15$ |
 
 ## Letzte Trades
 
