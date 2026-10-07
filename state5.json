@@ -1,5 +1,5 @@
 {
- "bal": 1024.9408543014504,
+ "bal": 1253.6396331703706,
  "peak": 2388.597791501258,
  "positions": [
   {
@@ -11,7 +11,7 @@
    "eFee": 0.10153733505163871,
    "ts": 1787189840220,
    "hh": 2806.96,
-   "sl": 2553.733656232905
+   "sl": 2562.8533967643675
   },
   {
    "sym": "SOLUSDT",
@@ -22,7 +22,7 @@
    "eFee": 0.10153022784425324,
    "ts": 1787189840220,
    "hh": 124.95,
-   "sl": 110.67740673463967
+   "sl": 111.0068776286762
   },
   {
    "sym": "AVAXUSDT",
@@ -32,7 +32,7 @@
    "margin": 226.73238786299862,
    "eFee": 0.11336619393149931,
    "hh": 12.005,
-   "sl": 9.995744877297863,
+   "sl": 10.00554881609919,
    "ts": 1788740471560
   },
   {
@@ -43,19 +43,8 @@
    "margin": 213.05445644780758,
    "eFee": 0.10652722822390379,
    "hh": 1.3057,
-   "sl": 1.0497212452374511,
+   "sl": 1.0529438961347388,
    "ts": 1789605965819
-  },
-  {
-   "sym": "DOGEUSDT",
-   "side": "LONG",
-   "price": 0.08776754999999999,
-   "size": 2535.5523737325702,
-   "margin": 222.539219739192,
-   "eFee": 0.111269609869596,
-   "hh": 0.10598,
-   "sl": 0.09040678844442401,
-   "ts": 1789777772259
   }
  ],
  "trades": [
@@ -148,10 +137,19 @@
    "exit": 0.080053986,
    "pnl": -28.55,
    "reason": "TRAIL"
+  },
+  {
+   "ts": 1791340506728,
+   "sym": "DOGEUSDT",
+   "side": "LONG",
+   "entry": 0.08776754999999999,
+   "exit": 0.090241948,
+   "pnl": 6.05,
+   "reason": "TRAIL"
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 884,
+ "runs": 885,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
@@ -159,6 +157,7 @@
   "BNBUSDT": true,
   "LTCUSDT": true,
   "LINKUSDT": true,
-  "BTCUSDT": true
+  "BTCUSDT": true,
+  "DOGEUSDT": true
  }
 }
