@@ -1,29 +1,7 @@
 {
- "bal": 1253.6396331703706,
+ "bal": 1949.9058535355916,
  "peak": 2388.597791501258,
  "positions": [
-  {
-   "sym": "ETHUSDT",
-   "side": "LONG",
-   "price": 2261.382186,
-   "size": 0.08980112754071082,
-   "margin": 203.0746701032774,
-   "eFee": 0.10153733505163871,
-   "ts": 1787189840220,
-   "hh": 2806.96,
-   "sl": 2562.8533967643675
-  },
-  {
-   "sym": "SOLUSDT",
-   "side": "LONG",
-   "price": 84.936984,
-   "size": 2.3907189321498215,
-   "margin": 203.06045568850647,
-   "eFee": 0.10153022784425324,
-   "ts": 1787189840220,
-   "hh": 124.95,
-   "sl": 111.0068776286762
-  },
   {
    "sym": "AVAXUSDT",
    "side": "LONG",
@@ -34,17 +12,6 @@
    "hh": 12.005,
    "sl": 10.00554881609919,
    "ts": 1788740471560
-  },
-  {
-   "sym": "DOTUSDT",
-   "side": "LONG",
-   "price": 1.0291057799999999,
-   "size": 207.02872395470135,
-   "margin": 213.05445644780758,
-   "eFee": 0.10652722822390379,
-   "hh": 1.3057,
-   "sl": 1.0529438961347388,
-   "ts": 1789605965819
   }
  ],
  "trades": [
@@ -146,10 +113,37 @@
    "exit": 0.090241948,
    "pnl": 6.05,
    "reason": "TRAIL"
+  },
+  {
+   "ts": 1791473402596,
+   "sym": "ETHUSDT",
+   "side": "LONG",
+   "entry": 2261.382186,
+   "exit": 2463.9871,
+   "pnl": 17.98,
+   "reason": "TRAIL"
+  },
+  {
+   "ts": 1791473402596,
+   "sym": "SOLUSDT",
+   "side": "LONG",
+   "entry": 84.936984,
+   "exit": 108.77824,
+   "pnl": 56.77,
+   "reason": "TRAIL"
+  },
+  {
+   "ts": 1791473402596,
+   "sym": "DOTUSDT",
+   "side": "LONG",
+   "entry": 1.0291057799999999,
+   "exit": 1.039892,
+   "pnl": 2.02,
+   "reason": "TRAIL"
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 890,
+ "runs": 891,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
@@ -158,6 +152,9 @@
   "LTCUSDT": true,
   "LINKUSDT": true,
   "BTCUSDT": true,
-  "DOGEUSDT": true
+  "DOGEUSDT": true,
+  "ETHUSDT": true,
+  "SOLUSDT": true,
+  "DOTUSDT": true
  }
 }
