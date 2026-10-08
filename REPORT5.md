@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-10-08 15:30 UTC · Lauf #891 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-10-08 20:47 UTC · Lauf #892 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2238.96 | +238.96$ (11.9%) | 64% | 5.17 | 14 | 1/10 |
+| $2241.86 | +241.86$ (12.1%) | 64% | 5.17 | 14 | 1/10 |
 
 ## Signallage
 
@@ -33,7 +33,7 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| AVAX | 7.89258 | 10.0620 | $289 | +62.32$ |
+| AVAX | 7.89258 | 10.1630 | $292 | +65.22$ |
 
 ## Letzte Trades
 
@@ -51,9 +51,3 @@
 | 09-10 15:09 | BNB | 625.325 | 709.458 | +27.10$ |
 | 08-25 21:02 | XRP | 1.27255 | 1.44461 | +27.84$ |
 | 08-15 01:06 | BNB | 609.822 | 607.678 | -0.90$ |
-
-## Dieser Lauf
-
-- ✅ CLOSE ETH TRAIL +17.98$
-- ✅ CLOSE SOL TRAIL +56.77$
-- ✅ CLOSE DOT TRAIL +2.02$
