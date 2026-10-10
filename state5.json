@@ -1,5 +1,5 @@
 {
- "bal": 1949.9058535355916,
+ "bal": 1724.7942408212325,
  "peak": 2388.597791501258,
  "positions": [
   {
@@ -12,6 +12,17 @@
    "hh": 12.005,
    "sl": 10.00554881609919,
    "ts": 1788740471560
+  },
+  {
+   "sym": "DOGEUSDT",
+   "side": "LONG",
+   "price": 0.086377272,
+   "size": 2604.841620348697,
+   "margin": 224.99911315778013,
+   "eFee": 0.11249955657889006,
+   "hh": 0.086377272,
+   "sl": 0.07098169227521797,
+   "ts": 1791600366404
   }
  ],
  "trades": [
@@ -143,7 +154,7 @@
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 897,
+ "runs": 898,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
