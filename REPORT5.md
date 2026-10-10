@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-10-10 02:46 UTC · Lauf #898 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-10-10 09:24 UTC · Lauf #899 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2249.83 | +249.83$ (12.5%) | 64% | 5.17 | 14 | 2/10 |
+| $2252.24 | +252.24$ (12.6%) | 64% | 5.17 | 14 | 2/10 |
 
 ## Signallage
 
@@ -33,8 +33,8 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| AVAX | 7.89258 | 10.4460 | $300 | +73.35$ |
-| DOGE | 0.0863773 | 0.0863600 | $225 | -0.04$ |
+| AVAX | 7.89258 | 10.5480 | $303 | +76.28$ |
+| DOGE | 0.0863773 | 0.0861600 | $224 | -0.57$ |
 
 ## Letzte Trades
 
@@ -52,7 +52,3 @@
 | 09-10 15:09 | BNB | 625.325 | 709.458 | +27.10$ |
 | 08-25 21:02 | XRP | 1.27255 | 1.44461 | +27.84$ |
 | 08-15 01:06 | BNB | 609.822 | 607.678 | -0.90$ |
-
-## Dieser Lauf
-
-- ⚡ OPEN DOGE @0.0863773 (225$)
