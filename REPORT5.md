@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-10-12 09:11 UTC · Lauf #909 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-10-12 19:03 UTC · Lauf #910 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2268.79 | +268.79$ (13.4%) | 64% | 5.17 | 14 | 2/10 |
+| $2243.85 | +243.85$ (12.2%) | 64% | 5.17 | 14 | 2/10 |
 
 ## Signallage
 
@@ -33,8 +33,8 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| AVAX | 7.89258 | 11.0250 | $317 | +89.99$ |
-| DOGE | 0.0863773 | 0.0872500 | $227 | +2.27$ |
+| AVAX | 7.89258 | 10.3710 | $298 | +71.20$ |
+| DOGE | 0.0863773 | 0.0848900 | $221 | -3.87$ |
 
 ## Letzte Trades
 
