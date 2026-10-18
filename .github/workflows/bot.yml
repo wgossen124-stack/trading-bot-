@@ -7,8 +7,15 @@ on:
     # NICHT stündlich. Dadurch fielen Kerzenschlüsse in Lücken und Einstiegs-
     # signale wurden verworfen. Mehr geplante Versuche = höhere Trefferquote.
     # Die eigentliche Absicherung sitzt aber in den Bots (maxEntryAge + Live-Kurs).
+    #
+    # Nachtrag 18.10.2026: */15 hat drei Wochen gewirkt (Median 0,59 h), dann
+    # brach es am 24.08. — dem letzten Commit von Hand — auf ~5 Läufe/Tag ein
+    # (Median 4,6 h, Maximum 9,9 h). GitHub drosselt Schedules in Repos ohne
+    # menschliche Aktivität und schaltet sie nach 60 Tagen ganz ab. Der Schedule
+    # ist deshalb nur noch Fallback; der eigentliche Takt kommt von außen über
+    # workflow_dispatch (cron-job.org, stündlich). Siehe RUNNER.md.
     - cron: '*/15 * * * *'
-  workflow_dispatch: {}     # manueller Start über Actions-Tab möglich
+  workflow_dispatch: {}     # Takt von außen (cron-job.org) und manueller Start, siehe RUNNER.md
 permissions:
   contents: write
 concurrency:
@@ -65,3 +72,24 @@ jobs:
           done
           echo "Push nach 5 Versuchen fehlgeschlagen — Zustand NICHT gespeichert."
           exit 1
+      # Wächter (ergänzt 18.10.2026): healthchecks.io bekommt nach jedem Lauf einen
+      # Ping. Bleibt er länger als die dort eingestellte Frist aus, kommt ein Alarm.
+      # Ohne das lief der Runner sieben Wochen auf einem Fünftel des Takts, ohne
+      # dass es jemand merkte. Ist das Push-Ergebnis schlecht, geht der Ping an
+      # /fail, damit auch ein verlorener Lauf sichtbar wird. Fehlt das Secret
+      # HC_PING_URL, wird nur gewarnt — der Bot-Lauf selbst hängt nicht daran.
+      - name: Wächter-Ping (healthchecks.io)
+        if: always()
+        env:
+          HC_PING_URL: ${{ secrets.HC_PING_URL }}
+          JOB_STATUS: ${{ job.status }}
+        run: |
+          if [ -z "$HC_PING_URL" ]; then
+            echo "::warning::Secret HC_PING_URL fehlt — kein Wächter-Ping. Siehe RUNNER.md."
+            exit 0
+          fi
+          url="$HC_PING_URL"
+          [ "$JOB_STATUS" = "success" ] || url="$HC_PING_URL/fail"
+          curl -fsS -m 10 --retry 3 -o /dev/null "$url?rid=$GITHUB_RUN_ID" \
+            && echo "Ping gesendet ($JOB_STATUS)." \
+            || echo "::warning::Ping an healthchecks.io fehlgeschlagen."
