@@ -13,7 +13,7 @@
    "hh": 61.63,
    "ll": 57.13,
    "ts": 1792005852323,
-   "lastCheck": 1792296000000
+   "lastCheck": 1792317600000
   },
   {
    "sym": "ADAUSDT",
@@ -26,7 +26,7 @@
    "hh": 0.2334,
    "ll": 0.2139,
    "ts": 1792042415798,
-   "lastCheck": 1792296000000
+   "lastCheck": 1792317600000
   }
  ],
  "trades": [
@@ -765,9 +765,9 @@
   "SUIUSDT": 1790589600000
  },
  "started": "2026-07-17T10:07:55.040Z",
- "runs": 1170,
+ "runs": 1171,
  "skipStale": 18,
  "missedBars": 25,
- "lastBarSeen": 1792317600000,
+ "lastBarSeen": 1792339200000,
  "skipDrift": 3
 }
