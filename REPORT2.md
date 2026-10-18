@@ -1,12 +1,12 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-10-18 00:09 UTC · Lauf #1166 · 6H · N30/10
+> Aktualisiert: 2026-10-18 04:32 UTC · Lauf #1167 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 25 · verworfen wegen Kursdrift >1×ATR: 3
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $1976.26 | -23.74$ (-1.2%) | 25% | 77 | 4 | 15.1% |
+| $1970.07 | -29.93$ (-1.5%) | 24% | 78 | 3 | 15.4% |
 
 ## Offene Positionen
 
@@ -14,13 +14,13 @@
 |---|---|---|---|
 | LTC | SHORT | 59.6181 | 61.1345 |
 | ADA | SHORT | 0.220256 | 0.233400 |
-| INJ | LONG | 8.53071 | 8.11563 |
-| TIA | LONG | 0.730946 | 0.633630 |
+| INJ | LONG | 8.53071 | 8.14551 |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 10-17 22:00 | TIA | LONG | -17.29$ | STOP |
 | 10-15 16:00 | ETH | SHORT | -19.23$ | STOP |
 | 10-14 15:11 | OP | LONG | -30.73$ | TRAIL |
 | 10-12 16:00 | TIA | LONG | +12.79$ | STOP |
@@ -35,4 +35,7 @@
 | 10-02 16:00 | BTC | LONG | -21.21$ | STOP |
 | 09-28 16:00 | NEAR | LONG | -9.37$ | STOP |
 | 09-28 10:00 | SUI | LONG | -20.89$ | STOP |
-| 09-28 04:00 | LINK | LONG | -9.08$ | STOP |
+
+## Dieser Lauf
+
+- ✔ CLOSE LONG TIA -17.29$ (STOP)
