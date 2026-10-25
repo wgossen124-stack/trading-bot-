@@ -1,0 +1,194 @@
+{
+ "strategie": "Bot 1 — Donchian-Breakout 6h (bot2.js), EMA200-Filter, Turtle-Exit, Chandelier 3×ATR, kein Timeout",
+ "regel": "OOS-Rendite>0 UND >=6/10 Paare UND DD<30% — in BEIDEN Schnitten",
+ "daten": {
+  "paare": 10,
+  "bars": 3199,
+  "von": "2024-08-17",
+  "bis": "2026-10-25"
+ },
+ "gitter": "12 Kombinationen: nEntry 20/30/40 × nExit 10/20 × SL 2/3×ATR",
+ "schnitte": [
+  {
+   "schnitt": "50/50",
+   "cut": "2025-09-20",
+   "gewaehlt": "N30/10 SL2",
+   "IS": {
+    "pnl": "16.1%",
+    "dd": "19.2%",
+    "paare": "6/10"
+   },
+   "OOS": {
+    "pnl": "2.3%",
+    "pf": 1.02,
+    "dd": "25.7%",
+    "n": 192,
+    "wr": "28%",
+    "paare": "5/10"
+   },
+   "bestanden": false,
+   "gitter_IS": [
+    {
+     "p": "N30/10 SL2",
+     "pnl": 16.1,
+     "paare": "6/10"
+    },
+    {
+     "p": "N30/10 SL3",
+     "pnl": 13.9,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/20 SL2",
+     "pnl": 12.1,
+     "paare": "5/10"
+    },
+    {
+     "p": "N30/20 SL2",
+     "pnl": 11.8,
+     "paare": "6/10"
+    },
+    {
+     "p": "N40/10 SL2",
+     "pnl": 10.1,
+     "paare": "6/10"
+    },
+    {
+     "p": "N30/20 SL3",
+     "pnl": 9.7,
+     "paare": "6/10"
+    },
+    {
+     "p": "N40/10 SL3",
+     "pnl": 9.6,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/10 SL2",
+     "pnl": 9,
+     "paare": "5/10"
+    },
+    {
+     "p": "N40/20 SL3",
+     "pnl": 8,
+     "paare": "6/10"
+    },
+    {
+     "p": "N40/20 SL2",
+     "pnl": 7.9,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/20 SL3",
+     "pnl": 4.7,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/10 SL3",
+     "pnl": 3.7,
+     "paare": "6/10"
+    }
+   ]
+  },
+  {
+   "schnitt": "70/30",
+   "cut": "2026-02-27",
+   "gewaehlt": "N30/20 SL2",
+   "IS": {
+    "pnl": "36.8%",
+    "dd": "17.7%",
+    "paare": "7/10"
+   },
+   "OOS": {
+    "pnl": "-15.3%",
+    "pf": 0.73,
+    "dd": "24.1%",
+    "n": 121,
+    "wr": "24%",
+    "paare": "3/10"
+   },
+   "bestanden": false,
+   "gitter_IS": [
+    {
+     "p": "N30/20 SL2",
+     "pnl": 36.8,
+     "paare": "7/10"
+    },
+    {
+     "p": "N30/10 SL2",
+     "pnl": 33.7,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/20 SL2",
+     "pnl": 33.6,
+     "paare": "7/10"
+    },
+    {
+     "p": "N30/20 SL3",
+     "pnl": 31.5,
+     "paare": "7/10"
+    },
+    {
+     "p": "N40/20 SL2",
+     "pnl": 25.6,
+     "paare": "7/10"
+    },
+    {
+     "p": "N30/10 SL3",
+     "pnl": 25.5,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/20 SL3",
+     "pnl": 23.9,
+     "paare": "7/10"
+    },
+    {
+     "p": "N40/10 SL2",
+     "pnl": 22.5,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/10 SL2",
+     "pnl": 20.1,
+     "paare": "5/10"
+    },
+    {
+     "p": "N40/20 SL3",
+     "pnl": 19.9,
+     "paare": "6/10"
+    },
+    {
+     "p": "N40/10 SL3",
+     "pnl": 17.5,
+     "paare": "6/10"
+    },
+    {
+     "p": "N20/10 SL3",
+     "pnl": 10.5,
+     "paare": "6/10"
+    }
+   ]
+  }
+ ],
+ "BESTANDEN": false,
+ "live_N30_10_SL2_oos": {
+  "s50": {
+   "pnl": "2.3%",
+   "pf": 1.02,
+   "dd": "25.7%",
+   "n": 192,
+   "wr": "28%",
+   "paare": "5/10"
+  },
+  "s70": {
+   "pnl": "-11%",
+   "pf": 0.8,
+   "dd": "19.7%",
+   "n": 125,
+   "wr": "24%",
+   "paare": "3/10"
+  }
+ }
+}
