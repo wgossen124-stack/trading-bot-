@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-10-29 16:19 UTC · Lauf #1009 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-10-29 21:17 UTC · Lauf #1010 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2216.87 | +216.87$ (10.8%) | 67% | 6.48 | 15 | 1/10 |
+| $2206.39 | +206.39$ (10.3%) | 63% | 4.02 | 16 | 0/10 |
 
 ## Signallage
 
@@ -29,16 +29,11 @@
 | LTC | 59.2100 | 51.1259 | LONG |
 | DOT | 1.01070 | 0.961025 | LONG |
 
-## Offene Positionen
-
-| Pair | Entry | Kurs | Wert | PnL |
-|---|---|---|---|---|
-| DOGE | 0.0863773 | 0.0805100 | $210 | -15.28$ |
-
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Entry | Exit | PnL |
 |---|---|---|---|---|
+| 10-29 21:17 | DOGE | 0.0863773 | 0.0765247 | -25.88$ |
 | 10-14 15:11 | AVAX | 7.89258 | 9.83403 | +55.52$ |
 | 10-08 15:30 | DOT | 1.02911 | 1.03989 | +2.02$ |
 | 10-08 15:30 | SOL | 84.9370 | 108.778 | +56.77$ |
@@ -50,4 +45,7 @@
 | 09-10 18:27 | LINK | 8.82977 | 11.6177 | +62.73$ |
 | 09-10 15:09 | LTC | 53.9608 | 52.2196 | -7.29$ |
 | 09-10 15:09 | BNB | 625.325 | 709.458 | +27.10$ |
-| 08-25 21:02 | XRP | 1.27255 | 1.44461 | +27.84$ |
+
+## Dieser Lauf
+
+- ❌ CLOSE DOGE TRAIL -25.88$
