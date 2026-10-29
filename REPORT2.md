@@ -1,6 +1,6 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-10-28 23:37 UTC · Lauf #1231 · 6H · N30/10
+> Aktualisiert: 2026-10-29 02:53 UTC · Lauf #1232 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 30 · verworfen wegen Kursdrift >1×ATR: 3
 
@@ -27,8 +27,3 @@
 | 10-14 15:11 | OP | LONG | -30.73$ | TRAIL |
 | 10-12 16:00 | TIA | LONG | +12.79$ | STOP |
 | 10-12 16:00 | APT | LONG | -20.20$ | STOP |
-
-## Dieser Lauf
-
-- ✔ CLOSE SHORT ARB -3.20$ (STOP)
-- ✔ CLOSE SHORT FIL +5.77$ (STOP)
