@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-10-31 02:21 UTC · Lauf #1016 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-10-31 08:39 UTC · Lauf #1017 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2206.08 | +206.08$ (10.3%) | 63% | 4.02 | 16 | 2/10 |
+| $2202.15 | +202.15$ (10.1%) | 63% | 4.02 | 16 | 2/10 |
 
 ## Signallage
 
@@ -33,8 +33,8 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| XRP | 1.25575 | 1.25550 | $221 | -0.04$ |
-| DOT | 0.962192 | 0.962000 | $221 | -0.04$ |
+| XRP | 1.25575 | 1.24340 | $218 | -2.17$ |
+| DOT | 0.962192 | 0.954100 | $219 | -1.86$ |
 
 ## Letzte Trades
 
@@ -52,8 +52,3 @@
 | 09-10 18:27 | LINK | 8.82977 | 11.6177 | +62.73$ |
 | 09-10 15:09 | LTC | 53.9608 | 52.2196 | -7.29$ |
 | 09-10 15:09 | BNB | 625.325 | 709.458 | +27.10$ |
-
-## Dieser Lauf
-
-- ⚡ OPEN XRP @1.25575 (221$)
-- ⚡ OPEN DOT @0.962192 (221$)
