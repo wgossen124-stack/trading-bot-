@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-11-01 19:13 UTC · Lauf #1024 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-11-01 22:51 UTC · Lauf #1025 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2199.10 | +199.10$ (10.0%) | 63% | 4.02 | 16 | 2/10 |
+| $2201.09 | +201.09$ (10.1%) | 63% | 4.02 | 16 | 2/10 |
 
 ## Signallage
 
@@ -33,8 +33,8 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| XRP | 1.25575 | 1.24240 | $218 | -2.35$ |
-| DOT | 0.962192 | 0.941600 | $216 | -4.72$ |
+| XRP | 1.25575 | 1.24560 | $219 | -1.78$ |
+| DOT | 0.962192 | 0.947800 | $217 | -3.30$ |
 
 ## Letzte Trades
 
