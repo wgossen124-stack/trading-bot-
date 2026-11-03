@@ -9,8 +9,8 @@
    "size": 175.70306265639047,
    "margin": 220.63931420413127,
    "eFee": 0.11031965710206564,
-   "hh": 1.2596,
-   "sl": 1.0956323633085234,
+   "hh": 1.264,
+   "sl": 1.1053371996665118,
    "ts": 1793413306354
   },
   {
@@ -20,8 +20,8 @@
    "size": 229.29288397467886,
    "margin": 220.6238703345178,
    "eFee": 0.1103119351672589,
-   "hh": 0.9621924,
-   "sl": 0.7363680639516056,
+   "hh": 0.9661,
+   "sl": 0.7478988360512182,
    "ts": 1793413306354
   }
  ],
@@ -172,7 +172,7 @@
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 1028,
+ "runs": 1029,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
