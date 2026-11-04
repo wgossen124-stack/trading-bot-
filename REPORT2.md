@@ -1,23 +1,18 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-11-04 09:38 UTC · Lauf #1259 · 6H · N30/10
+> Aktualisiert: 2026-11-04 17:32 UTC · Lauf #1260 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 38 · verworfen wegen Kursdrift >1×ATR: 3
 
 | Equity | PnL | Winrate | Trades | Offen | Drawdown |
 |---|---|---|---|---|---|
-| $1874.12 | -125.88$ (-6.3%) | 23% | 90 | 1 | 19.5% |
-
-## Offene Positionen
-
-| Pair | Seite | Entry | Stop |
-|---|---|---|---|
-| ATOM | SHORT | 1.48170 | 1.47900 |
+| $1865.22 | -134.78$ (-6.7%) | 24% | 91 | 0 | 19.9% |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Seite | PnL | Grund |
 |---|---|---|---|---|
+| 11-04 10:00 | ATOM | SHORT | +1.69$ | STOP |
 | 10-31 10:00 | FIL | SHORT | -14.63$ | STOP |
 | 10-30 10:00 | OP | SHORT | -18.26$ | STOP |
 | 10-28 16:00 | FIL | SHORT | +5.77$ | STOP |
@@ -32,4 +27,7 @@
 | 10-18 13:54 | INJ | LONG | -9.28$ | TRAIL |
 | 10-17 22:00 | TIA | LONG | -17.29$ | STOP |
 | 10-15 16:00 | ETH | SHORT | -19.23$ | STOP |
-| 10-14 15:11 | OP | LONG | -30.73$ | TRAIL |
+
+## Dieser Lauf
+
+- ✔ CLOSE SHORT ATOM +1.69$ (STOP)
