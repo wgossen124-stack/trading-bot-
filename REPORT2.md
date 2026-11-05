@@ -1,6 +1,6 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
-> Aktualisiert: 2026-11-04 22:53 UTC · Lauf #1261 · 6H · N30/10
+> Aktualisiert: 2026-11-05 03:08 UTC · Lauf #1262 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 38 · verworfen wegen Kursdrift >1×ATR: 3
 
