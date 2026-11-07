@@ -1,18 +1,7 @@
 {
- "bal": 1764.9093259103943,
+ "bal": 1750.1798921248524,
  "peak": 2388.597791501258,
  "positions": [
-  {
-   "sym": "XRPUSDT",
-   "side": "LONG",
-   "price": 1.2557511000000001,
-   "size": 175.70306265639047,
-   "margin": 220.63931420413127,
-   "eFee": 0.11031965710206564,
-   "hh": 1.3421,
-   "sl": 1.1743601435742443,
-   "ts": 1793413306354
-  },
   {
    "sym": "DOTUSDT",
    "side": "LONG",
@@ -21,8 +10,19 @@
    "margin": 220.6238703345178,
    "eFee": 0.1103119351672589,
    "hh": 0.996,
-   "sl": 0.7838188991836801,
+   "sl": 0.7891535402968604,
    "ts": 1793413306354
+  },
+  {
+   "sym": "LTCUSDT",
+   "side": "LONG",
+   "price": 52.370472,
+   "size": 4.154175305712729,
+   "margin": 217.55612153091994,
+   "eFee": 0.10877806076545997,
+   "hh": 52.370472,
+   "sl": 43.53855277435284,
+   "ts": 1794028314414
   }
  ],
  "trades": [
@@ -169,10 +169,19 @@
    "exit": 0.076524692,
    "pnl": -25.88,
    "reason": "TRAIL"
+  },
+  {
+   "ts": 1794028314414,
+   "sym": "XRPUSDT",
+   "side": "LONG",
+   "entry": 1.2557511000000001,
+   "exit": 1.1555688,
+   "pnl": -17.81,
+   "reason": "TRAIL"
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 1044,
+ "runs": 1045,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
  "gesperrt": {
