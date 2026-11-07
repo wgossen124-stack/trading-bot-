@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-11-07 05:11 UTC · Lauf #1045 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-11-07 11:44 UTC · Lauf #1046 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2175.41 | +175.41$ (8.8%) | 59% | 3.19 | 17 | 2/10 |
+| $2175.02 | +175.02$ (8.8%) | 59% | 3.19 | 17 | 2/10 |
 
 ## Signallage
 
@@ -33,8 +33,8 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| DOT | 0.962192 | 0.905900 | $208 | -12.91$ |
-| LTC | 52.3705 | 52.3600 | $218 | -0.04$ |
+| DOT | 0.962192 | 0.905100 | $208 | -13.09$ |
+| LTC | 52.3705 | 52.3100 | $217 | -0.25$ |
 
 ## Letzte Trades
 
@@ -52,8 +52,3 @@
 | 09-11 15:01 | DOT | 1.06441 | 1.06789 | +0.51$ |
 | 09-10 18:27 | LINK | 8.82977 | 11.6177 | +62.73$ |
 | 09-10 15:09 | LTC | 53.9608 | 52.2196 | -7.29$ |
-
-## Dieser Lauf
-
-- ❌ CLOSE XRP TRAIL -17.81$
-- ⚡ OPEN LTC @52.3705 (218$)
