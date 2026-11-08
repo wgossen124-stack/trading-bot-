@@ -1,5 +1,18 @@
 # Cloud-Bot 2 — Donchian-Breakout (Paper)
 
+> [!danger] ABGESCHALTET am 08.11.2026 — dieser Report wird nicht mehr fortgeschrieben
+>
+> Grund: Der Walk-Forward wurde am 26.10.2026 nachgeholt (`bt7.js`) und
+> **nicht bestanden** — 50/50: IS +16,1 % → OOS +2,3 % (5/10 Paare);
+> 70/30: IS +36,8 % → OOS −15,3 % (3/10 Paare). Alle 12 Gitterkombinationen
+> waren in-sample positiv, was das Marktregime beschreibt und nicht die Logik.
+>
+> **Schlussstand: $1.842,75 (−7,9 %)** nach 92 Trades, PF 0,83, Drawdown 20,8 %.
+> Darin −3,15 $ aus drei beim Abschalten offenen Shorts (TIA, LTC, DOGE) — die
+> Zahl ist also unabhängig davon, wie man die offenen Positionen bewertet.
+> Die vollständige Begründung steht in `.github/workflows/bot.yml`.
+> `bot2.js` und `state2.json` bleiben als Archiv liegen.
+
 > Aktualisiert: 2026-11-08 13:12 UTC · Lauf #1276 · 6H · N30/10
 >
 > Verpasste Kerzen (kein Lauf binnen 4 h nach Schluss): 38 · verworfen wegen Kursdrift >1×ATR: 3

@@ -30,19 +30,38 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 20
-      # Bot 1 (bot.js) wurde am 25.07.2026 eingestellt: kein Edge (-16 % über 63 Trades).
-      # bot.js und state.json bleiben als Archiv im Repo.
-      - name: Bot-2-Lauf (Donchian 6h)
-        run: node bot2.js
-        continue-on-error: true
-      # Bot 3 (bot3.js) und Bot 5 (bot5.js) sind UNVALIDIERT und laufen
-      # ausschliesslich als Papiergeld-Forward-Test. Siehe BOT34-KRITERIEN.md
-  # bzw. BOT3-ERSATZ-KRITERIEN.md.
-  # bot4.js (Sweep-Reversal) am 05.08.2026 abgeschaltet: -48,6 % ueber 2 Jahre auf
-  # 1.204 Trades, 0 von 21 Gitterkombis in-sample positiv. Bleibt als Archiv im Repo.
-      # BOT 2 (bot3.js, Momentum 1D) am 21.08.2026 abgeschaltet: Walk-Forward nicht
-      # bestanden, und live -12,6 % (PF 0,28) in einem Markt, der im selben Zeitraum
-      # +25,6 % gemacht hat. Die Short-Seite wird in Rallyes zerlegt. Archiv bleibt.
+      # ══ Abgeschaltete Bots ════════════════════════════════════════════
+      # Code und stateN.json bleiben jeweils als Archiv im Repo liegen.
+      # (Block am 08.11.2026 sortiert und einheitlich eingerueckt — vorher
+      # standen hier zwei Einrueckungsebenen und keine Reihenfolge.)
+      #
+      # 25.07.2026 — bot.js (Scalp): kein Edge, -16 % ueber 63 Trades.
+      #
+      # 05.08.2026 — bot4.js (Sweep-Reversal): -48,6 % ueber 2 Jahre auf
+      #   1.204 Trades, 0 von 21 Gitterkombis in-sample positiv.
+      #
+      # 21.08.2026 — bot3.js (Momentum 1D): Walk-Forward nicht bestanden,
+      #   live -12,6 % (PF 0,28) in einem Markt, der im selben Zeitraum
+      #   +25,6 % gemacht hat. Die Short-Seite wird in Rallyes zerlegt.
+      #
+      # 08.11.2026 — bot2.js (Donchian-Breakout 6h), der frueher als
+      #   "einziger Bot mit Evidenz" galt. Der Walk-Forward wurde am
+      #   26.10.2026 nachgeholt (bt7.js, derselbe Massstab wie oben:
+      #   10 Paare, 2 Jahre) und NICHT bestanden:
+      #     50/50  IS +16,1 %  ->  OOS  +2,3 % (PF 1,02), 5/10 Paare
+      #     70/30  IS +36,8 %  ->  OOS -15,3 % (PF 0,73), 3/10 Paare
+      #   Alle 12 Gitterkombinationen waren in-sample positiv — das ist das
+      #   Marktregime, nicht die Logik. Der 50/50-Schnitt waehlte genau die
+      #   Live-Parameter N30/10 SL2; die liefern OOS +2,3 % bzw. -11 %.
+      #   Live bestaetigt: $1.842,75 (-7,9 %) nach 92 Trades, PF 0,83,
+      #   DD 20,8 %. bt7.js rechnet fuer denselben Zeitraum -1,6 % bei 24 %
+      #   Winrate — das Werkzeug trifft den Bot, die Verluste sind kein Pech.
+      #   Beim Abschalten waren drei Shorts offen (TIA, LTC, DOGE), -3,15 $.
+      # ══════════════════════════════════════════════════════════════════
+      #
+      # bot5.js ist UNVALIDIERT (an der Projekt-Huerde gescheitert) und laeuft
+      # ausschliesslich als Papiergeld-Forward-Test. Siehe BOT3-ERSATZ-KRITERIEN.md.
+      # Seit dem 08.11.2026 ist er der einzige laufende Bot.
       - name: Bot-5-Lauf (SMA150-Trendfilter 1D)
         run: node bot5.js
         continue-on-error: true

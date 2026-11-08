@@ -152,8 +152,14 @@ const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 // am 21.08.2026 stand BOT 3 bei +9,2 %, der Korb im selben Zeitraum bei +25,6 %.
 const BASKET=['BTC','ETH','SOL','BNB','XRP','DOGE','AVAX','LINK','LTC','DOT'];
 let BENCH=[];
+// Die Nummer ist historisch gewachsen und sagt nichts ueber den Rang: BOT 3
+// liest state5.json (bot5.js). Sie bleibt, damit Dashboard, REPORT5.md und die
+// Vault-Notizen weiter dieselbe Sache meinen.
+// BOT 1 (Donchian, state2.json) am 08.11.2026 entfernt — abgeschaltet, nachdem
+// er den Walk-Forward nicht bestanden hat (Begruendung in bot.yml). state2.json
+// bleibt im Repo, wird aber nicht mehr fortgeschrieben; hier raus, damit eine
+// eingefrorene Kurve nicht wie ein laufender Bot aussieht.
 const BOTS=[
- {name:'BOT 1 · Donchian-Breakout',tag:'6h · 20 Paare · Entry N30 · Ausstieg NUR per Stop: Turtle N10 + 3×ATR-Trail',file:'state2.json',init:2000},
  {name:'BOT 3 · SMA150-Trendfilter',tag:'1D · 10 Paare · Einstieg > SMA150 · Ausstieg NUR per Trailing-Stop (3×ATR) · kein Hebel',file:'state5.json',init:2000,unvalidiert:true}
 ];
 // Warnschwellen (nur Anzeige, kein Eingriff in den Bot)
