@@ -140,25 +140,25 @@ const RAW='https://raw.githubusercontent.com/'+REPO+'/main/';
 // ANZEIGE-NUMMERIERUNG ≠ DATEINAMEN (umbenannt 28.07.2026, Williams Wunsch).
 // Der alte Scalp-Bot wurde am 25.07.2026 eingestellt ($1672, -16,4 %, 63 Trades;
 // Archiv state.json + bot.js im Repo), danach lückenlos durchnummeriert:
-//   Anzeige BOT 1 = bot2.js / state2.json  (Donchian)
-//   Anzeige BOT 2 = bot3.js / state3.json  (Momentum)
-//   Anzeige BOT 3 = bot5.js / state5.json  (SMA150-Trendfilter)
+//   Anzeige BOT 1 = bot2.js / state2.json  (Donchian)          — abgeschaltet 08.11.2026
+//   Anzeige BOT 2 = bot3.js / state3.json  (Momentum)           — abgeschaltet 21.08.2026
+//   Anzeige BOT 3 = bot5.js / state5.json  (SMA150-Trendfilter) — laeuft
 // Der Sweep-Bot (bot4.js) wurde am 05.08.2026 abgeschaltet: -48,6 % ueber zwei Jahre auf
 // 1.204 Trades, 0 von 21 Gitterkombis in-sample positiv. bot4.js/state4.json bleiben als Archiv.
 // Dateinamen bewusst NICHT geändert — sonst reißt die Equity-Historie ab.
+// Die Luecken in der Nummerierung bleiben aus demselben Grund: BOT 3 ist seit
+// dem 08.11.2026 der einzige laufende Bot und heisst trotzdem weiter BOT 3,
+// damit Dashboard, REPORT5.md und die Vault-Notizen dasselbe meinen.
 // ── NULLTEST ─────────────────────────────────────
 // Gleichgewichteter Korb, einfach gekauft und liegengelassen. Ohne diesen
 // Vergleich sieht ein Bot, der dem Markt hinterherhinkt, nach Erfolg aus:
 // am 21.08.2026 stand BOT 3 bei +9,2 %, der Korb im selben Zeitraum bei +25,6 %.
 const BASKET=['BTC','ETH','SOL','BNB','XRP','DOGE','AVAX','LINK','LTC','DOT'];
 let BENCH=[];
-// Die Nummer ist historisch gewachsen und sagt nichts ueber den Rang: BOT 3
-// liest state5.json (bot5.js). Sie bleibt, damit Dashboard, REPORT5.md und die
-// Vault-Notizen weiter dieselbe Sache meinen.
-// BOT 1 (Donchian, state2.json) am 08.11.2026 entfernt — abgeschaltet, nachdem
-// er den Walk-Forward nicht bestanden hat (Begruendung in bot.yml). state2.json
-// bleibt im Repo, wird aber nicht mehr fortgeschrieben; hier raus, damit eine
-// eingefrorene Kurve nicht wie ein laufender Bot aussieht.
+// BOT 1 am 08.11.2026 hier entfernt: abgeschaltet, nachdem er den Walk-Forward
+// nicht bestanden hat (Begruendung in bot.yml und oben in REPORT2.md).
+// state2.json bleibt im Repo, wird aber nicht mehr fortgeschrieben — hier raus,
+// damit eine eingefrorene Kurve nicht wie ein laufender Bot aussieht.
 const BOTS=[
  {name:'BOT 3 · SMA150-Trendfilter',tag:'1D · 10 Paare · Einstieg > SMA150 · Ausstieg NUR per Trailing-Stop (3×ATR) · kein Hebel',file:'state5.json',init:2000,unvalidiert:true}
 ];
