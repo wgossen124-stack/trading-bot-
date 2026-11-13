@@ -6,13 +6,13 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-11-13 18:03 UTC · Lauf #1071 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-11-13 23:31 UTC · Lauf #1072 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2144.64 | +144.64$ (7.2%) | 59% | 3.19 | 17 | 2/10 |
+| $2140.98 | +140.98$ (7.0%) | 56% | 2.29 | 18 | 1/10 |
 
 ## Signallage
 
@@ -33,13 +33,13 @@
 
 | Pair | Entry | Kurs | Wert | PnL |
 |---|---|---|---|---|
-| DOT | 0.962192 | 0.825700 | $189 | -31.30$ |
-| LTC | 52.3705 | 49.3800 | $205 | -12.42$ |
+| LTC | 52.3705 | 49.1200 | $204 | -13.50$ |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Entry | Exit | PnL |
 |---|---|---|---|---|
+| 11-13 23:31 | DOT | 0.962192 | 0.814837 | -33.99$ |
 | 11-07 05:11 | XRP | 1.25575 | 1.15557 | -17.81$ |
 | 10-29 21:17 | DOGE | 0.0863773 | 0.0765247 | -25.88$ |
 | 10-14 15:11 | AVAX | 7.89258 | 9.83403 | +55.52$ |
@@ -51,4 +51,7 @@
 | 09-15 20:21 | BTC | 69508.9 | 75798.0 | +18.16$ |
 | 09-11 15:01 | DOT | 1.06441 | 1.06789 | +0.51$ |
 | 09-10 18:27 | LINK | 8.82977 | 11.6177 | +62.73$ |
-| 09-10 15:09 | LTC | 53.9608 | 52.2196 | -7.29$ |
+
+## Dieser Lauf
+
+- ❌ CLOSE DOT TRAIL -33.99$
