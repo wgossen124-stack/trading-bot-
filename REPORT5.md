@@ -6,39 +6,34 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-11-14 21:05 UTC · Lauf #1076 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-11-15 01:01 UTC · Lauf #1077 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
 | Equity | PnL | Winrate | PF | Trades | Offen |
 |---|---|---|---|---|---|
-| $2121.83 | +121.83$ (6.1%) | 56% | 2.29 | 18 | 1/10 |
+| $2117.84 | +117.84$ (5.9%) | 53% | 1.75 | 19 | 0/10 |
 
 ## Signallage
 
 | Pair | Kurs | SMA150 | Soll |
 |---|---|---|---|
-| BTC | 68286.7 | 72925.6 | flach |
-| ETH | 1929.09 | 2181.26 | flach |
-| SOL | 78.1500 | 91.5633 | flach |
-| BNB | 629.880 | 665.570 | flach |
-| XRP | 1.01050 | 1.24004 | flach |
-| DOGE | 0.0644900 | 0.0794187 | flach |
-| AVAX | 8.23000 | 7.91771 | LONG |
-| LINK | 9.85400 | 10.4343 | flach |
-| LTC | 49.3400 | 52.0088 | flach |
-| DOT | 0.818100 | 0.950372 | flach |
-
-## Offene Positionen
-
-| Pair | Entry | Kurs | Wert | PnL |
-|---|---|---|---|---|
-| LTC | 52.3705 | 44.5100 | $185 | -32.65$ |
+| BTC | 64124.8 | 72923.3 | flach |
+| ETH | 1768.38 | 2181.38 | flach |
+| SOL | 70.2300 | 91.5515 | flach |
+| BNB | 581.560 | 665.439 | flach |
+| XRP | 0.913700 | 1.23823 | flach |
+| DOGE | 0.0573300 | 0.0792284 | flach |
+| AVAX | 7.09400 | 7.91993 | flach |
+| LINK | 8.87800 | 10.4396 | flach |
+| LTC | 44.4700 | 52.0060 | flach |
+| DOT | 0.706200 | 0.948395 | flach |
 
 ## Letzte Trades
 
 | Zeit (UTC) | Pair | Entry | Exit | PnL |
 |---|---|---|---|---|
+| 11-15 01:01 | LTC | 52.3705 | 43.5713 | -36.75$ |
 | 11-13 23:31 | DOT | 0.962192 | 0.814837 | -33.99$ |
 | 11-07 05:11 | XRP | 1.25575 | 1.15557 | -17.81$ |
 | 10-29 21:17 | DOGE | 0.0863773 | 0.0765247 | -25.88$ |
@@ -50,4 +45,7 @@
 | 09-15 20:21 | DOGE | 0.0919484 | 0.0800540 | -28.55$ |
 | 09-15 20:21 | BTC | 69508.9 | 75798.0 | +18.16$ |
 | 09-11 15:01 | DOT | 1.06441 | 1.06789 | +0.51$ |
-| 09-10 18:27 | LINK | 8.82977 | 11.6177 | +62.73$ |
+
+## Dieser Lauf
+
+- ❌ CLOSE LTC TRAIL -36.75$

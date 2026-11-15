@@ -1,19 +1,7 @@
 {
- "bal": 1936.922799661278,
+ "bal": 2117.8350503162587,
  "peak": 2388.597791501258,
- "positions": [
-  {
-   "sym": "LTCUSDT",
-   "side": "LONG",
-   "price": 52.370472,
-   "size": 4.154175305712729,
-   "margin": 217.55612153091994,
-   "eFee": 0.10877806076545997,
-   "hh": 52.370472,
-   "sl": 44.27866903319448,
-   "ts": 1794028314414
-  }
- ],
+ "positions": [],
  "trades": [
   {
    "ts": 1786587764884,
@@ -176,13 +164,20 @@
    "exit": 0.814837,
    "pnl": -33.99,
    "reason": "TRAIL"
+  },
+  {
+   "ts": 1794704486111,
+   "sym": "LTCUSDT",
+   "side": "LONG",
+   "entry": 52.370472,
+   "exit": 43.571284,
+   "pnl": -36.75,
+   "reason": "TRAIL"
   }
  ],
  "started": "2026-08-05T18:20:01.515Z",
- "runs": 1076,
+ "runs": 1077,
  "skipStale": 0,
  "hhKorrektur": "2026-08-24: hh (Hoch seit Einstieg) neu berechnet. Der Code hatte bis dahin das Hoch der letzten geschlossenen Kerze auch dann eingerechnet, wenn diese VOR dem Einstieg lag - DOGE lag 6,7 %, LTC 2,6 % zu hoch, der Trailing-Stop entsprechend zu eng. BTC war 0,46 % zu niedrig (Hoch fiel in eine Luecke zwischen zwei Laeufen). Code am 24.08. gefixt (w.hiTs>=pos.ts).",
- "gesperrt": {
-  "AVAXUSDT": true
- }
+ "gesperrt": {}
 }
