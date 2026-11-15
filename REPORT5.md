@@ -6,7 +6,7 @@
 > aber gegen Nichtstun. Läuft auf ausdrücklichen Wunsch als Forward-Test.
 > Details: BOT3-ERSATZ-KRITERIEN.md
 
-> Aktualisiert: 2026-11-15 01:01 UTC · Lauf #1077 · 1D · SMA150 · long/flat, kein Hebel
+> Aktualisiert: 2026-11-15 07:50 UTC · Lauf #1078 · 1D · SMA150 · long/flat, kein Hebel
 >
 > Läufe wegen veralteter Daten übersprungen: 0
 
@@ -45,7 +45,3 @@
 | 09-15 20:21 | DOGE | 0.0919484 | 0.0800540 | -28.55$ |
 | 09-15 20:21 | BTC | 69508.9 | 75798.0 | +18.16$ |
 | 09-11 15:01 | DOT | 1.06441 | 1.06789 | +0.51$ |
-
-## Dieser Lauf
-
-- ❌ CLOSE LTC TRAIL -36.75$
